@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — Pipchi Productions</title>
+<meta name="description" content="Get help with Pipchi Productions apps — Quiet Appreciation, Mixtape Pinball, Local Poet, Eraser Adventures, Fixion Mail, and Prompt Script.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --purple-deep: #5B2A8C;
+  --purple-mid: #8B3FA0;
+  --magenta: #C74B8B;
+  --orange-warm: #E8864A;
+  --gold: #F0B840;
+  --gold-light: #F5D06E;
+  --cream: #FFF8ED;
+  --dark: #1A1020;
+  --dark-surface: #241530;
+  --text-light: #FFF8ED;
+  --text-muted: rgba(255, 248, 237, 0.7);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background: var(--dark);
+  color: var(--text-light);
+  line-height: 1.8;
+}
+
+nav {
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(26, 16, 32, 0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(240, 184, 64, 0.1);
+}
+
+.nav-logo {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 15px rgba(240, 184, 64, 0.2);
+}
+
+.nav-back {
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+}
+
+.nav-back:hover { opacity: 0.7; }
+
+.content {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+}
+
+.page-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--gold), var(--orange-warm));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 3rem;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--cream);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+a:hover { opacity: 0.7; }
+
+.contact-card {
+  background: var(--dark-surface);
+  border: 1px solid rgba(240, 184, 64, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  transition: border-color 0.3s ease;
+}
+
+.contact-card:hover {
+  border-color: rgba(240, 184, 64, 0.3);
+}
+
+.contact-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+
+.contact-card p {
+  margin-bottom: 0.5rem;
+}
+
+.contact-card .email-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--gold);
+  border-radius: 20px;
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.contact-card .email-link:hover {
+  background: var(--gold);
+  color: var(--dark);
+  opacity: 1;
+}
+
+.app-support-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.app-support-item {
+  background: var(--dark-surface);
+  border: 1px solid rgba(240, 184, 64, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.app-support-item:hover {
+  border-color: rgba(240, 184, 64, 0.3);
+  transform: translateY(-4px);
+}
+
+.app-support-item .app-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-bottom: 0.75rem;
+}
+
+.app-support-item h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+
+.app-support-item p {
+  font-size: 0.85rem;
+  margin-bottom: 0;
+}
+
+.faq-item {
+  background: var(--dark-surface);
+  border: 1px solid rgba(240, 184, 64, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.faq-item h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+
+.faq-item p {
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid rgba(240, 184, 64, 0.1);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 640px) {
+  .content { padding: 2.5rem 1.25rem 4rem; }
+  h1 { font-size: 1.8rem; }
+  .app-support-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 420px) {
+  .app-support-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/"><img src="/images/logo-close.png" alt="Pipchi Productions" class="nav-logo"></a>
+  <a href="/" class="nav-back">&larr; Back to Home</a>
+</nav>
+
+<div class="content">
+  <p class="page-label">Help</p>
+  <h1>Support</h1>
+  <p class="subtitle">We're here to help. Find answers below or reach out directly.</p>
+
+  <h2>Our Apps</h2>
+  <div class="app-support-grid">
+    <div class="app-support-item">
+      <img src="/images/quiet_appreciation_icon.png" alt="Quiet Appreciation" class="app-icon">
+      <h3>Quiet Appreciation</h3>
+      <p>A mindful space for noticing and savoring the good things in life.</p>
+    </div>
+    <div class="app-support-item">
+      <img src="/images/mixtape_pinball_icon.png" alt="Mixtape Pinball" class="app-icon">
+      <h3>Mixtape Pinball</h3>
+      <p>Where music meets pinball. BPM-synchronized gameplay.</p>
+    </div>
+    <div class="app-support-item">
+      <img src="/images/local_poet_icon.png" alt="Local Poet" class="app-icon">
+      <h3>Local Poet</h3>
+      <p>AI-powered lyric writing companion.</p>
+    </div>
+    <div class="app-support-item">
+      <img src="/images/eraser_adeventures_icon.png" alt="Eraser Adventures" class="app-icon">
+      <h3>Eraser Adventures</h3>
+      <p>A charming adventure game where erasers come to life.</p>
+    </div>
+    <div class="app-support-item">
+      <img src="/images/fixion_mail_icon.png" alt="Fixion Mail" class="app-icon">
+      <h3>Fixion Mail</h3>
+      <p>Daily short stories delivered to your inbox.</p>
+    </div>
+    <div class="app-support-item">
+      <img src="/images/prompt_script_icon.png" alt="Prompt Script" class="app-icon">
+      <h3>Prompt Script</h3>
+      <p>AI-assisted video storytelling on iOS.</p>
+    </div>
+  </div>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <h3>Where is my data stored?</h3>
+    <p>All app data is stored locally on your device. Some apps offer optional iCloud sync, which stores data in your personal iCloud account. We never store your data on our servers.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>How do I delete my data?</h3>
+    <p>Simply delete the app from your device to remove all local data. If you use iCloud sync, you can manage that data through your Apple ID settings.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>Do your apps work offline?</h3>
+    <p>Most features work offline. AI-powered features in Local Poet and Prompt Script require an internet connection. Eraser Adventures, Quiet Appreciation, and Mixtape Pinball work fully offline.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>I found a bug. How do I report it?</h3>
+    <p>Please email us with a description of the issue, which app and device you're using, and any screenshots that might help. We read every message and fix issues as quickly as we can.</p>
+  </div>
+
+  <h2>Contact Us</h2>
+  <div class="contact-card">
+    <h3>Email Support</h3>
+    <p>For bug reports, feature requests, or any questions about our apps:</p>
+    <a href="mailto:pipchiproductions@icloud.com" class="email-link">pipchiproductions@icloud.com</a>
+  </div>
+
+  <p style="margin-top: 2rem; font-size: 0.85rem;">We typically respond within 48 hours. For urgent issues, please include "URGENT" in your subject line.</p>
+
+  <p style="margin-top: 2rem;"><a href="/privacy">Privacy Policy</a> &middot; <a href="/terms">Terms of Service</a></p>
+</div>
+
+<footer>
+  <p>&copy; 2026 Pipchi Productions. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
