@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>3580 — Recordings from the original address</title>
+  <meta name="description" content="Tallwood's record shop. A 70s shop at the original address, slowly filling with recordings from 1985 to now."/>
+  <meta property="og:title" content="3580 — a Pipchi production"/>
+  <meta property="og:description" content="Tallwood's record shop. The crates are filling."/>
+  <link rel="icon" type="image/png" href="/images/pipchi-design/logo-circle.png"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@400;600;700&family=Lilita+One&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* Pipchi base (paper) — masthead + signoff contract */
+    :root {
+      --paper:       #fffaf2;
+      --ink:         #1f1b16;
+      --ink-2:       #2d251f;
+      --ink-muted:   #6f6254;
+      --ink-faint:   #b3a48d;
+      --line:        #eadfce;
+      --terra:       #b45b2c;
+      --terra-deep:  #8e4520;
+
+      --font-serif: "Lora", ui-serif, Georgia, serif;
+      --font-sans:  "DM Sans", ui-sans-serif, system-ui, sans-serif;
+      --font-mono:  "JetBrains Mono", ui-monospace, Menlo, monospace;
+
+      /* 3580 sovereign — wood, oxblood, butterscotch, cream */
+      --r-wood:          #6b4423;
+      --r-wood-deep:     #4a2d14;
+      --r-oxblood:       #7a2a2a;
+      --r-oxblood-2:     #5b1e1e;
+      --r-butterscotch:  #d4a14a;
+      --r-butterscotch-2:#b07e15;
+      --r-cream:         #f0e3c8;
+      --r-cream-2:       #e6d5b1;
+      --r-ink:           #1a1108;
+      --r-paper-receipt: #fffaf2;
+      --r-display:        'Lilita One', 'Cooper Black', ui-serif, Georgia, serif;
+      --r-display-italic: 'DM Serif Display', ui-serif, Georgia, serif;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--paper); }
+    body { font-family: var(--font-serif); color: var(--ink-2); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { color: var(--terra); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+    a:hover { color: var(--terra-deep); }
+    h1, h2, h3 { margin: 0; }
+    p { margin: 0; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+
+    /* ============================================================
+       PIPCHI MASTHEAD — paper doorway
+       ============================================================ */
+    .masthead {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px 28px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid var(--line);
+      font-family: var(--font-sans);
+    }
+    .masthead .crumb { display: flex; gap: 10px; align-items: center; text-decoration: none; color: var(--ink); }
+    .masthead .crumb img { width: 30px; height: 30px; border-radius: 50%; box-shadow: 0 4px 12px rgba(51,36,21,0.10); }
+    .masthead .crumb-text { font-family: var(--font-serif); font-size: 16px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
+    .masthead .crumb-sep { color: var(--ink-faint); padding: 0 2px; }
+    .masthead .crumb-world { font-family: var(--r-display); font-size: 22px; color: var(--r-oxblood); letter-spacing: 0.02em; }
+    .masthead .pipchi-presents { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--terra); }
+
+    /* ============================================================
+       INSIDE THE SHOP — sovereign aesthetic begins
+       Warm wood-paneled wall + dust + halftone shadow.
+       ============================================================ */
+    .shop {
+      background:
+        radial-gradient(rgba(26,17,8,0.06) 1.4px, transparent 1.6px) 0 0 / 8px 8px,
+        repeating-linear-gradient(0deg,
+          var(--r-wood) 0px,
+          var(--r-wood) 22px,
+          var(--r-wood-deep) 22px,
+          var(--r-wood-deep) 24px,
+          var(--r-wood) 24px,
+          var(--r-wood) 46px,
+          rgba(26,17,8,0.45) 46px,
+          rgba(26,17,8,0.45) 47px,
+          var(--r-wood) 47px,
+          var(--r-wood) 70px),
+        var(--r-wood);
+      color: var(--r-cream);
+      padding: 64px 0 88px;
+      position: relative;
+      overflow: hidden;
+    }
+    .shop::before {
+      content: ""; position: absolute; top: -100px; left: -200px;
+      width: 700px; height: 700px;
+      background: radial-gradient(ellipse, rgba(255,236,180,0.20) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .shop > * { position: relative; }
+
+    /* ---- the wooden shop sign ---- */
+    .shop-sign {
+      max-width: 760px;
+      margin: 0 auto 44px;
+      text-align: center;
+      padding: 26px 28px 22px;
+      background:
+        radial-gradient(rgba(26,17,8,0.18) 1px, transparent 1.2px) 0 0 / 4px 4px,
+        linear-gradient(180deg, var(--r-cream) 0%, var(--r-cream-2) 100%);
+      border: 3px solid var(--r-ink);
+      border-radius: 8px;
+      box-shadow:
+        0 18px 38px rgba(0,0,0,0.35),
+        inset 0 0 0 1px rgba(255,236,180,0.55);
+      position: relative;
+      transform: rotate(-0.5deg);
+    }
+    .shop-sign::before, .shop-sign::after {
+      content: "";
+      position: absolute;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #d9c590, #6b4423);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    }
+    .shop-sign::before { top: 8px; left: 8px; }
+    .shop-sign::after  { top: 8px; right: 8px; }
+    .shop-sign .open-tag {
+      font-family: var(--font-sans); font-size: 10px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.30em;
+      color: var(--r-oxblood-2);
+      padding-bottom: 6px;
+    }
+    .shop-sign .name {
+      font-family: var(--r-display);
+      font-size: clamp(4rem, 11vw, 8.5rem);
+      line-height: 0.9;
+      color: var(--r-ink);
+      letter-spacing: 0.005em;
+      text-shadow:
+        3px 3px 0 var(--r-butterscotch),
+        6px 6px 0 var(--r-oxblood);
+    }
+    .shop-sign .tagline {
+      font-family: var(--r-display-italic);
+      font-style: italic;
+      font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+      color: var(--r-oxblood);
+      margin-top: 14px;
+    }
+    .shop-sign .est {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 2px solid var(--r-ink);
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.20em;
+      color: var(--r-ink);
+      display: flex; justify-content: space-between;
+      gap: 14px; flex-wrap: wrap;
+    }
+
+    /* ---- "Now playing" receipt strip ---- */
+    .now-playing {
+      max-width: 760px;
+      margin: 0 auto 56px;
+      padding: 14px 18px 18px;
+      background: var(--r-paper-receipt);
+      border-left: 2px dashed var(--r-ink);
+      border-right: 2px dashed var(--r-ink);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--r-ink);
+      transform: rotate(0.5deg);
+    }
+    .now-playing .row { display: flex; justify-content: space-between; gap: 18px; padding: 2px 0; }
+    .now-playing .label { color: var(--r-oxblood-2); font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; }
+    .now-playing .divider {
+      border-top: 1px dashed var(--r-ink);
+      margin: 8px 0;
+    }
+
+    /* ---- empty-state crates ---- */
+    .crates {
+      max-width: 760px;
+      margin: 0 auto;
+      background: rgba(26,17,8,0.32);
+      border: 1px solid rgba(240,227,200,0.18);
+      border-radius: 10px;
+      padding: 36px 32px;
+      position: relative;
+      color: var(--r-cream);
+    }
+    .crates h2 {
+      font-family: var(--r-display);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: var(--r-cream);
+      letter-spacing: 0.01em;
+      margin-bottom: 14px;
+    }
+    .crates p {
+      font-family: var(--font-serif);
+      font-size: 1.04rem;
+      line-height: 1.65;
+      color: rgba(240,227,200,0.92);
+      margin-bottom: 14px;
+      max-width: 580px;
+    }
+    .crates em {
+      color: var(--r-butterscotch);
+      font-style: italic;
+    }
+    .crates .from-tallwood {
+      margin-top: 22px;
+      padding: 16px 18px;
+      border-left: 3px solid var(--r-butterscotch);
+      background: rgba(212,161,74,0.06);
+      border-radius: 0 8px 8px 0;
+    }
+    .crates .from-tallwood .who {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--r-butterscotch);
+      margin-bottom: 8px;
+    }
+    .crates .from-tallwood p {
+      font-family: var(--r-display-italic);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--r-cream);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .crates .from-matt {
+      margin-top: 14px;
+      padding: 16px 18px;
+      border-left: 3px solid var(--r-cream);
+      background: rgba(240,227,200,0.05);
+      border-radius: 0 8px 8px 0;
+    }
+    .crates .from-matt .who {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--r-cream-2);
+      margin-bottom: 8px;
+    }
+    .crates .from-matt p {
+      font-family: var(--font-serif);
+      font-size: 0.98rem;
+      color: rgba(240,227,200,0.85);
+      line-height: 1.55;
+      margin: 0;
+    }
+    .crates .back {
+      margin-top: 28px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--r-butterscotch);
+      text-decoration: none;
+      border-bottom: 2px solid var(--r-butterscotch);
+      padding-bottom: 2px;
+    }
+    .crates .back:hover { color: var(--r-cream); border-color: var(--r-cream); }
+
+    /* ============================================================
+       PIPCHI SIGN-OFF — back to paper
+       ============================================================ */
+    .signoff {
+      margin: 64px auto 0;
+      max-width: 1100px;
+      padding: 28px;
+      border-top: 1px solid var(--line);
+      display: flex; gap: 18px; flex-wrap: wrap;
+      justify-content: space-between; align-items: center;
+    }
+    .signoff .left { display: flex; gap: 12px; align-items: center; }
+    .signoff .left img { width: 38px; height: 38px; border-radius: 50%; }
+    .signoff .left div { font-family: var(--font-serif); font-size: 14px; color: var(--ink); }
+    .signoff .left .small { font-family: var(--font-sans); font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
+    .signoff .right { font-family: 'Caveat', cursive; font-size: 26px; color: var(--ink); transform: rotate(-1.5deg); }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================
+       MASTHEAD
+       ========================================================= -->
+  <div class="masthead">
+    <a class="crumb" href="/">
+      <img src="/images/pipchi-design/logo-circle.png" alt="Pipchi"/>
+      <span class="crumb-text">Pipchi</span>
+      <span class="crumb-sep">/</span>
+      <span class="crumb-world">3580</span>
+    </a>
+    <span class="pipchi-presents">A Pipchi production</span>
+  </div>
+
+  <!-- =========================================================
+       INSIDE THE SHOP
+       ========================================================= -->
+  <section class="shop">
+    <div class="wrap">
+
+      <div class="shop-sign">
+        <div class="open-tag">Tallwood &middot; Proprietor &middot; Open</div>
+        <div class="name">3580</div>
+        <div class="tagline">Recordings from the original address.</div>
+        <div class="est">
+          <span>Est. 1985</span>
+          <span>Sole proprietor: Tallwood</span>
+          <span>Catalog: filling</span>
+        </div>
+      </div>
+
+      <div class="now-playing" aria-label="Now playing">
+        <div class="row"><span class="label">Now playing</span><span>—</span></div>
+        <div class="row"><span class="label">Next up</span><span>—</span></div>
+        <div class="divider"></div>
+        <div class="row"><span class="label">Total recordings</span><span>~500 in the back</span></div>
+        <div class="row"><span class="label">On the shelf today</span><span>0 · the crates are filling</span></div>
+      </div>
+
+      <div class="crates">
+        <h2>The crates are filling.</h2>
+        <p>3580 is the shop. Inside it: every recording Matt has made since 1985, slowly being pulled out of boxes, listened to again, and put on the shelf. <em>One album at a time. With a story.</em></p>
+        <p>The first record drops here soon. Until then, the door is open, the kettle is on, and Tallwood is dusting off the crates.</p>
+
+        <div class="from-tallwood">
+          <div class="who">From Tallwood</div>
+          <p>I've been here a long time. You should hear what's in the back.</p>
+        </div>
+
+        <div class="from-matt">
+          <div class="who">From Matt — on a Tuesday</div>
+          <p>About 500 songs across decades. Demos, finished things, things that should have stayed demos but didn't. I'm putting them out one album at a time, on a slow schedule, so Tallwood can tell each one's story properly.</p>
+        </div>
+
+        <a class="back" href="/">← Back to the house</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================
+       PIPCHI SIGN-OFF
+       ========================================================= -->
+  <div class="signoff">
+    <div class="left">
+      <img src="/images/pipchi-design/logo-circle.png" alt="Pipchi"/>
+      <div>
+        3580 is a Pipchi production.
+        <div class="small">More rooms at <a href="/" style="color: var(--terra);">pipchi.com</a> · matt@pipchi.com</div>
+      </div>
+    </div>
+    <div class="right">— with care, Matt</div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prompt Script — a Pipchi production</title>
+  <meta name="description" content="A director's lens for AI visual storytelling. Develop the vision out loud — division by division, consultant by consultant — and leave with a shot-ready script."/>
+  <meta property="og:title" content="Prompt Script — a director's lens for AI film"/>
+  <meta property="og:description" content="Pre-production with a crew that talks back. A Pipchi production."/>
+  <meta property="og:image" content="/images/promptscript/preview-1.png"/>
+  <link rel="icon" type="image/png" href="/images/promptscript/icon.png"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       PIPCHI base — paper aesthetic for the doorway and sign-off
+       (inlined subset of colors_and_type.css)
+       ============================================================ */
+    :root {
+      --paper:       #fffaf2;
+      --paper-2:     #faf1e0;
+      --ink:         #1f1b16;
+      --ink-2:       #2d251f;
+      --ink-muted:   #6f6254;
+      --ink-faint:   #b3a48d;
+      --line:        #eadfce;
+      --line-strong: #d9cbb8;
+      --terra:       #b45b2c;
+      --terra-deep:  #8e4520;
+      --teal:        #2f6f73;
+      --gold:        #e0a72e;
+
+      --font-serif: "Lora", ui-serif, Georgia, Cambria, "Times New Roman", serif;
+      --font-sans:  "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --font-mono:  "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+      --font-hand:  "Caveat", "Segoe Script", cursive;
+
+      /* ---- PromptScript's sovereign palette ----
+         Pulled directly from the app icon: brass-cream, brass gold, dark teal, ink. */
+      --ps-paper:   #f5e9d2;
+      --ps-paper-2: #ebd9b6;
+      --ps-brass:   #b07e15;
+      --ps-brass-2: #8a5e0a;
+      --ps-teal:    #1f5c66;
+      --ps-teal-2:  #133e45;
+      --ps-ink:     #16110a;
+      --ps-rule:    #c8b48a;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--paper); }
+    body {
+      font-family: var(--font-serif);
+      color: var(--ink-2);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: var(--terra); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+    a:hover { color: var(--terra-deep); }
+    h1, h2, h3 { margin: 0; }
+    p { margin: 0; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+
+    /* ============================================================
+       PIPCHI MASTHEAD — the doorway. Stays paper.
+       ============================================================ */
+    .masthead {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 18px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      font-family: var(--font-sans);
+    }
+    .masthead .crumb {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .masthead .crumb img {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(51,36,21,0.10);
+    }
+    .masthead .crumb-text {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .masthead .crumb-sep { color: var(--ink-faint); font-weight: 400; padding: 0 2px; }
+    .masthead .crumb-world {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 16px;
+      color: var(--ink-muted);
+    }
+    .masthead .pipchi-presents {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--terra);
+    }
+
+    /* ============================================================
+       INSIDE PROMPT SCRIPT — the sovereign world begins here.
+       Background flips to brass-cream. The director's atelier.
+       ============================================================ */
+    .ps-world {
+      background: var(--ps-paper);
+      background-image:
+        radial-gradient(rgba(22,17,10,0.045) 1px, transparent 1px),
+        radial-gradient(rgba(22,17,10,0.025) 1px, transparent 1px);
+      background-size: 3px 3px, 7px 7px;
+      color: var(--ps-ink);
+      padding: 64px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .ps-world::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        repeating-linear-gradient(72deg,
+          rgba(176,126,21,0.0) 0,
+          rgba(176,126,21,0.0) 22px,
+          rgba(176,126,21,0.06) 22px,
+          rgba(176,126,21,0.06) 23px);
+      mix-blend-mode: multiply;
+      opacity: 0.5;
+    }
+    .ps-world > * { position: relative; }
+
+    /* ---- HERO ---- */
+    .ps-hero {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 44px;
+      align-items: center;
+    }
+    .ps-icon-card {
+      position: relative;
+      padding: 14px;
+      background: #fffaf2;
+      border: 1px solid var(--ps-rule);
+      border-radius: 18px;
+      box-shadow: 0 18px 38px rgba(22,17,10,0.16);
+      transform: rotate(-1.5deg);
+    }
+    .ps-icon-card img { display: block; width: 100%; border-radius: 14px; }
+    .ps-icon-card::before, .ps-icon-card::after {
+      content: "";
+      position: absolute;
+      top: -10px;
+      width: 70px;
+      height: 18px;
+      background: rgba(176,126,21,0.45);
+      border: 1px solid rgba(138,94,10,0.18);
+      box-shadow: 0 2px 4px rgba(22,17,10,0.08);
+    }
+    .ps-icon-card::before { left: 20px; transform: rotate(-5deg); }
+    .ps-icon-card::after { right: 20px; transform: rotate(4deg); }
+    .ps-icon-card .caption {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--ps-brass-2);
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .ps-hero-text .eyebrow {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.20em;
+      color: var(--ps-teal);
+    }
+    .ps-hero-text h1 {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+      letter-spacing: -0.045em;
+      line-height: 1;
+      color: var(--ps-ink);
+      margin: 12px 0 14px;
+    }
+    .ps-hero-text .tagline {
+      font-family: var(--font-serif);
+      font-size: clamp(1.2rem, 1.5vw, 1.4rem);
+      line-height: 1.4;
+      color: #2b2014;
+      margin: 0 0 18px;
+      max-width: 560px;
+    }
+    .ps-hero-text .pitch {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #3d2f1c;
+      max-width: 560px;
+    }
+
+    .ps-cta-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+    .ps-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 13px 22px;
+      border-radius: 999px;
+      background: var(--ps-ink);
+      color: var(--ps-paper);
+      border: 1px solid var(--ps-ink);
+      text-decoration: none;
+      box-shadow: 0 8px 18px rgba(22,17,10,0.22);
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+    .ps-cta:hover { transform: translateY(-1px); color: var(--ps-paper); }
+    .ps-cta .glyph { font-family: var(--font-serif); font-size: 19px; }
+    .ps-cta-meta {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--ps-brass-2);
+      font-weight: 700;
+    }
+
+    /* ---- DIVIDER: a quiet "scene break" mark ---- */
+    .filmstrip {
+      margin: 56px auto 44px;
+      max-width: 720px;
+      height: 1px;
+      background: var(--ps-rule);
+      position: relative;
+      overflow: visible;
+    }
+    .filmstrip::before {
+      content: "◆";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--ps-paper);
+      color: var(--ps-brass);
+      padding: 0 18px;
+      font-family: var(--font-serif);
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    /* ---- SECTION HEAD ---- */
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 28px;
+      gap: 24px;
+    }
+    .section-head .eyebrow {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.20em;
+      color: var(--ps-teal);
+    }
+    .section-head h2 {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      letter-spacing: -0.04em;
+      color: var(--ps-ink);
+      margin: 6px 0 0;
+    }
+    .section-head .note {
+      font-family: 'Caveat', cursive;
+      font-weight: 600;
+      color: var(--ps-brass-2);
+      font-size: 22px;
+      transform: rotate(-2deg);
+      max-width: 280px;
+      text-align: right;
+      line-height: 1.1;
+    }
+
+    /* ---- RECIPE — three steps ---- */
+    .recipe {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 4px;
+    }
+    .recipe .step {
+      background: #fffaf2;
+      border: 1px solid var(--ps-rule);
+      border-radius: 12px;
+      padding: 22px 20px;
+      position: relative;
+    }
+    .recipe .num {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 38px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--ps-brass);
+      margin-bottom: 8px;
+    }
+    .recipe h3 {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 19px;
+      letter-spacing: -0.025em;
+      color: var(--ps-ink);
+      margin: 0 0 6px;
+    }
+    .recipe p {
+      font-family: var(--font-serif);
+      font-size: 14px;
+      line-height: 1.5;
+      color: #3d2f1c;
+      margin: 0;
+    }
+
+    /* ---- CONSULTANTS DOSSIER ---- */
+    .dossier-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 22px;
+    }
+    .dossier {
+      background: #fffaf2;
+      border: 1px solid var(--ps-rule);
+      border-radius: 8px;
+      padding: 16px 16px 14px;
+      box-shadow: 0 10px 24px rgba(22,17,10,0.10);
+      position: relative;
+    }
+    .dossier::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 26px;
+      width: 26px;
+      height: 38px;
+      border: 2px solid #b07e15;
+      border-radius: 12px 12px 4px 4px;
+      border-bottom: none;
+      transform: rotate(-8deg);
+      box-shadow: 0 2px 4px rgba(22,17,10,0.18);
+      background: linear-gradient(180deg, transparent 0%, transparent 70%, rgba(176,126,21,0.15) 100%);
+    }
+    .dossier-no {
+      font-family: var(--font-sans);
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.20em;
+      color: var(--ps-brass-2);
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .dossier-portrait {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: var(--ps-paper-2);
+      border: 1px solid var(--ps-rule);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .dossier-name {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -0.025em;
+      color: var(--ps-ink);
+      margin: 12px 0 4px;
+    }
+    .dossier-desc {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 14px;
+      line-height: 1.4;
+      color: #3d2f1c;
+      min-height: 38px;
+    }
+    .dossier-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--ps-rule);
+    }
+    .dossier-tags span {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ps-teal);
+      background: rgba(31,92,102,0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .dossier-stamp {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      width: 52px;
+      height: 52px;
+      border: 2px solid var(--ps-brass-2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(-12deg);
+      font-family: var(--font-sans);
+      font-size: 8px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ps-brass-2);
+      opacity: 0.5;
+      text-align: center;
+      line-height: 1.1;
+    }
+
+    /* ---- INSIDE THE APP screenshots ---- */
+    .preview-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: flex-start;
+      margin-top: 12px;
+    }
+    .preview-card {
+      background: #fffaf2;
+      border: 1px solid var(--ps-rule);
+      border-radius: 12px;
+      padding: 14px 14px 16px;
+      box-shadow: 0 14px 30px rgba(22,17,10,0.14);
+    }
+    .preview-card:nth-child(1) { transform: rotate(-1deg); }
+    .preview-card:nth-child(2) { transform: rotate(1deg); }
+    .preview-card img { display: block; width: 100%; border-radius: 6px; }
+    .preview-card figcaption {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--ps-brass-2);
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    /* ---- App Store CTA block ---- */
+    .store-block {
+      margin-top: 64px;
+      background: var(--ps-ink);
+      color: var(--ps-paper);
+      border-radius: 24px;
+      padding: 36px 36px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: center;
+    }
+    .store-block .eyebrow { color: var(--ps-paper-2); opacity: 0.7; }
+    .store-block h3 {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+      letter-spacing: -0.03em;
+      color: var(--ps-paper);
+      margin: 8px 0 8px;
+    }
+    .store-block p {
+      font-family: var(--font-serif);
+      margin: 0;
+      color: var(--ps-paper-2);
+      max-width: 480px;
+    }
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 22px;
+      border-radius: 14px;
+      background: var(--ps-paper);
+      color: var(--ps-ink);
+      text-decoration: none;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.4);
+      font-family: var(--font-sans);
+      font-weight: 700;
+      min-width: 200px;
+    }
+    .store-btn:hover { color: var(--ps-ink); }
+    .store-btn .glyph { font-size: 26px; line-height: 1; }
+    .store-btn .label-top {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      opacity: 0.7;
+    }
+    .store-btn .label-bot { font-size: 17px; }
+
+    /* ---- Pipchi sign-off ---- */
+    .signoff {
+      margin: 64px auto 0;
+      max-width: 1080px;
+      padding: 28px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .signoff .left { display: flex; gap: 12px; align-items: center; }
+    .signoff .left img { width: 38px; height: 38px; border-radius: 50%; }
+    .signoff .left div {
+      font-family: var(--font-serif);
+      font-size: 14px;
+      color: var(--ink);
+    }
+    .signoff .left .small {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-top: 2px;
+    }
+    .signoff .right {
+      font-family: 'Caveat', cursive;
+      font-size: 26px;
+      color: var(--ink);
+      transform: rotate(-1.5deg);
+    }
+
+    /* ---- portrait videos ---- */
+    .portrait-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* drafts hidden by default; ?drafts=1 reveals them */
+    .draft-mark { display: none; }
+    body[data-drafts="on"] .draft-mark {
+      display: inline-block;
+      margin-left: 4px;
+      padding: 1px 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--ps-brass-2);
+      background: rgba(176,126,21,0.10);
+      border: 1px dashed rgba(176,126,21,0.45);
+      border-radius: 4px;
+      vertical-align: middle;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    @media (max-width: 820px) {
+      .ps-hero { grid-template-columns: 1fr; }
+      .ps-icon-card { max-width: 220px; margin: 0 auto; }
+      .preview-row { grid-template-columns: 1fr; }
+      .recipe { grid-template-columns: 1fr; }
+      .store-block { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================
+       MASTHEAD — Pipchi paper doorway. Every world wears this.
+       ========================================================= -->
+  <div class="masthead">
+    <a class="crumb" href="/">
+      <img src="/images/pipchi-design/logo-circle.png" alt="Pipchi"/>
+      <span class="crumb-text">Pipchi</span>
+      <span class="crumb-sep">/</span>
+      <span class="crumb-world">Prompt Script</span>
+    </a>
+    <span class="pipchi-presents">A Pipchi production</span>
+  </div>
+
+  <!-- =========================================================
+       INSIDE PROMPT SCRIPT — sovereign aesthetic begins.
+       ========================================================= -->
+  <section class="ps-world">
+    <div class="wrap">
+
+      <!-- HERO -->
+      <div class="ps-hero">
+        <div class="ps-icon-card">
+          <img src="/images/promptscript/icon.png" alt="Prompt Script app icon"/>
+          <div class="caption">on iPad · iPhone · Mac</div>
+        </div>
+        <div class="ps-hero-text">
+          <div class="eyebrow">Prompt Script · v1.2 · A working app</div>
+          <h1>A director's lens<br/>for AI&nbsp;visual storytelling.</h1>
+          <p class="tagline">Pre-production with a crew that talks back. Develop the vision before a single frame is generated.</p>
+          <p class="pitch">Every film starts with a vision. Prompt Script gives you a creative crew — division by division, consultant by consultant — to develop that vision out loud. You leave with a shot-ready script the camera can chase.</p>
+          <div class="ps-cta-row">
+            <a class="ps-cta" href="https://apps.apple.com/us/app/prompt-script/id6760545784">
+              <span class="glyph">⏵</span>
+              Open in the App Store
+            </a>
+            <span class="ps-cta-meta">$4.99 / month · Free to try</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="filmstrip" aria-hidden="true"></div>
+
+      <!-- RECIPE -->
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">The recipe</div>
+          <h2>Three rooms, one shooting script.</h2>
+        </div>
+      </div>
+      <div class="recipe">
+        <div class="step">
+          <div class="num">01</div>
+          <h3>Audition</h3>
+          <p>Talk to the consultants. Each one is a director's brain in a specific mode — Firebrand for kinetic energy, Gothic Visionary for shadowed romance, Dreamer for soft light and slow time. Switch between them mid-conversation.</p>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <h3>Divisions</h3>
+          <p>Break your story into the bones — settings, characters, divisions, beats. Each gets its own room to develop in. Your consultant sees the whole.</p>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <h3>Prompt Script</h3>
+          <p>Generate a shot-by-shot script with SCRIPT · VISUAL · AUDIO · EDIT tracks. Hand it to your AI generator of choice. The camera can chase what's on the page.</p>
+        </div>
+      </div>
+
+      <div class="filmstrip" aria-hidden="true"></div>
+
+      <!-- CONSULTANTS DOSSIER -->
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Meet the consultants</div>
+          <h2>The crew that talks back.</h2>
+        </div>
+        <div class="note">twenty directors,<br/>one notebook —<br/>pick a voice</div>
+      </div>
+
+      <div class="dossier-grid">
+
+        <article class="dossier">
+          <div class="dossier-no"><span>Dossier № 001</span><span>Firebrand</span></div>
+          <div class="dossier-portrait">
+            <video data-src="/images/promptscript/consultants/firebrand.mp4" loop muted playsinline preload="none" class="portrait-video" aria-hidden="true"></video>
+          </div>
+          <h3 class="dossier-name">Firebrand</h3>
+          <div class="dossier-desc">Bold, kinetic, energetic filmmaking — color and motion before composition.</div>
+          <div class="dossier-tags"><span>handheld</span><span>saturated</span><span>cut on energy</span></div>
+          <div class="dossier-stamp">Consult<br/>ant</div>
+        </article>
+
+        <article class="dossier">
+          <div class="dossier-no"><span>Dossier № 002</span><span>Gothic Visionary</span></div>
+          <div class="dossier-portrait">
+            <video data-src="/images/promptscript/consultants/gothic-visionary.mp4" loop muted playsinline preload="none" class="portrait-video" aria-hidden="true"></video>
+          </div>
+          <h3 class="dossier-name">Gothic Visionary</h3>
+          <div class="dossier-desc">Ornate, romantic, dark fairy-tale aesthetics — every shadow is a character.</div>
+          <div class="dossier-tags"><span>baroque</span><span>candlelight</span><span>negative space</span></div>
+          <div class="dossier-stamp">Consult<br/>ant</div>
+        </article>
+
+        <article class="dossier">
+          <div class="dossier-no"><span>Dossier № 003</span><span>Dreamer</span></div>
+          <div class="dossier-portrait">
+            <video data-src="/images/promptscript/consultants/dreamer.mp4" loop muted playsinline preload="none" class="portrait-video" aria-hidden="true"></video>
+          </div>
+          <h3 class="dossier-name">Dreamer</h3>
+          <div class="dossier-desc">Soft light, slow time, the wish-image — the camera as memory. <span class="draft-mark">draft</span></div>
+          <div class="dossier-tags"><span>diffused</span><span>slow-mo</span><span>poetic</span></div>
+          <div class="dossier-stamp">Consult<br/>ant</div>
+        </article>
+
+        <article class="dossier">
+          <div class="dossier-no"><span>Dossier № 004</span><span>Realist</span></div>
+          <div class="dossier-portrait">
+            <video data-src="/images/promptscript/consultants/realist.mp4" loop muted playsinline preload="none" class="portrait-video" aria-hidden="true"></video>
+          </div>
+          <h3 class="dossier-name">Realist</h3>
+          <div class="dossier-desc">Available light, real rooms — the ordinary made visible. <span class="draft-mark">draft</span></div>
+          <div class="dossier-tags"><span>vérité</span><span>natural</span><span>handheld</span></div>
+          <div class="dossier-stamp">Consult<br/>ant</div>
+        </article>
+
+        <article class="dossier">
+          <div class="dossier-no"><span>Dossier № 005</span><span>Formalist</span></div>
+          <div class="dossier-portrait">
+            <video data-src="/images/promptscript/consultants/formalist.mp4" loop muted playsinline preload="none" class="portrait-video" aria-hidden="true"></video>
+          </div>
+          <h3 class="dossier-name">Formalist</h3>
+          <div class="dossier-desc">Composition first — rules to use, then to break. <span class="draft-mark">draft</span></div>
+          <div class="dossier-tags"><span>symmetry</span><span>static</span><span>framing</span></div>
+          <div class="dossier-stamp">Consult<br/>ant</div>
+        </article>
+
+        <article class="dossier">
+          <div class="dossier-no"><span>Dossier № 006</span><span>Poet</span></div>
+          <div class="dossier-portrait">
+            <video data-src="/images/promptscript/consultants/poet.mp4" loop muted playsinline preload="none" class="portrait-video" aria-hidden="true"></video>
+          </div>
+          <h3 class="dossier-name">Poet</h3>
+          <div class="dossier-desc">Image as line break — the shot that means three things at once. <span class="draft-mark">draft</span></div>
+          <div class="dossier-tags"><span>metaphor</span><span>rhythm</span><span>restraint</span></div>
+          <div class="dossier-stamp">Consult<br/>ant</div>
+        </article>
+
+        <article class="dossier">
+          <div class="dossier-no"><span>Dossier № 007</span><span>Samurai</span></div>
+          <div class="dossier-portrait">
+            <video data-src="/images/promptscript/consultants/samurai.mp4" loop muted playsinline preload="none" class="portrait-video" aria-hidden="true"></video>
+          </div>
+          <h3 class="dossier-name">Samurai</h3>
+          <div class="dossier-desc">One cut, one breath — what isn't moving is what matters. <span class="draft-mark">draft</span></div>
+          <div class="dossier-tags"><span>minimalism</span><span>stillness</span><span>ritual</span></div>
+          <div class="dossier-stamp">Consult<br/>ant</div>
+        </article>
+
+        <article class="dossier">
+          <div class="dossier-no"><span>Dossier № 008</span><span>Suspense Master</span></div>
+          <div class="dossier-portrait">
+            <video data-src="/images/promptscript/consultants/suspense-master.mp4" loop muted playsinline preload="none" class="portrait-video" aria-hidden="true"></video>
+          </div>
+          <h3 class="dossier-name">Suspense Master</h3>
+          <div class="dossier-desc">Tension by composition — the thing not yet said, the door not yet opened. <span class="draft-mark">draft</span></div>
+          <div class="dossier-tags"><span>geometry</span><span>silence</span><span>long take</span></div>
+          <div class="dossier-stamp">Consult<br/>ant</div>
+        </article>
+
+        <article class="dossier">
+          <div class="dossier-no"><span>Dossier № 009</span><span>Monumentalist</span></div>
+          <div class="dossier-portrait">
+            <video data-src="/images/promptscript/consultants/monumentalist.mp4" loop muted playsinline preload="none" class="portrait-video" aria-hidden="true"></video>
+          </div>
+          <h3 class="dossier-name">Monumentalist</h3>
+          <div class="dossier-desc">Big sky, small figure — scale as feeling. <span class="draft-mark">draft</span></div>
+          <div class="dossier-tags"><span>wide</span><span>epic</span><span>horizon</span></div>
+          <div class="dossier-stamp">Consult<br/>ant</div>
+        </article>
+
+        <article class="dossier">
+          <div class="dossier-no"><span>Dossier № 010</span><span>Spectacle Showman</span></div>
+          <div class="dossier-portrait">
+            <video data-src="/images/promptscript/consultants/spectacle-showman.mp4" loop muted playsinline preload="none" class="portrait-video" aria-hidden="true"></video>
+          </div>
+          <h3 class="dossier-name">Spectacle Showman</h3>
+          <div class="dossier-desc">Give them the wow — popcorn, applause, the trick that earns the gasp. <span class="draft-mark">draft</span></div>
+          <div class="dossier-tags"><span>set piece</span><span>payoff</span><span>showmanship</span></div>
+          <div class="dossier-stamp">Consult<br/>ant</div>
+        </article>
+
+        <article class="dossier">
+          <div class="dossier-no"><span>Dossier № 011</span><span>Pop Storyteller</span></div>
+          <div class="dossier-portrait">
+            <video data-src="/images/promptscript/consultants/pop-storyteller.mp4" loop muted playsinline preload="none" class="portrait-video" aria-hidden="true"></video>
+          </div>
+          <h3 class="dossier-name">Pop Storyteller</h3>
+          <div class="dossier-desc">Hook, hook, twist, payoff — the story that travels at scroll speed. <span class="draft-mark">draft</span></div>
+          <div class="dossier-tags"><span>hook</span><span>clarity</span><span>reach</span></div>
+          <div class="dossier-stamp">Consult<br/>ant</div>
+        </article>
+
+        <article class="dossier">
+          <div class="dossier-no"><span>Dossier № 012</span><span>Genre Specialist</span></div>
+          <div class="dossier-portrait">
+            <video data-src="/images/promptscript/consultants/genre-specialist.mp4" loop muted playsinline preload="none" class="portrait-video" aria-hidden="true"></video>
+          </div>
+          <h3 class="dossier-name">Genre Specialist</h3>
+          <div class="dossier-desc">Knows what genre your story is already wearing. <span class="draft-mark">draft</span></div>
+          <div class="dossier-tags"><span>tropes</span><span>conventions</span><span>expectations</span></div>
+          <div class="dossier-stamp">Consult<br/>ant</div>
+        </article>
+
+        <article class="dossier">
+          <div class="dossier-no"><span>Dossier № 013</span><span>Structure Guru</span></div>
+          <div class="dossier-portrait">
+            <video data-src="/images/promptscript/consultants/structure-guru.mp4" loop muted playsinline preload="none" class="portrait-video" aria-hidden="true"></video>
+          </div>
+          <h3 class="dossier-name">Structure Guru</h3>
+          <div class="dossier-desc">Three acts, five acts, no acts — finds the bones inside your story. <span class="draft-mark">draft</span></div>
+          <div class="dossier-tags"><span>arc</span><span>beats</span><span>scaffolding</span></div>
+          <div class="dossier-stamp">Consult<br/>ant</div>
+        </article>
+
+        <article class="dossier">
+          <div class="dossier-no"><span>Dossier № 014</span><span>Character Architect</span></div>
+          <div class="dossier-portrait">
+            <video data-src="/images/promptscript/consultants/character-architect.mp4" loop muted playsinline preload="none" class="portrait-video" aria-hidden="true"></video>
+          </div>
+          <h3 class="dossier-name">Character Architect</h3>
+          <div class="dossier-desc">Builds the people first; the plot follows them home. <span class="draft-mark">draft</span></div>
+          <div class="dossier-tags"><span>interior life</span><span>wants</span><span>wounds</span></div>
+          <div class="dossier-stamp">Consult<br/>ant</div>
+        </article>
+
+        <article class="dossier">
+          <div class="dossier-no"><span>Dossier № 015</span><span>Dialogue Doctor</span></div>
+          <div class="dossier-portrait">
+            <video data-src="/images/promptscript/consultants/dialogue-doctor.mp4" loop muted playsinline preload="none" class="portrait-video" aria-hidden="true"></video>
+          </div>
+          <h3 class="dossier-name">Dialogue Doctor</h3>
+          <div class="dossier-desc">How people actually talk versus how the page wants them to. <span class="draft-mark">draft</span></div>
+          <div class="dossier-tags"><span>subtext</span><span>cadence</span><span>mouth feel</span></div>
+          <div class="dossier-stamp">Consult<br/>ant</div>
+        </article>
+
+        <article class="dossier">
+          <div class="dossier-no"><span>Dossier № 016</span><span>Idea Guy</span></div>
+          <div class="dossier-portrait">
+            <video data-src="/images/promptscript/consultants/idea-guy.mp4" loop muted playsinline preload="none" class="portrait-video" aria-hidden="true"></video>
+          </div>
+          <h3 class="dossier-name">Idea Guy</h3>
+          <div class="dossier-desc">Ten ideas, nine bad — but you needed the bad ones to see the tenth. <span class="draft-mark">draft</span></div>
+          <div class="dossier-tags"><span>divergent</span><span>what-if</span><span>silly first</span></div>
+          <div class="dossier-stamp">Consult<br/>ant</div>
+        </article>
+
+        <article class="dossier">
+          <div class="dossier-no"><span>Dossier № 017</span><span>Animator</span></div>
+          <div class="dossier-portrait">
+            <video data-src="/images/promptscript/consultants/animator.mp4" loop muted playsinline preload="none" class="portrait-video" aria-hidden="true"></video>
+          </div>
+          <h3 class="dossier-name">Animator</h3>
+          <div class="dossier-desc">Motion as character — the in-between frames are the soul. <span class="draft-mark">draft</span></div>
+          <div class="dossier-tags"><span>keyframes</span><span>squash &amp; stretch</span><span>timing</span></div>
+          <div class="dossier-stamp">Consult<br/>ant</div>
+        </article>
+
+        <article class="dossier">
+          <div class="dossier-no"><span>Dossier № 018</span><span>Editing Advisor</span></div>
+          <div class="dossier-portrait">
+            <video data-src="/images/promptscript/consultants/editing-advisor.mp4" loop muted playsinline preload="none" class="portrait-video" aria-hidden="true"></video>
+          </div>
+          <h3 class="dossier-name">Editing Advisor</h3>
+          <div class="dossier-desc">Cut on the breath, cut on the eyes, cut on intention. <span class="draft-mark">draft</span></div>
+          <div class="dossier-tags"><span>pace</span><span>montage</span><span>silence</span></div>
+          <div class="dossier-stamp">Consult<br/>ant</div>
+        </article>
+
+        <article class="dossier">
+          <div class="dossier-no"><span>Dossier № 019</span><span>Prompt Specialist</span></div>
+          <div class="dossier-portrait">
+            <video data-src="/images/promptscript/consultants/prompt-specialist.mp4" loop muted playsinline preload="none" class="portrait-video" aria-hidden="true"></video>
+          </div>
+          <h3 class="dossier-name">Prompt Specialist</h3>
+          <div class="dossier-desc">Speaks fluent machine — turns intention into the right words. <span class="draft-mark">draft</span></div>
+          <div class="dossier-tags"><span>specificity</span><span>constraints</span><span>seeds</span></div>
+          <div class="dossier-stamp">Consult<br/>ant</div>
+        </article>
+
+        <article class="dossier">
+          <div class="dossier-no"><span>Dossier № 020</span><span>Perfectionist</span></div>
+          <div class="dossier-portrait">
+            <video data-src="/images/promptscript/consultants/perfectionist.mp4" loop muted playsinline preload="none" class="portrait-video" aria-hidden="true"></video>
+          </div>
+          <h3 class="dossier-name">Perfectionist</h3>
+          <div class="dossier-desc">One more pass — the note nobody wants to hear and always needs. <span class="draft-mark">draft</span></div>
+          <div class="dossier-tags"><span>polish</span><span>detail</span><span>standards</span></div>
+          <div class="dossier-stamp">Consult<br/>ant</div>
+        </article>
+
+      </div>
+
+      <div class="filmstrip" aria-hidden="true"></div>
+
+      <!-- INSIDE THE APP -->
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Inside the app</div>
+          <h2>Pages from the working notebook.</h2>
+        </div>
+      </div>
+      <div class="preview-row">
+        <figure class="preview-card">
+          <img src="/images/promptscript/preview-1.png" alt="Conversation with the Firebrand consultant"/>
+          <figcaption>Scene 01 · A night in post with Firebrand</figcaption>
+        </figure>
+        <figure class="preview-card">
+          <img src="/images/promptscript/preview-2.png" alt="A division of a script being generated"/>
+          <figcaption>Scene 02 · Division at 6:12pm · Gravity Wept</figcaption>
+        </figure>
+      </div>
+
+      <!-- App Store CTA -->
+      <div class="store-block">
+        <div>
+          <div class="eyebrow">Get on the App Store</div>
+          <h3>Open the notebook. Talk to your crew.</h3>
+          <p>Prompt Script is available on iPhone, iPad, and Mac Catalyst. Subscription is $4.99 / month after a free trial. Built in California by a small team that uses it every day.</p>
+        </div>
+        <a class="store-btn" href="https://apps.apple.com/us/app/prompt-script/id6760545784">
+          <span class="glyph">⏵</span>
+          <div>
+            <div class="label-top">Download on the</div>
+            <div class="label-bot">App Store</div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================
+       PIPCHI SIGN-OFF — back to paper, the way every artifact ends.
+       ========================================================= -->
+  <div class="signoff">
+    <div class="left">
+      <img src="/images/pipchi-design/logo-circle.png" alt="Pipchi"/>
+      <div>
+        Prompt Script is a Pipchi production.
+        <div class="small">More rooms at <a href="/" style="color: var(--terra);">pipchi.com</a> · matt@pipchi.com</div>
+      </div>
+    </div>
+    <div class="right">— with care, Matt</div>
+  </div>
+
+  <script>
+    // Drafts toggle: ?drafts=1 to reveal in-progress copy markers
+    (function() {
+      const url = new URL(location.href);
+      const onParam = url.searchParams.get("drafts");
+      if (onParam === "1") localStorage.setItem("pipchi_drafts", "on");
+      if (onParam === "0") localStorage.removeItem("pipchi_drafts");
+      if (localStorage.getItem("pipchi_drafts") === "on") document.body.setAttribute("data-drafts", "on");
+    })();
+
+    // Lazy-load consultant videos: attach src + autoplay when each card scrolls into view.
+    (function() {
+      const videos = document.querySelectorAll("video.portrait-video[data-src]");
+      if (!("IntersectionObserver" in window)) {
+        videos.forEach(v => { v.src = v.dataset.src; v.removeAttribute("data-src"); v.play().catch(()=>{}); });
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          const v = e.target;
+          if (e.isIntersecting) {
+            if (!v.src) { v.src = v.dataset.src; v.load(); }
+            v.play().catch(()=>{});
+          } else {
+            v.pause();
+          }
+        });
+      }, { rootMargin: "200px 0px", threshold: 0.15 });
+      videos.forEach(v => io.observe(v));
+    })();
+  </script>
+</body>
+</html>

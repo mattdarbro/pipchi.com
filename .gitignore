@@ -1,3 +1,23 @@
+# macOS noise
 .DS_Store
 *.DS_Store
+
+# Editor + agent state
 .claude
+.vscode
+
+# Local-only working materials — never deploy
+Pipchi Design System.zip
+Pipchi Assets/
+NO AGENDA/
+consultants copy/
+pipchi-infographic/
+*.docx
+
+# Strategy / reference docs (kept on disk, not deployed)
+pipchi_house_direction.md
+pipchi_artifact_dinner_table_workshop.html
+
+# Stray screenshots and downloaded images
+Screenshot*.png
+ig_*.png
