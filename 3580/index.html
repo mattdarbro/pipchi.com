@@ -189,7 +189,110 @@
       margin: 8px 0;
     }
 
-    /* ---- empty-state crates ---- */
+    /* ---- ON THE SHELF — the album card ---- */
+    .on-shelf {
+      max-width: 1100px;
+      margin: 28px auto 0;
+      padding: 0 28px;
+    }
+    .on-shelf-label {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--r-oxblood);
+      margin-bottom: 14px;
+    }
+    .album-card {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 28px;
+      align-items: center;
+      padding: 22px 24px;
+      background: linear-gradient(180deg, #f7eccf 0%, #e8d5a8 100%);
+      border: 1px solid var(--r-cream-2);
+      border-radius: var(--r-lg);
+      box-shadow: 0 14px 32px rgba(51,36,21,0.14);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 220ms var(--ease-soft, ease), box-shadow 220ms;
+      position: relative;
+    }
+    .album-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 44px rgba(51,36,21,0.20);
+      text-decoration: none;
+    }
+    .album-card .mini-sleeve {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: 3px;
+      overflow: hidden;
+      background: var(--r-ink);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(26,17,8,0.4);
+      transform: rotate(-2deg);
+      transition: transform 280ms var(--ease-soft, ease);
+    }
+    .album-card:hover .mini-sleeve { transform: rotate(0deg); }
+    .album-card .mini-sleeve img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .album-card .vol {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--r-oxblood);
+      font-weight: 700;
+    }
+    .album-card .name {
+      font-family: var(--r-display);
+      font-size: clamp(2rem, 3.4vw, 2.6rem);
+      letter-spacing: 0.01em;
+      color: var(--r-ink);
+      line-height: 1;
+      margin: 6px 0 10px;
+      text-shadow: 1px 1px 0 rgba(212,161,74,0.4);
+    }
+    .album-card .one-line {
+      font-family: var(--r-italic);
+      font-style: italic;
+      font-size: 1.04rem;
+      color: var(--ink-2);
+      line-height: 1.5;
+      margin-bottom: 12px;
+      max-width: 540px;
+    }
+    .album-card .meta {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+    .album-card .meta strong { color: var(--r-ink); font-weight: 700; }
+    .album-card .open-btn {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: var(--r-oxblood);
+      border-bottom: 2px solid var(--r-oxblood);
+      padding-bottom: 2px;
+      align-self: flex-start;
+    }
+    .album-card:hover .open-btn { color: var(--r-oxblood-2); border-color: var(--r-oxblood-2); }
+    @media (max-width: 600px) {
+      .album-card { grid-template-columns: 1fr; text-align: center; padding: 22px; }
+      .album-card .meta { justify-content: center; }
+      .album-card .one-line { margin-left: auto; margin-right: auto; }
+    }
+
+    /* ---- shelf copy below the card ---- */
     .crates {
       max-width: 760px;
       margin: 0 auto;
@@ -329,17 +432,40 @@
       </div>
 
       <div class="now-playing" aria-label="Now playing">
-        <div class="row"><span class="label">Now playing</span><span>—</span></div>
-        <div class="row"><span class="label">Next up</span><span>—</span></div>
+        <div class="row"><span class="label">Now playing</span><span><em>3580</em> · 2012</span></div>
+        <div class="row"><span class="label">Next up</span><span>— (Tallwood is shelving)</span></div>
         <div class="divider"></div>
         <div class="row"><span class="label">Total recordings</span><span>~500 in the back</span></div>
-        <div class="row"><span class="label">On the shelf today</span><span>0 · the crates are filling</span></div>
+        <div class="row"><span class="label">On the shelf today</span><span>1 · <em>3580</em> (2012)</span></div>
       </div>
 
+    </div>
+
+    <!-- ON THE SHELF — the first album card -->
+    <div class="on-shelf">
+      <div class="on-shelf-label">On the shelf today</div>
+      <a class="album-card" href="/3580/3580" aria-label="3580 — the first album, 2012">
+        <div class="mini-sleeve"><img src="/images/3580/3580-cover.png" alt="3580 album cover"/></div>
+        <div>
+          <div class="vol">Volume 01 · 2012 · LP</div>
+          <div class="name">3580</div>
+          <div class="one-line">A return to the basement. Twelve tracks written on simulations of the 1985 gear. Lo-fi in the classic sense.</div>
+          <div class="meta">
+            <span><strong>12</strong> tracks</span>
+            <span><strong>41:45</strong> runtime</span>
+            <span>Tallwood's note inside</span>
+          </div>
+          <span class="open-btn">Open the sleeve →</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="wrap">
+
       <div class="crates">
-        <h2>The crates are filling.</h2>
+        <h2>The next crate is being unpacked.</h2>
         <p>3580 is the shop. Inside it: every recording Matt has made since 1985, slowly being pulled out of boxes, listened to again, and put on the shelf. <em>One album at a time. With a story.</em></p>
-        <p>The first record drops here soon. Until then, the door is open, the kettle is on, and Tallwood is dusting off the crates.</p>
+        <p>One record on the shelf so far. More to come, on a slow schedule, so Tallwood can tell each one's story properly.</p>
 
         <div class="from-tallwood">
           <div class="who">From Tallwood</div>

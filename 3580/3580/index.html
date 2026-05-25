@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>3580 — the first album (2012) · a Pipchi production</title>
+<meta name="description" content="Matt's 2012 album 3580. Twelve tracks written on simulations of 1985 gear. Lo-fi in the classic sense. With Tallwood's liner notes."/>
+<meta property="og:title" content="3580 — the first album (2012)"/>
+<meta property="og:description" content="Twelve tracks. 707 drums, Akai synths, room treatments meant to feel like the basement at the original 3580. With Tallwood's notes."/>
+<meta property="og:image" content="/images/3580/3580-cover.png"/>
+<link rel="icon" type="image/png" href="/images/pipchi-design/logo-circle.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@400;600;700&family=Lilita+One&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  /* Pipchi paper bookends */
+  --paper:       #fffaf2;
+  --paper-2:     #faf1e0;
+  --ink:         #1f1b16;
+  --ink-2:       #2d251f;
+  --ink-muted:   #6f6254;
+  --ink-faint:   #b3a48d;
+  --line:        #eadfce;
+  --line-strong: #d9cbb8;
+  --terra:       #b45b2c;
+  --terra-deep:  #8e4520;
+  --gold:        #e0a72e;
+
+  /* 3580 — sovereign palette (matches the lobby stub) */
+  --r-wood:          #6b4423;
+  --r-wood-deep:     #4a2d14;
+  --r-oxblood:       #7a2a2a;
+  --r-oxblood-2:     #5b1e1e;
+  --r-butterscotch:  #d4a14a;
+  --r-butterscotch-2:#b07e15;
+  --r-cream:         #f0e3c8;
+  --r-cream-2:       #e6d5b1;
+  --r-ink:           #1a1108;
+  --r-paper:         #fffaf2;
+  --r-display:       'Lilita One', 'Cooper Black', ui-serif, Georgia, serif;
+  --r-italic:        'DM Serif Display', ui-serif, Georgia, serif;
+
+  --font-serif: "Lora", ui-serif, Georgia, serif;
+  --font-sans:  "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:  "JetBrains Mono", ui-monospace, Menlo, monospace;
+  --font-hand:  "Caveat", "Segoe Script", cursive;
+
+  --r-sm:  10px;
+  --r-md:  14px;
+  --r-lg:  20px;
+  --r-xl:  28px;
+
+  --ease-soft: cubic-bezier(.2,.7,.2,1);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--paper); }
+body {
+  font-family: var(--font-serif);
+  color: var(--ink-2);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--terra); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+a:hover { color: var(--terra-deep); }
+h1, h2, h3 { margin: 0; letter-spacing: -0.02em; color: var(--ink); }
+p { margin: 0; }
+
+/* ============================================================
+   UMBRELLA STRIP + MASTHEAD
+   ============================================================ */
+.umbrella-strip {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 28px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.umbrella-strip .right { color: var(--terra); }
+
+.masthead {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-sans);
+}
+.masthead .crumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink);
+  flex-wrap: wrap;
+}
+.masthead .crumb img {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(51,36,21,0.10);
+  transition: transform 220ms var(--ease-soft);
+}
+.masthead .crumb:hover img { transform: rotate(-4deg) scale(1.04); }
+.masthead .crumb-text {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.masthead .crumb-sep { color: var(--ink-faint); padding: 0 4px; }
+.masthead .crumb-room {
+  font-family: var(--r-display);
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.masthead .crumb-album {
+  font-family: var(--r-italic);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-muted);
+}
+.masthead nav { display: flex; gap: 18px; }
+.masthead nav a {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+}
+.masthead nav a:hover { color: var(--terra); }
+@media (max-width: 640px) { .masthead nav { display: none; } }
+
+/* ============================================================
+   ALBUM HERO — wooden shelf, sleeve out front, lit warm
+   ============================================================ */
+.album-hero {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 80% 10%, rgba(212,161,74,0.18), transparent 55%),
+    radial-gradient(ellipse at 10% 100%, rgba(122,42,42,0.20), transparent 55%),
+    repeating-linear-gradient(0deg, #6b4423 0px, #6b4423 36px, #5a3a1e 36px, #5a3a1e 37px, #6b4423 37px, #6b4423 76px, rgba(26,17,8,0.45) 76px, rgba(26,17,8,0.45) 77px),
+    #6b4423;
+  color: var(--r-cream);
+  border-top: 1px solid var(--r-wood-deep);
+  border-bottom: 1px solid var(--r-wood-deep);
+  padding: 64px 0 72px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.album-hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(rgba(0,0,0,0.20) 1px, transparent 1.2px);
+  background-size: 4px 4px;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+.album-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: grid;
+  grid-template-columns: minmax(260px, 360px) 1fr;
+  gap: 56px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 800px) {
+  .album-hero-inner { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+}
+
+/* The sleeve — looks like a real cardboard sleeve */
+.sleeve {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 1;
+  border-radius: 4px;
+  background: var(--r-ink);
+  box-shadow:
+    0 24px 50px rgba(0,0,0,0.55),
+    0 8px 18px rgba(0,0,0,0.35),
+    inset 0 0 0 2px rgba(26,17,8,0.40);
+  overflow: hidden;
+  margin: 0 auto;
+  transform: rotate(-1.4deg);
+  transition: transform 320ms var(--ease-soft);
+}
+.sleeve:hover { transform: rotate(0deg) translateY(-2px); }
+.sleeve img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* slight wear on the corners */
+.sleeve::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 100% 100%, rgba(0,0,0,0.25), transparent 20%),
+    radial-gradient(circle at 0% 0%, rgba(255,250,242,0.06), transparent 18%);
+  pointer-events: none;
+}
+
+.album-meta-block { color: var(--r-cream); }
+.album-meta-block .eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--r-butterscotch);
+  margin-bottom: 14px;
+}
+.album-meta-block .title {
+  font-family: var(--r-display);
+  font-size: clamp(3.4rem, 7.4vw, 5.6rem);
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+  color: var(--r-cream);
+  text-shadow: 2px 2px 0 var(--r-oxblood-2), 4px 4px 0 rgba(0,0,0,0.35);
+  margin: 0 0 18px;
+}
+.album-meta-block .subhead {
+  font-family: var(--r-italic);
+  font-style: italic;
+  font-size: clamp(1.1rem, 1.6vw, 1.32rem);
+  color: var(--r-cream-2);
+  max-width: 540px;
+  line-height: 1.4;
+  margin: 0 0 22px;
+}
+.album-meta-block .stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 28px;
+  margin-top: 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--r-cream-2);
+}
+.album-meta-block .stats .stat .k {
+  display: block;
+  color: var(--r-butterscotch);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.album-meta-block .stats .stat .v {
+  font-family: var(--r-italic);
+  font-style: italic;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  color: var(--r-cream);
+  text-transform: none;
+}
+@media (max-width: 800px) {
+  .album-meta-block .stats { justify-content: center; }
+}
+
+/* ============================================================
+   TALLWOOD'S NOTE — the album-level liner. Paper, warm.
+   ============================================================ */
+.tallwood-note {
+  background: var(--paper-2);
+  border-bottom: 1px solid var(--line);
+  padding: 56px 0 56px;
+}
+.tallwood-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+.tallwood-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 10px 5px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--paper);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--r-oxblood);
+  margin-bottom: 18px;
+}
+.tallwood-tag::before {
+  content: "";
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--r-oxblood);
+}
+.tallwood-note h2 {
+  font-family: var(--r-display);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  letter-spacing: 0.005em;
+  color: var(--r-ink);
+  margin-bottom: 16px;
+  line-height: 1.05;
+}
+.tallwood-note p {
+  font-family: var(--r-italic);
+  font-style: italic;
+  font-size: 1.18rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+  margin-bottom: 14px;
+}
+.tallwood-note p:last-of-type { margin-bottom: 0; }
+.tallwood-sign {
+  margin-top: 24px;
+  font-family: var(--font-hand);
+  color: var(--r-oxblood);
+  font-size: 22px;
+  transform: rotate(-1deg);
+  display: inline-block;
+}
+
+/* ============================================================
+   COLOPHON — small strip with gear + year + room
+   ============================================================ */
+.colophon {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  padding: 28px 0;
+}
+.colophon-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+}
+.colophon .row {
+  display: flex; flex-direction: column; gap: 4px;
+}
+.colophon .k { color: var(--r-oxblood); font-weight: 700; }
+.colophon .v {
+  font-family: var(--r-italic);
+  font-style: italic;
+  font-size: 15px;
+  letter-spacing: 0.005em;
+  color: var(--ink);
+  text-transform: none;
+}
+
+/* ============================================================
+   TRACKLIST — the back of the sleeve
+   ============================================================ */
+.tracklist {
+  background: var(--paper);
+  padding: 56px 0 24px;
+}
+.tracklist-inner {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+.tracklist-head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  border-bottom: 2px solid var(--r-ink);
+  padding-bottom: 10px;
+  margin-bottom: 8px;
+}
+.tracklist-head .eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--r-oxblood);
+}
+.tracklist-head h2 {
+  font-family: var(--r-display);
+  font-size: 1.8rem;
+  color: var(--r-ink);
+  letter-spacing: 0.01em;
+  flex: 1;
+}
+.tracklist-head .total {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.track {
+  border-bottom: 1px solid var(--line);
+  padding: 18px 6px 18px;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 4px 20px;
+  align-items: baseline;
+}
+.track:last-child { border-bottom: 0; }
+.track .num {
+  font-family: var(--r-display);
+  font-size: 28px;
+  color: var(--r-oxblood);
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+.track .head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+}
+.track .title {
+  font-family: var(--r-display);
+  font-size: 1.45rem;
+  color: var(--r-ink);
+  letter-spacing: 0.005em;
+  line-height: 1.1;
+}
+.track .dur {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.track .shopkeeper {
+  grid-column: 2;
+  font-family: var(--r-italic);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-muted);
+  margin-top: 2px;
+  line-height: 1.5;
+}
+.track .shopkeeper.empty {
+  font-family: var(--font-hand);
+  font-size: 17px;
+  color: var(--ink-faint);
+  font-style: normal;
+}
+.track audio {
+  grid-column: 2;
+  width: 100%;
+  max-width: 520px;
+  height: 36px;
+  margin-top: 10px;
+}
+
+.track .more {
+  grid-column: 2;
+  margin-top: 8px;
+}
+.track .more summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--r-oxblood);
+  padding: 4px 0;
+}
+.track .more summary::-webkit-details-marker { display: none; }
+.track .more summary::after {
+  content: "↓";
+  font-size: 12px;
+  transition: transform 220ms var(--ease-soft);
+}
+.track .more[open] summary::after { transform: rotate(180deg); }
+.track .more .liner {
+  margin-top: 12px;
+  padding: 16px 18px;
+  background: var(--paper-2);
+  border-left: 3px solid var(--r-oxblood);
+  border-radius: 0 10px 10px 0;
+  font-family: var(--font-serif);
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.track .more .liner p { margin: 0 0 10px; }
+.track .more .liner p:last-child { margin: 0; }
+.track .more .liner .lineage {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--r-oxblood);
+  margin-bottom: 8px;
+  display: block;
+}
+
+@media (max-width: 540px) {
+  .track { grid-template-columns: 40px 1fr; }
+  .track .num { font-size: 22px; }
+  .track .title { font-size: 1.2rem; }
+}
+
+/* ============================================================
+   THE NEXT ONE / SIGN-OFF
+   ============================================================ */
+.shelf-back {
+  background: var(--paper-2);
+  border-top: 1px solid var(--line);
+  padding: 40px 0 28px;
+  text-align: center;
+}
+.shelf-back .line {
+  font-family: var(--r-italic);
+  font-style: italic;
+  font-size: 1.08rem;
+  color: var(--ink-muted);
+  margin-bottom: 14px;
+}
+.shelf-back .back-link {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--r-oxblood);
+  text-decoration: none;
+  border-bottom: 2px solid var(--r-oxblood);
+  padding-bottom: 2px;
+}
+.shelf-back .back-link:hover { color: var(--r-oxblood-2); border-color: var(--r-oxblood-2); }
+
+.signoff {
+  max-width: 1100px;
+  margin: 24px auto 0;
+  padding: 36px 28px 32px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--ink-muted);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+}
+.signoff a { color: var(--ink-muted); text-decoration: none; }
+.signoff a:hover { color: var(--terra); text-decoration: underline; }
+.signoff .hand {
+  font-family: var(--font-hand);
+  font-size: 20px;
+  color: var(--ink);
+  transform: rotate(-1deg);
+  display: inline-block;
+}
+.signoff .nav-row { display: flex; gap: 14px; }
+.signoff-copy {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 28px 32px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.06em;
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     UMBRELLA STRIP + MASTHEAD
+     ============================================================ -->
+<div class="umbrella-strip">
+  <span>Pipchi · the house</span>
+  <span class="right">A Pipchi production</span>
+</div>
+
+<header class="masthead">
+  <a href="/" class="crumb" aria-label="Back to Pipchi">
+    <img src="/images/pipchi-design/logo-circle.png" alt="Pipchi"/>
+    <span class="crumb-text">Pipchi</span>
+    <span class="crumb-sep">·</span>
+    <a href="/3580" class="crumb-room" style="text-decoration:none;">3580</a>
+    <span class="crumb-sep">·</span>
+    <span class="crumb-album">the first album</span>
+  </a>
+  <nav aria-label="primary">
+    <a href="/3580">Back to the shop</a>
+    <a href="/">The house</a>
+  </nav>
+</header>
+
+<!-- ============================================================
+     ALBUM HERO — sleeve on wood, lit warm
+     ============================================================ -->
+<section class="album-hero" aria-label="3580 — the first album">
+  <div class="album-hero-inner">
+
+    <div class="sleeve" aria-hidden="true">
+      <img src="/images/3580/3580-cover.png" alt="3580 — album cover, 2012"/>
+    </div>
+
+    <div class="album-meta-block">
+      <div class="eyebrow">Volume 01 · 2012 · LP</div>
+      <h1 class="title">3580</h1>
+      <p class="subhead">Twelve tracks. Written on simulations of the gear from the basement. Lo-fi in the classic sense.</p>
+
+      <div class="stats">
+        <div class="stat"><span class="k">Year</span><span class="v">2012</span></div>
+        <div class="stat"><span class="k">Tracks</span><span class="v">12</span></div>
+        <div class="stat"><span class="k">Runtime</span><span class="v">~41 min</span></div>
+        <div class="stat"><span class="k">Recorded</span><span class="v">at 3580 (the house)</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     TALLWOOD'S NOTE — the album-level liner
+     ============================================================ -->
+<section class="tallwood-note" aria-label="Tallwood's note on the album">
+  <div class="tallwood-inner">
+    <span class="tallwood-tag">Tallwood's note</span>
+    <h2>On the table when we opened the shop.</h2>
+    <p>Matt wrote this one in 2012 — and wrote it like he used to. Lyrics first, then synths, then guitars. The themes are the ones a fourteen-year-old works through: house, distance, kings, hope. The writer is older. The themes hold up anyway.</p>
+    <p>The gear is a 2012 idea of 1985. 707 drums. Akai synths. Compression. Room treatments meant to feel like the basement at the original 3580 — an actual house, before it was a shop name. Not retro for retro's sake. Lo-fi <em>in the classic sense.</em></p>
+    <p>It opens with a haunted instrumental and closes on a song called Hope. In between, it remembers a cousin and a song that's been in this catalog, in one form or another, since 1986.</p>
+    <div class="tallwood-sign">— filed by Tallwood, shelf A</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COLOPHON — gear strip
+     ============================================================ -->
+<section class="colophon" aria-label="Production details">
+  <div class="colophon-inner">
+    <div class="row"><span class="k">Drums</span><span class="v">Roland TR-707 (sim)</span></div>
+    <div class="row"><span class="k">Synth</span><span class="v">Akai (sim)</span></div>
+    <div class="row"><span class="k">Strings</span><span class="v">Guitars, played the old way</span></div>
+    <div class="row"><span class="k">Room</span><span class="v">Treated to sound like the basement</span></div>
+    <div class="row"><span class="k">Format</span><span class="v">AAC · m4a · 256 kbps</span></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRACKLIST — the back of the sleeve
+     ============================================================ -->
+<section class="tracklist" aria-label="Tracklist">
+  <div class="tracklist-inner">
+
+    <div class="tracklist-head">
+      <span class="eyebrow">Side A · Side B</span>
+      <h2>Tracklist</h2>
+      <span class="total">12 tracks · 41:45</span>
+    </div>
+
+    <!-- 01 Mansion -->
+    <article class="track">
+      <div class="num">01</div>
+      <div class="head">
+        <span class="title">Mansion</span>
+        <span class="dur">1:41</span>
+      </div>
+      <p class="shopkeeper">The house is announced. Instrumental.</p>
+      <audio controls preload="none" src="https://music.pipchi.com/Songs/3580/3580/01%20Mansion.m4a"></audio>
+      <details class="more">
+        <summary>Tallwood's note</summary>
+        <div class="liner">
+          <span class="lineage">Liner · Track 01</span>
+          <p>Instrumental opener. The album sits at 3580 — an actual house, not just the shop name — and Mansion is the entrance hallway. There's a wink in here to a familiar haunted ride; not named, but there.</p>
+          <p>The house has a spirit. This is how he introduces it.</p>
+        </div>
+      </details>
+    </article>
+
+    <!-- 02 Never As High As You -->
+    <article class="track">
+      <div class="num">02</div>
+      <div class="head">
+        <span class="title">Never As High As You</span>
+        <span class="dur">3:27</span>
+      </div>
+      <p class="shopkeeper empty">Tallwood is still listening to this one.</p>
+      <audio controls preload="none" src="https://music.pipchi.com/Songs/3580/3580/02%20Never%20As%20High%20As%20You.m4a"></audio>
+    </article>
+
+    <!-- 03 What Kind Of World Is It? -->
+    <article class="track">
+      <div class="num">03</div>
+      <div class="head">
+        <span class="title">What Kind Of World Is It?</span>
+        <span class="dur">3:26</span>
+      </div>
+      <p class="shopkeeper empty">Tallwood is still listening to this one.</p>
+      <audio controls preload="none" src="https://music.pipchi.com/Songs/3580/3580/03%20What%20Kind%20Of%20World%20Is%20It_.m4a"></audio>
+    </article>
+
+    <!-- 04 Kevin Is Far Away -->
+    <article class="track">
+      <div class="num">04</div>
+      <div class="head">
+        <span class="title">Kevin Is Far Away</span>
+        <span class="dur">5:32</span>
+      </div>
+      <p class="shopkeeper">A cousin. A 1986 song. A long look back.</p>
+      <audio controls preload="none" src="https://music.pipchi.com/Songs/3580/3580/04%20Kevin%20Is%20Far%20Away.m4a"></audio>
+      <details class="more">
+        <summary>Tallwood's note</summary>
+        <div class="liner">
+          <span class="lineage">Liner · Track 04 · Pairs with "Kevin Is Leaving" (1986)</span>
+          <p>Matt's cousin Kevin was his writing partner growing up. They wrote songs about each other. In 1986 the song was called <em>Kevin Is Leaving.</em></p>
+          <p>This one, twenty-six years later, is the look back. Accomplishments accrue. The voice gets older. Kevin is far away.</p>
+        </div>
+      </details>
+    </article>
+
+    <!-- 05 No Traffic -->
+    <article class="track">
+      <div class="num">05</div>
+      <div class="head">
+        <span class="title">No Traffic</span>
+        <span class="dur">1:28</span>
+      </div>
+      <p class="shopkeeper empty">Tallwood is still listening to this one.</p>
+      <audio controls preload="none" src="https://music.pipchi.com/Songs/3580/3580/05%20No%20Traffic.m4a"></audio>
+    </article>
+
+    <!-- 06 Spontaneous Combustion -->
+    <article class="track">
+      <div class="num">06</div>
+      <div class="head">
+        <span class="title">Spontaneous Combustion</span>
+        <span class="dur">3:45</span>
+      </div>
+      <p class="shopkeeper empty">Tallwood is still listening to this one.</p>
+      <audio controls preload="none" src="https://music.pipchi.com/Songs/3580/3580/06%20Spontaneous%20Combustion.m4a"></audio>
+    </article>
+
+    <!-- 07 Of Kings III -->
+    <article class="track">
+      <div class="num">07</div>
+      <div class="head">
+        <span class="title">Of Kings III</span>
+        <span class="dur">4:12</span>
+      </div>
+      <p class="shopkeeper empty">Tallwood is still listening to this one.</p>
+      <audio controls preload="none" src="https://music.pipchi.com/Songs/3580/3580/07%20Of%20Kings%20III.m4a"></audio>
+    </article>
+
+    <!-- 08 D Minor -->
+    <article class="track">
+      <div class="num">08</div>
+      <div class="head">
+        <span class="title">D Minor</span>
+        <span class="dur">2:38</span>
+      </div>
+      <p class="shopkeeper empty">Tallwood is still listening to this one.</p>
+      <audio controls preload="none" src="https://music.pipchi.com/Songs/3580/3580/08%20D%20Minor.m4a"></audio>
+    </article>
+
+    <!-- 09 Rar Help Me -->
+    <article class="track">
+      <div class="num">09</div>
+      <div class="head">
+        <span class="title">Rar Help Me</span>
+        <span class="dur">2:14</span>
+      </div>
+      <p class="shopkeeper empty">Tallwood is still listening to this one.</p>
+      <audio controls preload="none" src="https://music.pipchi.com/Songs/3580/3580/09%20Rar%20Help%20Me.m4a"></audio>
+    </article>
+
+    <!-- 10 Here's Another Rose -->
+    <article class="track">
+      <div class="num">10</div>
+      <div class="head">
+        <span class="title">Here's Another Rose</span>
+        <span class="dur">4:06</span>
+      </div>
+      <p class="shopkeeper empty">Tallwood is still listening to this one.</p>
+      <audio controls preload="none" src="https://music.pipchi.com/Songs/3580/3580/10%20Here%27s%20Another%20Rose.m4a"></audio>
+    </article>
+
+    <!-- 11 #3 580 -->
+    <article class="track">
+      <div class="num">11</div>
+      <div class="head">
+        <span class="title">#3 580</span>
+        <span class="dur">6:46</span>
+      </div>
+      <p class="shopkeeper">Slight Variation #3, in its 2012 form.</p>
+      <audio controls preload="none" src="https://music.pipchi.com/Songs/3580/3580/11%20%233%20580.m4a"></audio>
+      <details class="more">
+        <summary>Tallwood's note</summary>
+        <div class="liner">
+          <span class="lineage">Liner · Track 11 · "Slight Variation #3" lineage, 1986–</span>
+          <p>Slight Variation #3 was written by Matt and a friend in 1986. From then on, whenever they opened a studio in a new room — anywhere — that song was the first thing played. The 1-2-3 to test the space.</p>
+          <p>There are four or five recordings of it in the boxes. This one's reflective. It's a song about writing music. It's a letter to a younger Matt to keep writing.</p>
+        </div>
+      </details>
+    </article>
+
+    <!-- 12 Hope -->
+    <article class="track">
+      <div class="num">12</div>
+      <div class="head">
+        <span class="title">Hope</span>
+        <span class="dur">2:30</span>
+      </div>
+      <p class="shopkeeper empty">Tallwood is still listening to this one.</p>
+      <audio controls preload="none" src="https://music.pipchi.com/Songs/3580/3580/12%20Hope.m4a"></audio>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     SHELF BACK — return to the shop
+     ============================================================ -->
+<div class="shelf-back">
+  <div class="line">More crates being unpacked. Slowly.</div>
+  <a class="back-link" href="/3580">← Back to the shop</a>
+</div>
+
+<!-- ============================================================
+     SIGN-OFF
+     ============================================================ -->
+<footer class="signoff">
+  <div><div class="hand">— with care, Matt</div></div>
+  <div class="nav-row">
+    <a href="/">Pipchi</a>
+    <a href="/3580">3580</a>
+    <a href="/writtenonme">Written On Me</a>
+    <a href="/promptscript">Prompt Script</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/support">Support</a>
+    <a href="/terms">Terms</a>
+  </div>
+</footer>
+<div class="signoff-copy">© Pipchi Productions · 3580 — the first album, 2012.</div>
+
+<script>
+  document.documentElement.style.scrollBehavior = 'smooth';
+</script>
+
+</body>
+</html>
