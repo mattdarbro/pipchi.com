@@ -706,52 +706,30 @@ p { margin: 0; }
 .poster.narrows .name { color: #e6d5b1; font-style: italic; }
 .poster.narrows .tag  { color: rgba(230,213,177,0.72); }
 
-/* WRITTEN ON ME — watching room, projector beam over a screen */
+/* WRITTEN ON ME — the actual watching-room photograph, cropped */
 .poster.wom {
-  background:
-    radial-gradient(ellipse at 50% 16%, rgba(242,200,122,0.18), transparent 55%),
-    linear-gradient(180deg, #0d0b0f 0%, #06050a 100%);
+  background: #07060a;
   --world-display: 'Cinzel', serif;
   --world-tracking: 0.04em;
 }
 .poster.wom .art {
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 22px 18px 0;
+  inset: 0 0 36% 0;
+  padding: 0;
+  display: block;
+  overflow: hidden;
 }
-.poster.wom .wom-screen {
-  position: relative;
-  width: 92%;
-  aspect-ratio: 16/9;
-  background:
-    radial-gradient(ellipse at 30% 30%, rgba(212,161,74,0.35), transparent 65%),
-    linear-gradient(180deg, #3a5a7a 0%, #1a2638 100%);
-  border-radius: 4px;
-  border: 1px solid #2a1f15;
-  box-shadow: 0 0 0 4px #1a1410, 0 18px 30px rgba(242,200,122,0.18), 0 24px 60px rgba(0,0,0,0.6);
+.poster.wom .art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* keep the bench + screen both visible; nudge framing up */
+  object-position: center 38%;
+  display: block;
 }
-.poster.wom .wom-screen::after {
-  content: "WRITTEN ON ME";
-  position: absolute;
-  left: 50%; bottom: 8px;
-  transform: translateX(-50%);
-  font-family: 'Cinzel', serif;
-  font-size: 8px;
-  letter-spacing: 0.20em;
-  color: rgba(255,250,242,0.88);
+.poster.wom .strip {
+  background: linear-gradient(180deg, transparent, rgba(7,6,10,0.92) 30%, #07060a);
+  color: #f0e3c8;
 }
-.poster.wom .wom-bench {
-  position: absolute;
-  left: 50%; transform: translateX(-50%);
-  bottom: 38%;
-  width: 80%;
-  display: flex; align-items: flex-end; justify-content: center; gap: 8px;
-}
-.poster.wom .wom-bench .sil { background: #06050a; }
-.poster.wom .wom-bench .s1 { width: 14px; height: 22px; border-radius: 4px 4px 0 0; }
-.poster.wom .wom-bench .s2 { width: 18px; height: 30px; border-radius: 9px 9px 4px 4px; }
-.poster.wom .wom-bench .s3 { width: 16px; height: 24px; border-radius: 8px 8px 0 0; }
-.poster.wom .strip { background: linear-gradient(180deg, transparent, rgba(7,6,10,0.92) 30%, #07060a); color: #f0e3c8; }
 .poster.wom .name { color: #fbeac4; }
 .poster.wom .tag  { color: rgba(240,227,200,0.78); }
 
@@ -1279,12 +1257,7 @@ p { margin: 0; }
       <span class="bug">Pipchi</span>
       <span class="status built">Built</span>
       <div class="art">
-        <div class="wom-screen"></div>
-        <div class="wom-bench">
-          <span class="sil s1"></span>
-          <span class="sil s2"></span>
-          <span class="sil s3"></span>
-        </div>
+        <img src="/images/writtenonme/hero-watching-room.jpg" alt=""/>
       </div>
       <div class="strip">
         <div class="name">Written On Me</div>
