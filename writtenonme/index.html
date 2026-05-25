@@ -644,42 +644,126 @@ p { margin: 0; }
 }
 
 /* ============================================================
-   SONGS — audio players
+   SONGS — featured (3) + the rest of the reel (7)
    ============================================================ */
 .songs {
   margin-top: 56px;
   border-top: 1px solid var(--line);
   padding-top: 48px;
 }
-.song-list {
-  margin-top: 22px;
+
+/* Featured row — 3 hero songs, side by side, with story line */
+.songs-featured {
+  margin-top: 28px;
   display: grid;
-  gap: 12px;
+  gap: 18px;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
-.song {
+.song-card {
+  position: relative;
+  background: rgba(255,255,255,0.96);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 22px 22px 20px;
+  box-shadow: 0 10px 26px rgba(51,36,21,0.10);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.song-card .marker {
+  position: absolute;
+  top: 14px; right: 16px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--terra);
+}
+.song-card .name {
+  font-family: var(--font-marq);
+  font-size: 1.4rem;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  margin-top: 4px;
+}
+.song-card .line {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.song-card audio { width: 100%; height: 38px; margin-top: 2px; }
+
+/* Compact list — the rest of the reel */
+.songs-rest-head {
+  margin-top: 44px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 8px;
+}
+.songs-rest-head .eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--terra);
+}
+.songs-rest-head .hand {
+  font-family: var(--font-hand);
+  font-size: 18px;
+  color: var(--ink-muted);
+  transform: rotate(-1deg);
+  margin-left: 4px;
+}
+.songs-rest {
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+.song-row {
+  background: rgba(255,255,255,0.92);
   border: 1px solid var(--line);
   border-radius: var(--r-md);
-  background: rgba(255,255,255,0.96);
-  padding: 14px 16px;
-  box-shadow: 0 6px 16px rgba(51,36,21,0.06);
-  display: flex; flex-direction: column; gap: 8px;
+  padding: 10px 14px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  box-shadow: 0 4px 10px rgba(51,36,21,0.04);
 }
-.song .top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-.song .name {
-  font-family: var(--font-marq);
-  font-size: 1.05rem;
+.song-row .top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+.song-row .name {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 15px;
   color: var(--ink);
-  letter-spacing: 0.01em;
 }
-.song .source {
+.song-row .owner {
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
+  font-size: 9px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--ink-faint);
+  color: var(--terra);
+  white-space: nowrap;
 }
-.song audio { width: 100%; height: 36px; }
+.song-row .line {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-muted);
+  line-height: 1.45;
+}
+.song-row audio { width: 100%; height: 30px; }
 
 /* ============================================================
    FIVE MINUTES — Amos & Greta closing.
@@ -1069,37 +1153,87 @@ p { margin: 0; }
       </div>
     </div>
 
-    <!-- SONGS -->
+    <!-- SONGS — featured + the rest of the reel -->
     <div class="songs" id="songs">
       <div class="section-eyebrow">Songs from the reel</div>
       <h2 class="section-title">The music that comes out of the workshop.</h2>
-      <p class="section-lede">Demos and finished cuts that thread through the film and the bridge into the performance after. Bongos's percussion underneath everything else. Steel Drum can be heard clearly here even though she stepped out of the room.</p>
+      <p class="section-lede">Ten tracks heard in the film. Three live at the heart of it — the main theme, Tuba's home, and the tender one. The rest sit underneath, in character, where they belong.</p>
 
-      <div class="song-list">
-        <div class="song">
-          <div class="top"><span class="name">Island Kindness</span><span class="source">B2 · island theme</span></div>
-          <audio controls preload="none" src="/writtenonme/media/songs/island-kindness.mp3"></audio>
+      <!-- THE HEART — 3 featured -->
+      <div class="songs-featured">
+
+        <div class="song-card">
+          <span class="marker">★ Main theme</span>
+          <div class="name">Island Kindness</div>
+          <div class="line">The main theme. What the trio is when they're together on the island.</div>
+          <audio controls preload="none" src="https://music.pipchi.com/Songs/WOM/Songs/island-kindness.mp3"></audio>
         </div>
-        <div class="song">
-          <div class="top"><span class="name">Bongos &amp; Kalimba</span><span class="source">B2 · the trio finds itself</span></div>
-          <audio controls preload="none" src="/writtenonme/media/songs/bongos-and-kalimba.mp3"></audio>
+
+        <div class="song-card">
+          <span class="marker">★ Tuba's territory</span>
+          <div class="name">Munich Is Fun</div>
+          <div class="line">Tuba's home. Even Kalimba has to admit it's beautiful at this hour.</div>
+          <audio controls preload="none" src="https://music.pipchi.com/Songs/WOM/Songs/munich-is-fun.mp3"></audio>
         </div>
-        <div class="song">
-          <div class="top"><span class="name">Blue Ribbon Waltz</span><span class="source">B6 · the attempt</span></div>
-          <audio controls preload="none" src="/writtenonme/media/songs/blue-ribbon-waltz.mp3"></audio>
+
+        <div class="song-card">
+          <span class="marker">★ The unmocked one</span>
+          <div class="name">Blue Ribbon Waltz</div>
+          <div class="line">The tender one. The one nobody mocks.</div>
+          <audio controls preload="none" src="https://music.pipchi.com/Songs/WOM/Songs/blue-ribbon-waltz.mp3"></audio>
         </div>
-        <div class="song">
-          <div class="top"><span class="name">One Drop Lantern</span><span class="source">B7 · the dark night</span></div>
-          <audio controls preload="none" src="/writtenonme/media/songs/one-drop-lantern.mp3"></audio>
+
+      </div>
+
+      <!-- THE REST — 7 in a compact list -->
+      <div class="songs-rest-head">
+        <span class="eyebrow">The rest of the reel</span>
+        <span class="hand">— in character, mostly</span>
+      </div>
+      <div class="songs-rest">
+
+        <div class="song-row">
+          <div class="top"><span class="name">Blue Ribbon Waltz · Reprise</span><span class="owner">After</span></div>
+          <div class="line">The waltz, again, after.</div>
+          <audio controls preload="none" src="https://music.pipchi.com/Songs/WOM/Songs/blue-ribbon-waltz-reprise.mp3"></audio>
         </div>
-        <div class="song">
-          <div class="top"><span class="name">Palm Drum Parade</span><span class="source">B9 · the workshop alive</span></div>
-          <audio controls preload="none" src="/writtenonme/media/songs/palm-drum-parade.mp3"></audio>
+
+        <div class="song-row">
+          <div class="top"><span class="name">Bongos &amp; Kalimba</span><span class="owner">Bongos + Kalimba</span></div>
+          <div class="line">What they sound like when nobody is making them play polka.</div>
+          <audio controls preload="none" src="https://music.pipchi.com/Songs/WOM/Songs/bongos-and-kalimba.mp3"></audio>
         </div>
-        <div class="song">
-          <div class="top"><span class="name">Walkin' Through the Yard</span><span class="source">bridge · into the performance</span></div>
-          <audio controls preload="none" src="/writtenonme/media/songs/walkin-through-the-yard.mp3"></audio>
+
+        <div class="song-row">
+          <div class="top"><span class="name">Bongo Sun Parade</span><span class="owner">Bongos</span></div>
+          <div class="line">Bongos in his own private score.</div>
+          <audio controls preload="none" src="https://music.pipchi.com/Songs/WOM/Songs/bongo-sun-parade.mp3"></audio>
         </div>
+
+        <div class="song-row">
+          <div class="top"><span class="name">I Am So Cool</span><span class="owner">Kalimba</span></div>
+          <div class="line">Kalimba on the low wall, in context.</div>
+          <audio controls preload="none" src="https://music.pipchi.com/Songs/WOM/Songs/i-am-so-cool.mp3"></audio>
+        </div>
+
+        <div class="song-row">
+          <div class="top"><span class="name">Island Tin Carousel</span><span class="owner">The trio</span></div>
+          <div class="line">The island, looped.</div>
+          <audio controls preload="none" src="https://music.pipchi.com/Songs/WOM/Songs/island-tin-carousel.mp3"></audio>
+        </div>
+
+        <div class="song-row">
+          <div class="top"><span class="name">Munich Main Theme</span><span class="owner">Tuba</span></div>
+          <div class="line">The convention. The clipboards. The vest.</div>
+          <audio controls preload="none" src="https://music.pipchi.com/Songs/WOM/Songs/munich-main-theme.mp3"></audio>
+        </div>
+
+        <div class="song-row">
+          <div class="top"><span class="name">Steel Drum Thinking</span><span class="owner">Steel Drum</span></div>
+          <div class="line">Brontë mode. Eight bars of secret narration.</div>
+          <audio controls preload="none" src="https://music.pipchi.com/Songs/WOM/Songs/steel-drum-thinking.mp3"></audio>
+        </div>
+
       </div>
     </div>
 
