@@ -269,17 +269,31 @@ p { margin: 0; }
   width: 100%;
   height: auto;
   display: block;
+  transition: opacity 520ms ease;
 }
-/* The screen area within the image — clickable, becomes the iframe */
+/* The screen area within the image — clickable, becomes the iframe.
+   When .hero-scene.playing is set, this rectangle expands to fill the
+   entire hero (top/left/right/bottom → 0), the photo fades out, and
+   the iframe takes the room over. */
 .hero-screen {
   position: absolute;
-  /* tuned to the cinema screen inside hero-watching-room.jpg */
   top: 3.5%;
   left: 11.5%;
   right: 11.5%;
   bottom: 34%;
   cursor: pointer;
   z-index: 3;
+  transition:
+    top    540ms cubic-bezier(.2,.7,.2,1),
+    left   540ms cubic-bezier(.2,.7,.2,1),
+    right  540ms cubic-bezier(.2,.7,.2,1),
+    bottom 540ms cubic-bezier(.2,.7,.2,1);
+}
+.hero-scene.playing .hero-photo { opacity: 0; pointer-events: none; }
+.hero-scene.playing .seat-callout { opacity: 0; transition: opacity 320ms ease; }
+.hero-scene.playing .hero-screen {
+  top: 0; left: 0; right: 0; bottom: 0;
+  cursor: default;
 }
 .hero-screen .play {
   position: absolute;
@@ -1286,6 +1300,10 @@ p { margin: 0; }
     if (!btn || !mount) return;
 
     btn.addEventListener('click', function () {
+      // tell the hero to enter cinema mode: photo fades, screen expands
+      var hero = btn.closest('.hero-scene');
+      if (hero) hero.classList.add('playing');
+
       btn.style.opacity = '0';
       btn.style.pointerEvents = 'none';
 
@@ -1297,9 +1315,6 @@ p { margin: 0; }
       iframe.src = 'https://customer-blooyik0ye16janb.cloudflarestream.com/958d64b56ceda01094b2a0820429db2f/iframe?autoplay=true&poster=https%3A%2F%2Fcustomer-blooyik0ye16janb.cloudflarestream.com%2F958d64b56ceda01094b2a0820429db2f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D650s%26height%3D600&title=Written+On+Me';
 
       iframe.addEventListener('load', function () {
-        // hide the seat callout once the film is actually rolling
-        var cb = document.querySelector('.seat-callout');
-        if (cb) { cb.style.transition = 'opacity 360ms ease'; cb.style.opacity = '0'; }
         setTimeout(function () { btn.remove(); }, 360);
       });
 
