@@ -14,6 +14,11 @@ consultants copy/
 pipchi-infographic/
 *.docx
 
+# Written On Me raw assets (full film, stills, audio, PDFs) — staged into
+# /writtenonme and /images/writtenonme/ for deploy. The full film lives on
+# Cloudflare Stream, not in the repo.
+Written/
+
 # Strategy / reference docs (kept on disk, not deployed)
 pipchi_house_direction.md
 pipchi_artifact_dinner_table_workshop.html

@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Pipchi — strange and beautiful worlds</title>
-<meta name="description" content="Pipchi is a small, real place you can enter, recognize, and choose to come back to. A house with rooms — 3580, Blame It On The Ink, Eraser Adventures, Prompt Script, Local Poet, The Narrows — and a campfire out back.">
+<meta name="description" content="Pipchi is a small, real place you can enter, recognize, and choose to come back to. A house with rooms — 3580, Written On Me, Prompt Script, Blame It On The Ink, Eraser Adventures, Local Poet, The Narrows — and a campfire out back.">
 <meta property="og:title" content="Pipchi — strange and beautiful worlds"/>
 <meta property="og:description" content="A house with rooms. A campfire out back. Take really good care of these people, whoever they are."/>
 <meta property="og:image" content="/images/pipchi-design/banner-skyline-clean.png"/>
@@ -706,6 +706,55 @@ p { margin: 0; }
 .poster.narrows .name { color: #e6d5b1; font-style: italic; }
 .poster.narrows .tag  { color: rgba(230,213,177,0.72); }
 
+/* WRITTEN ON ME — watching room, projector beam over a screen */
+.poster.wom {
+  background:
+    radial-gradient(ellipse at 50% 16%, rgba(242,200,122,0.18), transparent 55%),
+    linear-gradient(180deg, #0d0b0f 0%, #06050a 100%);
+  --world-display: 'Cinzel', serif;
+  --world-tracking: 0.04em;
+}
+.poster.wom .art {
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 22px 18px 0;
+}
+.poster.wom .wom-screen {
+  position: relative;
+  width: 92%;
+  aspect-ratio: 16/9;
+  background:
+    radial-gradient(ellipse at 30% 30%, rgba(212,161,74,0.35), transparent 65%),
+    linear-gradient(180deg, #3a5a7a 0%, #1a2638 100%);
+  border-radius: 4px;
+  border: 1px solid #2a1f15;
+  box-shadow: 0 0 0 4px #1a1410, 0 18px 30px rgba(242,200,122,0.18), 0 24px 60px rgba(0,0,0,0.6);
+}
+.poster.wom .wom-screen::after {
+  content: "WRITTEN ON ME";
+  position: absolute;
+  left: 50%; bottom: 8px;
+  transform: translateX(-50%);
+  font-family: 'Cinzel', serif;
+  font-size: 8px;
+  letter-spacing: 0.20em;
+  color: rgba(255,250,242,0.88);
+}
+.poster.wom .wom-bench {
+  position: absolute;
+  left: 50%; transform: translateX(-50%);
+  bottom: 38%;
+  width: 80%;
+  display: flex; align-items: flex-end; justify-content: center; gap: 8px;
+}
+.poster.wom .wom-bench .sil { background: #06050a; }
+.poster.wom .wom-bench .s1 { width: 14px; height: 22px; border-radius: 4px 4px 0 0; }
+.poster.wom .wom-bench .s2 { width: 18px; height: 30px; border-radius: 9px 9px 4px 4px; }
+.poster.wom .wom-bench .s3 { width: 16px; height: 24px; border-radius: 8px 8px 0 0; }
+.poster.wom .strip { background: linear-gradient(180deg, transparent, rgba(7,6,10,0.92) 30%, #07060a); color: #f0e3c8; }
+.poster.wom .name { color: #fbeac4; }
+.poster.wom .tag  { color: rgba(240,227,200,0.78); }
+
 /* SAVE MY SHORTS — pastel parent app */
 .poster.sms {
   background: radial-gradient(circle at 30% 25%, rgba(255,228,234,0.95) 0%, rgba(232,222,255,0.95) 50%, rgba(214,200,255,0.85) 100%);
@@ -1222,6 +1271,24 @@ p { margin: 0; }
       <div class="strip">
         <div class="name">Prompt Script</div>
         <div class="tag">A director's lens for AI film.</div>
+      </div>
+    </a>
+
+    <!-- Written On Me -->
+    <a class="poster wom" href="/writtenonme" aria-label="Written On Me — a short film, watched by itself">
+      <span class="bug">Pipchi</span>
+      <span class="status built">Built</span>
+      <div class="art">
+        <div class="wom-screen"></div>
+        <div class="wom-bench">
+          <span class="sil s1"></span>
+          <span class="sil s2"></span>
+          <span class="sil s3"></span>
+        </div>
+      </div>
+      <div class="strip">
+        <div class="name">Written On Me</div>
+        <div class="tag">A short film. Watched by itself, in the dark.</div>
       </div>
     </a>
 

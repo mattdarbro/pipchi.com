@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Written On Me — a short film · a Pipchi production</title>
+<meta name="description" content="Four hand-made instruments find their makers. Watched, in the dark, by themselves. A short film and the room where it's watched. A Pipchi production."/>
+<meta property="og:title" content="Written On Me — a short film"/>
+<meta property="og:description" content="Four instruments. One projector. A&G arrive at the very end. Sit on the bench. (Where is Steel Drum?)"/>
+<meta property="og:image" content="/images/writtenonme/thumbnail.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="icon" type="image/png" href="/images/pipchi-design/logo-circle.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@400;600;700&family=DM+Serif+Display:ital@0;1&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  /* Pipchi paper bookends */
+  --paper:       #fffaf2;
+  --paper-2:     #faf1e0;
+  --ink:         #1f1b16;
+  --ink-2:       #2d251f;
+  --ink-muted:   #6f6254;
+  --ink-faint:   #b3a48d;
+  --line:        #eadfce;
+  --line-strong: #d9cbb8;
+  --terra:       #b45b2c;
+  --terra-deep:  #8e4520;
+  --gold:        #e0a72e;
+
+  /* The Watching Room — sovereign palette */
+  --room-black:   #07060a;
+  --room-dark:    #0d0b0f;
+  --room-wall:    #14110f;
+  --room-warm:    #1d1813;
+  --beam:         #f2c87a;
+  --beam-soft:    #d6a14a;
+  --beam-glow:    rgba(242, 200, 122, 0.18);
+  --screen-blue:  #3a5a7a;
+  --screen-warm:  #d4a14a;
+  --dust:         rgba(244, 224, 184, 0.35);
+
+  --font-serif: "Lora", ui-serif, Georgia, serif;
+  --font-sans:  "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:  "JetBrains Mono", ui-monospace, Menlo, monospace;
+  --font-hand:  "Caveat", "Segoe Script", cursive;
+  --font-marq:  "Cinzel", "DM Serif Display", serif;
+
+  --r-sm:  10px;
+  --r-md:  14px;
+  --r-lg:  20px;
+  --r-xl:  28px;
+  --r-pill: 999px;
+
+  --ease-soft: cubic-bezier(.2,.7,.2,1);
+  --ease-pop:  cubic-bezier(.2,1.4,.4,1);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--paper); }
+body {
+  font-family: var(--font-serif);
+  color: var(--ink-2);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+img, video { max-width: 100%; display: block; }
+a { color: var(--terra); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+a:hover { color: var(--terra-deep); }
+h1, h2, h3, h4 { margin: 0; letter-spacing: -0.03em; color: var(--ink); }
+p { margin: 0; }
+
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+
+/* ============================================================
+   UMBRELLA STRIP — paper, the doorway
+   ============================================================ */
+.umbrella-strip {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 10px 28px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.umbrella-strip .right { color: var(--terra); }
+
+/* ============================================================
+   MASTHEAD
+   ============================================================ */
+.masthead {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 18px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-sans);
+}
+.masthead .crumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.masthead .crumb img {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(51,36,21,0.10);
+  transition: transform 220ms var(--ease-pop);
+}
+.masthead .crumb:hover img { transform: rotate(-4deg) scale(1.04); }
+.masthead .crumb-text {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.masthead .crumb-sep { color: var(--ink-faint); padding: 0 4px; }
+.masthead .crumb-room {
+  font-family: var(--font-marq);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+.masthead nav { display: flex; gap: 18px; }
+.masthead nav a {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+}
+.masthead nav a:hover { color: var(--terra); }
+@media (max-width: 640px) { .masthead nav { display: none; } }
+
+/* ============================================================
+   THE ROOM — full-bleed dark stage. The page IS the room.
+   ============================================================ */
+.room {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 50% 6%, rgba(242,200,122,0.10), transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(20,15,10,1), transparent 70%),
+    linear-gradient(180deg, #0c0a08 0%, #06050a 100%);
+  color: #f0e3c8;
+  overflow: hidden;
+  isolation: isolate;
+}
+.room::before {
+  /* faint film grain */
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1.4px),
+    radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1.4px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 1px 2px;
+  mix-blend-mode: overlay;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+/* the projector beam — diagonal warm light from back-left */
+.beam {
+  position: absolute;
+  top: -10%; bottom: 18%; left: -8%;
+  width: 70%;
+  background: linear-gradient(105deg,
+    rgba(242,200,122,0.00) 0%,
+    rgba(242,200,122,0.10) 35%,
+    rgba(242,200,122,0.22) 55%,
+    rgba(242,200,122,0.10) 75%,
+    rgba(242,200,122,0.00) 100%);
+  transform: skewX(-10deg);
+  filter: blur(8px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.room-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 56px 32px 28px;
+}
+
+.marquee-eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 10px;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: var(--beam-soft);
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.title-row {
+  display: flex; justify-content: center; align-items: center; gap: 18px;
+  margin-bottom: 4px;
+}
+.title-row .rule {
+  flex: 0 0 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(242,200,122,0.55), transparent);
+}
+.title-row .now-playing {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--beam-soft);
+  text-transform: uppercase;
+}
+
+.room-title {
+  font-family: var(--font-marq);
+  font-weight: 500;
+  font-size: clamp(2.6rem, 6.4vw, 5.6rem);
+  letter-spacing: 0.02em;
+  line-height: 0.95;
+  text-align: center;
+  color: #fbeac4;
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.6),
+    0 0 36px rgba(242,200,122,0.12);
+  margin: 0 0 12px;
+}
+.room-subtitle {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.4vw, 1.22rem);
+  color: rgba(240, 227, 200, 0.82);
+  max-width: 580px;
+  margin: 0 auto 36px;
+}
+
+/* ============================================================
+   HERO SCENE — the real watching-room photograph.
+   The cinema screen inside the image is overlaid with a play
+   button. Click to play the film inside that same rectangle.
+   ============================================================ */
+.hero-scene {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto 24px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.65);
+  background: #000;
+  isolation: isolate;
+}
+.hero-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+/* The screen area within the image — clickable, becomes the iframe */
+.hero-screen {
+  position: absolute;
+  /* tuned to the cinema screen inside hero-watching-room.jpg */
+  top: 3.5%;
+  left: 11.5%;
+  right: 11.5%;
+  bottom: 34%;
+  cursor: pointer;
+  z-index: 3;
+}
+.hero-screen .play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0);
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: background 220ms var(--ease-soft);
+}
+.hero-screen .play:hover { background: rgba(0,0,0,0.12); }
+.hero-screen .play .badge {
+  width: 92px; height: 92px;
+  border-radius: 50%;
+  background: rgba(255,250,242,0.96);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow:
+    0 12px 32px rgba(0,0,0,0.55),
+    0 0 0 8px rgba(242,200,122,0.12),
+    0 0 40px rgba(242,200,122,0.20);
+  transition: transform 220ms var(--ease-pop);
+}
+.hero-screen .play:hover .badge { transform: scale(1.06); }
+.hero-screen .play .badge svg { width: 34px; height: 34px; fill: var(--ink); transform: translateX(2px); }
+.hero-screen .play .label {
+  position: absolute;
+  bottom: 14%;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #fffaf2;
+  background: rgba(0,0,0,0.55);
+  padding: 5px 12px;
+  border-radius: var(--r-pill);
+  pointer-events: none;
+  white-space: nowrap;
+}
+.hero-screen iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #000;
+}
+
+/* The "Steel Drum's empty seat" callout — points at the gap on the bench */
+.seat-callout {
+  position: absolute;
+  /* sits in the upper space above the empty seat */
+  left: 31%;
+  bottom: 28%;
+  width: 200px;
+  z-index: 4;
+  pointer-events: none;
+}
+.seat-callout .pad {
+  font-family: var(--font-hand);
+  color: var(--beam);
+  font-size: 22px;
+  line-height: 1.15;
+  transform: rotate(-3deg);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.35);
+  border: 1px dashed rgba(242,200,122,0.55);
+  border-radius: 10px;
+  padding: 8px 12px 10px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.seat-callout .pad em {
+  display: block;
+  font-style: italic;
+  color: var(--beam-soft);
+  font-size: 19px;
+  margin-top: 2px;
+}
+.seat-callout .arrow {
+  position: absolute;
+  left: 70%;
+  top: 100%;
+  width: 60px;
+  height: 70px;
+  pointer-events: none;
+}
+.seat-callout .arrow path {
+  fill: none;
+  stroke: var(--beam);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
+}
+
+@media (max-width: 820px) {
+  .hero-screen .play .badge { width: 64px; height: 64px; }
+  .hero-screen .play .badge svg { width: 22px; height: 22px; }
+  .hero-screen .play .label { font-size: 9px; padding: 3px 8px; bottom: 8%; }
+  .seat-callout { left: 22%; bottom: 22%; width: 150px; }
+  .seat-callout .pad { font-size: 16px; padding: 6px 10px; }
+  .seat-callout .pad em { font-size: 14px; }
+  .seat-callout .arrow { width: 40px; height: 50px; }
+}
+@media (max-width: 520px) {
+  .seat-callout { display: none; }
+}
+
+/* ============================================================
+   THESIS — set inside the room, fades up
+   ============================================================ */
+.thesis-room {
+  max-width: 720px;
+  margin: 12px auto 0;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  padding: 0 28px 32px;
+}
+.thesis-room p {
+  font-family: var(--font-serif);
+  font-size: 1.16rem;
+  line-height: 1.6;
+  color: rgba(240, 227, 200, 0.88);
+  margin: 0 0 12px;
+}
+.thesis-room p em { color: var(--beam); font-style: italic; }
+.thesis-room .signed {
+  font-family: var(--font-hand);
+  color: var(--beam);
+  font-size: 22px;
+  margin-top: 8px;
+}
+
+/* ============================================================
+   PROGRAM — credits below the room. Paper section.
+   ============================================================ */
+.program {
+  background: var(--paper);
+  border-top: 1px solid #2a1f15;
+  position: relative;
+}
+.program::before {
+  /* warm projector glow leaking from the dark room above */
+  content:"";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 50px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.25), transparent);
+  pointer-events: none;
+}
+
+.program-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 64px 32px;
+}
+
+.section-eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--terra);
+}
+.section-title {
+  font-family: var(--font-marq);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  margin: 8px 0 12px;
+  line-height: 1.05;
+}
+.section-lede {
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  color: var(--ink-2);
+  line-height: 1.55;
+  max-width: 620px;
+}
+
+/* ============================================================
+   THE FOUR — character cards
+   ============================================================ */
+.four {
+  margin-top: 28px;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.voice {
+  position: relative;
+  background: rgba(255,255,255,0.96);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 22px 22px 24px;
+  box-shadow: 0 10px 26px rgba(51,36,21,0.10);
+  display: flex; flex-direction: column; gap: 10px;
+}
+.voice .seat {
+  position: absolute;
+  top: 14px; right: 14px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.voice .icon {
+  width: 56px; height: 56px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  margin-bottom: 6px;
+}
+.voice .icon svg { width: 30px; height: 30px; fill: var(--ink); }
+.voice .name {
+  font-family: var(--font-marq);
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.voice .pith {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--terra);
+}
+.voice p {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.voice .quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink);
+  padding: 10px 14px;
+  border-left: 3px solid var(--terra);
+  background: var(--paper-2);
+  border-radius: 0 8px 8px 0;
+  margin-top: 4px;
+}
+.voice.steel {
+  background:
+    linear-gradient(0deg, rgba(255,250,242,0.94), rgba(255,250,242,0.94)),
+    repeating-linear-gradient(45deg, rgba(180,91,44,0.06) 0 8px, transparent 8px 16px);
+}
+.voice.steel .seat::before {
+  content: "stepped out · ";
+  color: var(--terra);
+}
+
+/* ============================================================
+   THE REEL — beat-by-beat, scenes + lines
+   ============================================================ */
+.reel {
+  margin-top: 56px;
+  border-top: 1px solid var(--line);
+  padding-top: 48px;
+}
+.reel-grid {
+  margin-top: 24px;
+  display: grid;
+  gap: 28px;
+}
+.beat {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 26px;
+  align-items: flex-start;
+}
+.beat-thumb {
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(51,36,21,0.18);
+  border: 1px solid #2a1f15;
+  background: #06050a;
+  aspect-ratio: 16/9;
+}
+.beat-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.beat-thumb.placeholder {
+  display: flex; align-items: center; justify-content: center;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(242,200,122,0.12), transparent 60%),
+    linear-gradient(180deg, #0d0b0f 0%, #06050a 100%);
+  color: var(--beam-soft);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+}
+.beat-meta .num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terra);
+}
+.beat-meta .title {
+  font-family: var(--font-marq);
+  font-size: 1.4rem;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  margin: 4px 0 8px;
+}
+.beat-meta .summary {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+.lines {
+  margin: 0;
+  padding: 14px 16px;
+  background: var(--paper-2);
+  border-left: 3px solid var(--line-strong);
+  border-radius: 0 10px 10px 0;
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+.lines p { margin: 0 0 6px; }
+.lines p:last-child { margin: 0; }
+.lines .who {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-right: 6px;
+}
+.lines .stage {
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: 13.5px;
+}
+.lines .unmocked {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--ink);
+  border: 1px dashed var(--terra);
+  background: #fff8e6;
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-top: 4px;
+}
+
+@media (max-width: 640px) {
+  .beat { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   SONGS — audio players
+   ============================================================ */
+.songs {
+  margin-top: 56px;
+  border-top: 1px solid var(--line);
+  padding-top: 48px;
+}
+.song-list {
+  margin-top: 22px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.song {
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: rgba(255,255,255,0.96);
+  padding: 14px 16px;
+  box-shadow: 0 6px 16px rgba(51,36,21,0.06);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.song .top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.song .name {
+  font-family: var(--font-marq);
+  font-size: 1.05rem;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+.song .source {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.song audio { width: 100%; height: 36px; }
+
+/* ============================================================
+   FIVE MINUTES — Amos & Greta closing.
+   Mirror of the hero: same watching room, but now the makers
+   are on the bench, watching the thing they made.
+   ============================================================ */
+.five-min {
+  margin-top: 72px;
+  position: relative;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+  background: #000;
+  isolation: isolate;
+}
+.five-min-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.five-min-photo + .overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7,6,10,0.08) 0%, rgba(7,6,10,0.35) 60%, rgba(7,6,10,0.88) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+.five-min .text-block {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 56px 40px 44px;
+  text-align: center;
+  color: #f0e3c8;
+  z-index: 2;
+}
+.five-min .eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 10px;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: var(--beam-soft);
+  margin-bottom: 14px;
+}
+.five-min .their-line {
+  font-family: var(--font-marq);
+  font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+  letter-spacing: 0.02em;
+  color: #fbeac4;
+  line-height: 1.25;
+  margin: 0 0 6px;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.7);
+}
+.five-min .their-line .who {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: rgba(240,227,200,0.65);
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.five-min .five {
+  font-family: var(--font-marq);
+  font-size: clamp(2.2rem, 3.6vw, 3.2rem);
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  color: #fbeac4;
+  margin: 14px 0 6px;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.8);
+}
+.five-min .five .who {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: rgba(240,227,200,0.65);
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* coda below the photograph, on its own paper-ish band */
+.five-min-coda {
+  max-width: 720px;
+  margin: 28px auto 0;
+  padding: 0 16px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.04rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+  text-align: center;
+}
+.five-min-coda .signed {
+  font-family: var(--font-hand);
+  color: var(--terra);
+  font-size: 22px;
+  margin-top: 16px;
+  transform: rotate(-1deg);
+  display: inline-block;
+}
+@media (max-width: 720px) {
+  .five-min .text-block { padding: 36px 22px 26px; }
+}
+
+/* ============================================================
+   SIGN-OFF
+   ============================================================ */
+.signoff {
+  max-width: 1080px;
+  margin: 24px auto 0;
+  padding: 36px 32px 32px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--ink-muted);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+}
+.signoff a { color: var(--ink-muted); text-decoration: none; }
+.signoff a:hover { color: var(--terra); text-decoration: underline; }
+.signoff .hand {
+  font-family: var(--font-hand);
+  font-size: 20px;
+  color: var(--ink);
+  transform: rotate(-1deg);
+  display: inline-block;
+}
+.signoff .nav-row { display: flex; gap: 14px; }
+.signoff-copy {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 32px 32px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.06em;
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     UMBRELLA STRIP — the doorway (paper)
+     ============================================================ -->
+<div class="umbrella-strip">
+  <span>Pipchi · the house</span>
+  <span class="right">A Pipchi production</span>
+</div>
+
+<!-- ============================================================
+     MASTHEAD
+     ============================================================ -->
+<header class="masthead">
+  <a href="/" class="crumb" aria-label="Back to Pipchi">
+    <img src="/images/pipchi-design/logo-circle.png" alt="Pipchi"/>
+    <span class="crumb-text">Pipchi</span>
+    <span class="crumb-sep">·</span>
+    <span class="crumb-room">Written On Me</span>
+  </a>
+  <nav aria-label="primary">
+    <a href="#reel">The reel</a>
+    <a href="#four">The four</a>
+    <a href="#songs">Songs</a>
+    <a href="/">Back to the house</a>
+  </nav>
+</header>
+
+<!-- ============================================================
+     THE ROOM — dark stage, screen, bench, projector
+     ============================================================ -->
+<section class="room" aria-label="The watching room">
+  <div class="beam" aria-hidden="true"></div>
+
+  <div class="room-inner">
+
+    <div class="marquee-eyebrow">A Pipchi short film · in the watching room</div>
+
+    <div class="title-row">
+      <span class="rule"></span>
+      <span class="now-playing">● Now playing</span>
+      <span class="rule"></span>
+    </div>
+    <h1 class="room-title">Written On Me</h1>
+    <p class="room-subtitle">Four hand-made instruments find their makers. Watched, in the dark, by themselves.</p>
+
+    <!-- HERO SCENE — the actual watching room. Click the screen to play. -->
+    <div class="hero-scene">
+      <img class="hero-photo" src="/images/writtenonme/hero-watching-room.jpg" alt="The watching room — Kalimba, an empty seat, Tuba, and Bongos on a wooden bench facing a cinema screen showing a snowy Munich."/>
+
+      <!-- the screen area within the image — clickable, becomes the iframe -->
+      <div class="hero-screen" id="screen">
+        <div id="streamMount" style="position:absolute; inset:0;"></div>
+        <button class="play" id="playBtn" aria-label="Play Written On Me">
+          <span class="badge"><svg viewBox="0 0 24 24"><path d="M6 4 L20 12 L6 20 Z"/></svg></span>
+          <span class="label">Press play · ~11:30 · the full reel</span>
+        </button>
+      </div>
+
+      <!-- callout: the empty seat invitation -->
+      <div class="seat-callout" aria-hidden="true">
+        <div class="pad">
+          Normally Steel Drum sits here.
+          <em>You can sit here for now.</em>
+        </div>
+        <svg class="arrow" viewBox="0 0 60 70">
+          <path d="M5 2 C 18 12, 28 28, 32 50 M 32 50 L 22 42 M 32 50 L 38 38"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- THESIS in the dark -->
+    <div class="thesis-room">
+      <p>This is a small film about <em>being recognized by the person who made you.</em></p>
+      <p>It's also a film watched, from start to finish, by the people in it — sitting in the dark, talking back, hyping each other up, telling the projectionist to skip the embarrassing parts. <em>Steel Drum's out of the room right now. She'll be back.</em></p>
+      <div class="signed">— sit on the bench. take the middle seat if you'd like.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     PROGRAM — paper, the cast and the reel
+     ============================================================ -->
+<section class="program">
+  <div class="program-inner">
+
+    <!-- THE FOUR -->
+    <div id="four">
+      <div class="section-eyebrow">The cast on the bench</div>
+      <h2 class="section-title">Four voices, watching themselves.</h2>
+      <p class="section-lede">They've all already lived this. They know what happens. They keep talking anyway. The script came first — these are the people in the watching room, not the film.</p>
+
+      <div class="four">
+
+        <article class="voice">
+          <span class="seat">seat 1 · left</span>
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="11" rx="2"/><rect x="6" y="6" width="2" height="3"/><rect x="10" y="6" width="2" height="3"/><rect x="14" y="6" width="2" height="3"/><rect x="18" y="6" width="2" height="3" fill="#b45b2c"/></svg>
+          </div>
+          <span class="pith">Defensive · show-off</span>
+          <div class="name">Kalimba</div>
+          <p>Quick, sharp, slightly nasal. Has a justification for every embarrassing thing he does on screen — each one thinner than the last. Carved his own name into the village wall, mostly to see if the letters still looked good.</p>
+          <div class="quote">"There is <em>significant</em> context. A large instrument had just walked past me and not acknowledged me —"</div>
+        </article>
+
+        <article class="voice steel">
+          <span class="seat">seat 2 · center</span>
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="14" rx="9" ry="5"/><ellipse cx="12" cy="11" rx="9" ry="3" fill="#b45b2c"/></svg>
+          </div>
+          <span class="pith">Older sister · secret Brontë streak</span>
+          <div class="name">Steel Drum</div>
+          <p>Two modes: exasperated and accidentally lyrical. Can't watch herself — keeps asking Bongos to skip her scenes. He doesn't. She's stepped out for a minute. The middle seat is hers when she comes back.</p>
+          <div class="quote">"Snow dusted the rooftops like — like the kind of secret a city keeps from —"</div>
+        </article>
+
+        <article class="voice">
+          <span class="seat">seat 3 · runs the projector</span>
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><ellipse cx="8" cy="13" rx="5" ry="6"/><ellipse cx="17" cy="14" rx="4" ry="5"/></svg>
+          </div>
+          <span class="pith">Wordless · all rhythm</span>
+          <div class="name">Bongos</div>
+          <p>Communicates entirely through drum sounds — rolls, thumps, slaps, the occasional muffled laugh-noise. Also runs the projector. Refuses to skip Steel Drum's scenes. Worships Tuba. Has no name carved on him. Nobody mentions it twice.</p>
+          <div class="quote"><em>(Bongos plays a low, satisfied roll. Image flickers on.)</em></div>
+        </article>
+
+        <article class="voice">
+          <span class="seat">seat 4 · back row</span>
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M5 6 Q5 14 8 19 L16 19 Q19 14 19 6"/></svg>
+          </div>
+          <span class="pith">German · formal · deep</span>
+          <div class="name">Tuba</div>
+          <p>Wants very much to narrate. Keeps getting blocked. From Hannover, not the island — and he will tell you this. By the end, exactly one of his formal lines is allowed to land.</p>
+          <div class="quote">"I was given to understand I would narrate." <em>— Kalimba: "You were given to understand wrong."</em></div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- THE REEL — beats -->
+    <div class="reel" id="reel">
+      <div class="section-eyebrow">Tonight's reel</div>
+      <h2 class="section-title">Ten beats, two unmocked lines, one frame reveal.</h2>
+      <p class="section-lede">The film runs about eleven and a half minutes. The watching room talks over the first six. Then the voices start pulling back. By the end, only the film is left — until the door opens.</p>
+
+      <div class="reel-grid">
+
+        <article class="beat">
+          <div class="beat-thumb"><img src="/images/writtenonme/still-00-munich.png" alt="Munich, opening aerial — snow on the rooftops"/></div>
+          <div class="beat-meta">
+            <div class="num">00 · Cold open</div>
+            <div class="title">Tuba tries to narrate. Kalimba says no.</div>
+            <p class="summary">Before the film proper — a black room, the warmth of tubes coming on, Bongos testing a tap. Tuba opens with "Our story begins in Munich —" and is immediately, repeatedly, talked over.</p>
+            <div class="lines">
+              <p><span class="who">Tuba</span> Our story begins in Munich —</p>
+              <p><span class="who">Kalimba</span> No.</p>
+              <p><span class="who">Tuba</span> — at the Internationale Musikkonven —</p>
+              <p><span class="who">Kalimba</span> <em>No.</em></p>
+              <p><span class="who">Steel Drum</span> Our story begins on the island.</p>
+              <p class="stage">(Bongos thumps a low, satisfied roll. Image flickers on.)</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="beat">
+          <div class="beat-thumb"><img src="/images/writtenonme/still-02-island.png" alt="The island — the trio playing together"/></div>
+          <div class="beat-meta">
+            <div class="num">02 · The island</div>
+            <div class="title">Caribbean blue. Multi-take chaos begins.</div>
+            <p class="summary">Hard cut from Munich grey to island warmth. Kalimba on the low wall, showing off. Bongos plays alternate takes — Kalimba's fingers look wrong in one; he floats above the wall in the next. They keep that one.</p>
+            <div class="lines">
+              <p><span class="who">Kalimba</span> Bongos, the <em>other</em> take.</p>
+              <p class="stage">(Bongos cuts to a version where Kalimba is floating slightly above the wall.)</p>
+              <p><span class="who">Steel Drum</span> …keep this one.</p>
+              <p><span class="who">Kalimba</span> I am being <em>bullied</em>.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="beat">
+          <div class="beat-thumb"><img src="/images/writtenonme/still-04-wrong-door.png" alt="The wrong door — the meditation hall"/></div>
+          <div class="beat-meta">
+            <div class="num">04 · Wrong door</div>
+            <div class="title">Meditation hall. Bongos cannot help himself.</div>
+            <p class="summary">They open the door expecting the convention. It's a meditation center. The silent room reacts. Bongos in the watching room is already vibrating in anticipation of his on-screen self.</p>
+            <div class="lines">
+              <p class="stage">(On screen — Bongos's eyes go wide. His hands start moving.)</p>
+              <p><span class="who">Kalimba</span> He's about to do it.</p>
+              <p><span class="who">Kalimba</span> He's doing it.</p>
+              <p><span class="who">Steel Drum</span> Skip this part, <em>I</em> was bowing.</p>
+              <p><span class="who">Kalimba</span> This is the <em>best part.</em></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="beat">
+          <div class="beat-thumb"><img src="/images/writtenonme/still-07-dark-night.png" alt="Kalimba alone, touching the glass of the shop window in Munich"/></div>
+          <div class="beat-meta">
+            <div class="num">07 · The dark night</div>
+            <div class="title">Three of them, alone. The gags fall away.</div>
+            <p class="summary">Steel Drum in the alcove with the photograph. Bongos finds Tuba at the desk and drops the performed smile. Kalimba alone on the snow street, the shop window. The watching room goes quiet. Bongos stops drumming.</p>
+            <div class="lines">
+              <p class="stage">(In the watching room, no one speaks. Kalimba in the room does not make a joke.)</p>
+              <p><span class="who">Steel Drum</span> <em>(barely audible)</em> This part.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="beat">
+          <div class="beat-thumb"><img src="/images/writtenonme/still-09-workshop.png" alt="The workshop — Amos with Kalimba, Greta with Steel Drum, all four together"/></div>
+          <div class="beat-meta">
+            <div class="num">09 · Written on me</div>
+            <div class="title">Amos plays Kalimba. Greta plays Steel Drum. Tuba plays Bongos.</div>
+            <p class="summary">The workshop. The recognition. The melody continues — the sound of an instrument being played by the person who knows it best. Two lines, in the entire script, are designated as unmocked.</p>
+            <div class="lines">
+              <p class="unmocked"><span class="who">Steel Drum</span> He played him the way you play someone you have been missing for forty years.</p>
+              <p class="stage">(Nobody mocks. Nobody cuts her off.)</p>
+              <p class="unmocked"><span class="who">Tuba</span> This is the part where everything that was broken in the film stops being broken.</p>
+              <p><span class="who">Tuba</span> Thank you.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="beat">
+          <div class="beat-thumb"><img src="/images/writtenonme/still-10-final-window.png" alt="The final image — warm window, snow falling, the title written across it"/></div>
+          <div class="beat-meta">
+            <div class="num">10 · Frame reveal</div>
+            <div class="title">The image flickers. The room is real.</div>
+            <p class="summary">The final shot — the warm window, snow falling, title across it — begins to flicker. Grain creeps in. Dust motes appear in the beam. We pull back. We are now in the watching room for the first time. A door opens behind them.</p>
+            <div class="lines">
+              <p><span class="who">Greta</span> <em>(soft, the first new voice in the film)</em> There you are.</p>
+              <p><span class="who">Amos</span> Five minutes.</p>
+              <p class="stage">(The four silhouettes turn. Bongos stands first — already bouncing.)</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- SONGS -->
+    <div class="songs" id="songs">
+      <div class="section-eyebrow">Songs from the reel</div>
+      <h2 class="section-title">The music that comes out of the workshop.</h2>
+      <p class="section-lede">Demos and finished cuts that thread through the film and the bridge into the performance after. Bongos's percussion underneath everything else. Steel Drum can be heard clearly here even though she stepped out of the room.</p>
+
+      <div class="song-list">
+        <div class="song">
+          <div class="top"><span class="name">Island Kindness</span><span class="source">B2 · island theme</span></div>
+          <audio controls preload="none" src="/writtenonme/media/songs/island-kindness.mp3"></audio>
+        </div>
+        <div class="song">
+          <div class="top"><span class="name">Bongos &amp; Kalimba</span><span class="source">B2 · the trio finds itself</span></div>
+          <audio controls preload="none" src="/writtenonme/media/songs/bongos-and-kalimba.mp3"></audio>
+        </div>
+        <div class="song">
+          <div class="top"><span class="name">Blue Ribbon Waltz</span><span class="source">B6 · the attempt</span></div>
+          <audio controls preload="none" src="/writtenonme/media/songs/blue-ribbon-waltz.mp3"></audio>
+        </div>
+        <div class="song">
+          <div class="top"><span class="name">One Drop Lantern</span><span class="source">B7 · the dark night</span></div>
+          <audio controls preload="none" src="/writtenonme/media/songs/one-drop-lantern.mp3"></audio>
+        </div>
+        <div class="song">
+          <div class="top"><span class="name">Palm Drum Parade</span><span class="source">B9 · the workshop alive</span></div>
+          <audio controls preload="none" src="/writtenonme/media/songs/palm-drum-parade.mp3"></audio>
+        </div>
+        <div class="song">
+          <div class="top"><span class="name">Walkin' Through the Yard</span><span class="source">bridge · into the performance</span></div>
+          <audio controls preload="none" src="/writtenonme/media/songs/walkin-through-the-yard.mp3"></audio>
+        </div>
+      </div>
+    </div>
+
+    <!-- FIVE MINUTES — Amos & Greta on the bench, watching what they made -->
+    <section class="five-min" aria-label="Amos and Greta in the watching room">
+      <img class="five-min-photo" src="/images/writtenonme/closing-ag-watching.jpg" alt="Amos and Greta sitting on the bench in the watching room, facing the cinema screen showing snowy Munich."/>
+      <div class="overlay"></div>
+      <div class="text-block">
+        <div class="eyebrow">The makers, in the audience</div>
+        <p class="their-line"><span class="who">Greta</span>"There you are."</p>
+        <p class="five"><span class="who">Amos</span>Five minutes.</p>
+      </div>
+    </section>
+
+    <div class="five-min-coda">
+      Amos &amp; Greta arrive in the film at minute eight. They arrive in the watching room at minute eleven. In both places they say the same first thing.
+      <br/><br/>
+      If the room has a thesis, it's that — <em>Pipchi makes things that find their people back.</em>
+      <div class="signed">— take really good care of these people, whoever they are.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     SIGN-OFF
+     ============================================================ -->
+<footer class="signoff">
+  <div>
+    <div class="hand">— with care, Matt</div>
+  </div>
+  <div class="nav-row">
+    <a href="/">Pipchi</a>
+    <a href="/3580">3580</a>
+    <a href="/promptscript">Prompt Script</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/support">Support</a>
+    <a href="/terms">Terms</a>
+  </div>
+</footer>
+<div class="signoff-copy">© Pipchi Productions · Written On Me is a short film. The watching room is real.</div>
+
+<script>
+  // tap the screen area within the hero photo → inject the Cloudflare iframe
+  // into that same rectangle. The iframe sits inside the cinema screen visible
+  // in the photograph, so the room (bench, projector, instruments) stays put.
+  (function () {
+    var btn = document.getElementById('playBtn');
+    var mount = document.getElementById('streamMount');
+    if (!btn || !mount) return;
+
+    btn.addEventListener('click', function () {
+      btn.style.opacity = '0';
+      btn.style.pointerEvents = 'none';
+
+      var iframe = document.createElement('iframe');
+      iframe.title = 'Written On Me — a short film';
+      iframe.setAttribute('allow', 'accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;');
+      iframe.setAttribute('allowfullscreen', 'true');
+      iframe.style.cssText = 'border:0; position:absolute; inset:0; width:100%; height:100%; background:#000;';
+      iframe.src = 'https://customer-blooyik0ye16janb.cloudflarestream.com/958d64b56ceda01094b2a0820429db2f/iframe?autoplay=true&poster=https%3A%2F%2Fcustomer-blooyik0ye16janb.cloudflarestream.com%2F958d64b56ceda01094b2a0820429db2f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D650s%26height%3D600&title=Written+On+Me';
+
+      iframe.addEventListener('load', function () {
+        // hide the seat callout once the film is actually rolling
+        var cb = document.querySelector('.seat-callout');
+        if (cb) { cb.style.transition = 'opacity 360ms ease'; cb.style.opacity = '0'; }
+        setTimeout(function () { btn.remove(); }, 360);
+      });
+
+      mount.appendChild(iframe);
+    });
+  })();
+  document.documentElement.style.scrollBehavior = 'smooth';
+</script>
+
+</body>
+</html>
