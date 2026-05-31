@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>3580 — Recordings from the original address</title>
-  <meta name="description" content="Tallwood's record shop. A 70s shop at the original address, slowly filling with recordings from 1985 to now."/>
+  <title>3580 — Tallwood's record shop</title>
+  <meta name="description" content="Tallwood's record shop at the original address. Tallwood's Lanes — the shop journal. Records, reels, and single songs, each with the story. New entries weekly-ish."/>
   <meta property="og:title" content="3580 — a Pipchi production"/>
-  <meta property="og:description" content="Tallwood's record shop. The crates are filling."/>
+  <meta property="og:description" content="Tallwood's record shop. Read the story, hear the record."/>
   <link rel="icon" type="image/png" href="/images/pipchi-design/logo-circle.png"/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -28,6 +28,7 @@
       --font-serif: "Lora", ui-serif, Georgia, serif;
       --font-sans:  "DM Sans", ui-sans-serif, system-ui, sans-serif;
       --font-mono:  "JetBrains Mono", ui-monospace, Menlo, monospace;
+      --font-hand:  "Caveat", "Segoe Script", cursive;
 
       /* 3580 sovereign — wood, oxblood, butterscotch, cream */
       --r-wood:          #6b4423;
@@ -42,6 +43,9 @@
       --r-paper-receipt: #fffaf2;
       --r-display:        'Lilita One', 'Cooper Black', ui-serif, Georgia, serif;
       --r-display-italic: 'DM Serif Display', ui-serif, Georgia, serif;
+      --r-italic:         'DM Serif Display', ui-serif, Georgia, serif;
+      --r-lg: 20px;
+      --ease-soft: cubic-bezier(.2,.7,.2,1);
     }
 
     * { box-sizing: border-box; }
@@ -74,7 +78,6 @@
 
     /* ============================================================
        INSIDE THE SHOP — sovereign aesthetic begins
-       Warm wood-paneled wall + dust + halftone shadow.
        ============================================================ */
     .shop {
       background:
@@ -168,7 +171,7 @@
       gap: 14px; flex-wrap: wrap;
     }
 
-    /* ---- "Now playing" receipt strip ---- */
+    /* ---- "At the counter" receipt strip ---- */
     .now-playing {
       max-width: 760px;
       margin: 0 auto 56px;
@@ -184,98 +187,159 @@
     }
     .now-playing .row { display: flex; justify-content: space-between; gap: 18px; padding: 2px 0; }
     .now-playing .label { color: var(--r-oxblood-2); font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; }
-    .now-playing .divider {
-      border-top: 1px dashed var(--r-ink);
-      margin: 8px 0;
+    .now-playing .divider { border-top: 1px dashed var(--r-ink); margin: 8px 0; }
+
+    /* ============================================================
+       TALLWOOD'S LANES — the shop journal (blog feed)
+       Paper cards pinned to the wood wall. Newest on top.
+       ============================================================ */
+    .lanes {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .lanes-head {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+    .lanes-eyebrow {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--r-butterscotch);
+      margin-bottom: 12px;
+    }
+    .lanes-title {
+      font-family: var(--r-display);
+      font-size: clamp(1.9rem, 3.6vw, 2.8rem);
+      color: var(--r-cream);
+      letter-spacing: 0.01em;
+      line-height: 1.05;
+      text-shadow: 2px 2px 0 rgba(0,0,0,0.30);
+    }
+    .lanes-sub {
+      font-family: var(--r-display-italic);
+      font-style: italic;
+      font-size: 1.08rem;
+      color: rgba(240,227,200,0.9);
+      margin-top: 12px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    /* ---- ON THE SHELF — the album card ---- */
-    .on-shelf {
-      max-width: 1100px;
-      margin: 28px auto 0;
-      padding: 0 28px;
-    }
-    .on-shelf-label {
-      font-family: var(--font-sans);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--r-oxblood);
-      margin-bottom: 14px;
-    }
-    .album-card {
+    .lane-feed { display: flex; flex-direction: column; gap: 26px; }
+
+    /* one entry — a paper card pinned to the wall */
+    .post-card {
       display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 28px;
-      align-items: center;
+      grid-template-columns: 168px 1fr;
+      gap: 26px;
+      align-items: stretch;
       padding: 22px 24px;
       background: linear-gradient(180deg, #f7eccf 0%, #e8d5a8 100%);
       border: 1px solid var(--r-cream-2);
       border-radius: var(--r-lg);
-      box-shadow: 0 14px 32px rgba(51,36,21,0.14);
+      box-shadow: 0 14px 32px rgba(51,36,21,0.18);
       text-decoration: none;
       color: inherit;
-      transition: transform 220ms var(--ease-soft, ease), box-shadow 220ms;
+      transition: transform 220ms var(--ease-soft), box-shadow 220ms;
       position: relative;
     }
-    .album-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 20px 44px rgba(51,36,21,0.20);
+    .post-card:nth-child(odd)  { transform: rotate(-0.4deg); }
+    .post-card:nth-child(even) { transform: rotate(0.4deg); }
+    .post-card:hover {
+      transform: rotate(0deg) translateY(-3px);
+      box-shadow: 0 22px 46px rgba(51,36,21,0.26);
       text-decoration: none;
     }
-    .album-card .mini-sleeve {
+    /* pin */
+    .post-card::before {
+      content: "";
+      position: absolute;
+      top: -7px; left: 50%; transform: translateX(-50%);
+      width: 13px; height: 13px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 32% 30%, #e9d49a, var(--r-oxblood));
+      box-shadow: 0 3px 5px rgba(0,0,0,0.4);
+      z-index: 2;
+    }
+
+    /* thumbnail */
+    .post-thumb {
       position: relative;
       aspect-ratio: 1;
       border-radius: 3px;
       overflow: hidden;
       background: var(--r-ink);
       box-shadow: 0 10px 22px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(26,17,8,0.4);
+      align-self: center;
       transform: rotate(-2deg);
-      transition: transform 280ms var(--ease-soft, ease);
+      transition: transform 280ms var(--ease-soft);
     }
-    .album-card:hover .mini-sleeve { transform: rotate(0deg); }
-    .album-card .mini-sleeve img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .album-card .vol {
+    .post-card:hover .post-thumb { transform: rotate(0deg); }
+    .post-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* video thumb — 16:10 still with a play badge */
+    .post-thumb.is-video { aspect-ratio: 16/10; background: #1a1108; }
+    .post-thumb.is-video img { width: 100%; height: 100%; object-fit: cover; }
+    .post-thumb .play-badge {
+      position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: rgba(240,227,200,0.92);
+      color: var(--r-oxblood);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      padding-left: 4px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.45);
+      z-index: 2;
+    }
+
+    .post-body { display: flex; flex-direction: column; }
+    .post-tag {
       font-family: var(--font-mono);
       font-size: 10px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--r-oxblood);
       font-weight: 700;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
     }
-    .album-card .name {
+    .type-album .post-tag { color: var(--r-oxblood); }
+    .type-song  .post-tag { color: var(--r-butterscotch-2); }
+    .type-video .post-tag { color: var(--terra); }
+
+    .post-title {
       font-family: var(--r-display);
-      font-size: clamp(2rem, 3.4vw, 2.6rem);
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
       letter-spacing: 0.01em;
       color: var(--r-ink);
       line-height: 1;
-      margin: 6px 0 10px;
+      margin-bottom: 8px;
       text-shadow: 1px 1px 0 rgba(212,161,74,0.4);
     }
-    .album-card .one-line {
+    .post-date {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 10px;
+    }
+    .post-date .prov { color: var(--r-oxblood); }
+    .post-excerpt {
       font-family: var(--r-italic);
       font-style: italic;
       font-size: 1.04rem;
       color: var(--ink-2);
       line-height: 1.5;
-      margin-bottom: 12px;
-      max-width: 540px;
+      margin-bottom: 14px;
     }
-    .album-card .meta {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-    }
-    .album-card .meta strong { color: var(--r-ink); font-weight: 700; }
-    .album-card .open-btn {
-      display: inline-block;
-      margin-top: 12px;
+    .post-open {
+      margin-top: auto;
+      align-self: flex-start;
       font-family: var(--font-sans);
       font-weight: 700;
       font-size: 13px;
@@ -283,97 +347,64 @@
       color: var(--r-oxblood);
       border-bottom: 2px solid var(--r-oxblood);
       padding-bottom: 2px;
-      align-self: flex-start;
     }
-    .album-card:hover .open-btn { color: var(--r-oxblood-2); border-color: var(--r-oxblood-2); }
+    .post-card:hover .post-open { color: var(--r-oxblood-2); border-color: var(--r-oxblood-2); }
+
+    /* "soon" entries — dimmed, not yet clickable inside */
+    .post-card.is-soon { opacity: 0.96; }
+    .post-card.is-soon .post-open { color: var(--ink-muted); border-color: var(--ink-faint); }
+
     @media (max-width: 600px) {
-      .album-card { grid-template-columns: 1fr; text-align: center; padding: 22px; }
-      .album-card .meta { justify-content: center; }
-      .album-card .one-line { margin-left: auto; margin-right: auto; }
+      .post-card { grid-template-columns: 1fr; text-align: center; padding: 26px 22px 22px; }
+      .post-thumb { max-width: 220px; margin: 0 auto; }
+      .post-open { align-self: center; }
     }
 
-    /* ---- shelf copy below the card ---- */
+    /* ---- closing shop note ---- */
     .crates {
       max-width: 760px;
-      margin: 0 auto;
+      margin: 56px auto 0;
       background: rgba(26,17,8,0.32);
       border: 1px solid rgba(240,227,200,0.18);
       border-radius: 10px;
-      padding: 36px 32px;
-      position: relative;
+      padding: 34px 32px;
       color: var(--r-cream);
     }
     .crates h2 {
       font-family: var(--r-display);
-      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-size: clamp(1.6rem, 2.6vw, 2rem);
       color: var(--r-cream);
-      letter-spacing: 0.01em;
       margin-bottom: 14px;
     }
     .crates p {
       font-family: var(--font-serif);
-      font-size: 1.04rem;
+      font-size: 1.02rem;
       line-height: 1.65;
       color: rgba(240,227,200,0.92);
       margin-bottom: 14px;
       max-width: 580px;
     }
-    .crates em {
-      color: var(--r-butterscotch);
-      font-style: italic;
-    }
+    .crates em { color: var(--r-butterscotch); font-style: italic; }
     .crates .from-tallwood {
-      margin-top: 22px;
+      margin-top: 20px;
       padding: 16px 18px;
       border-left: 3px solid var(--r-butterscotch);
       background: rgba(212,161,74,0.06);
       border-radius: 0 8px 8px 0;
     }
     .crates .from-tallwood .who {
-      font-family: var(--font-sans);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--r-butterscotch);
-      margin-bottom: 8px;
+      font-family: var(--font-sans); font-size: 10px; font-weight: 800;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--r-butterscotch); margin-bottom: 8px;
     }
     .crates .from-tallwood p {
-      font-family: var(--r-display-italic);
-      font-style: italic;
-      font-size: 1.1rem;
-      color: var(--r-cream);
-      line-height: 1.5;
-      margin: 0;
-    }
-    .crates .from-matt {
-      margin-top: 14px;
-      padding: 16px 18px;
-      border-left: 3px solid var(--r-cream);
-      background: rgba(240,227,200,0.05);
-      border-radius: 0 8px 8px 0;
-    }
-    .crates .from-matt .who {
-      font-family: var(--font-sans);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--r-cream-2);
-      margin-bottom: 8px;
-    }
-    .crates .from-matt p {
-      font-family: var(--font-serif);
-      font-size: 0.98rem;
-      color: rgba(240,227,200,0.85);
-      line-height: 1.55;
-      margin: 0;
+      font-family: var(--r-display-italic); font-style: italic;
+      font-size: 1.1rem; color: var(--r-cream); line-height: 1.5; margin: 0;
     }
     .crates .back {
-      margin-top: 28px;
-      font-family: var(--font-sans);
-      font-size: 13px;
-      font-weight: 700;
+      display: inline-block;
+      margin-top: 26px;
+      font-family: var(--font-sans); font-size: 13px; font-weight: 700;
       color: var(--r-butterscotch);
       text-decoration: none;
       border-bottom: 2px solid var(--r-butterscotch);
@@ -431,50 +462,78 @@
         </div>
       </div>
 
-      <div class="now-playing" aria-label="Now playing">
-        <div class="row"><span class="label">Now playing</span><span><em>3580</em> · 2012</span></div>
-        <div class="row"><span class="label">Next up</span><span>— (Tallwood is shelving)</span></div>
+      <div class="now-playing" aria-label="At the counter">
+        <div class="row"><span class="label">Counter</span><span>Open · Tallwood in</span></div>
+        <div class="row"><span class="label">Latest entry</span><span><em>Bleach</em> · now showing</span></div>
         <div class="divider"></div>
-        <div class="row"><span class="label">Total recordings</span><span>~500 in the back</span></div>
-        <div class="row"><span class="label">On the shelf today</span><span>1 · <em>3580</em> (2012)</span></div>
+        <div class="row"><span class="label">In the back</span><span>~500 recordings, reels &amp; odds</span></div>
+        <div class="row"><span class="label">New entries</span><span>weekly-ish</span></div>
       </div>
 
     </div>
 
-    <!-- ON THE SHELF — the first album card -->
-    <div class="on-shelf">
-      <div class="on-shelf-label">On the shelf today</div>
-      <a class="album-card" href="/3580/3580" aria-label="3580 — the first album, 2012">
-        <div class="mini-sleeve"><img src="/images/3580/3580-cover.png" alt="3580 album cover"/></div>
-        <div>
-          <div class="vol">Volume 01 · 2012 · LP</div>
-          <div class="name">3580</div>
-          <div class="one-line">A return to the basement. Twelve tracks written on simulations of the 1985 gear. Lo-fi in the classic sense.</div>
-          <div class="meta">
-            <span><strong>12</strong> tracks</span>
-            <span><strong>41:45</strong> runtime</span>
-            <span>Tallwood's note inside</span>
-          </div>
-          <span class="open-btn">Open the sleeve →</span>
-        </div>
-      </a>
-    </div>
+    <!-- =====================================================
+         TALLWOOD'S LANES — the feed
+         Newest entry on top. Each links to its own page.
+         ===================================================== -->
+    <div class="lanes wrap">
 
-    <div class="wrap">
+      <div class="lanes-head">
+        <div class="lanes-eyebrow">Tallwood's Lanes · the shop journal</div>
+        <h2 class="lanes-title">What I've been pulling down the lanes</h2>
+        <p class="lanes-sub">Records, reels, and single songs — each one with the story behind it. Read it, then hear it.</p>
+      </div>
+
+      <div class="lane-feed">
+
+        <!-- ENTRY: Bleach — music video (newest) -->
+        <a class="post-card type-video" href="/3580/bleach">
+          <div class="post-thumb is-video">
+            <img src="https://i.ytimg.com/vi/FQ_79KHd5mk/hqdefault.jpg" alt="Bleach — A Musical Witness"/>
+            <span class="play-badge">▶</span>
+          </div>
+          <div class="post-body">
+            <div class="post-tag">▶ Music video · Now showing</div>
+            <div class="post-title">Bleach</div>
+            <div class="post-date">Tallwood · this week <span class="prov">· a musical witness</span></div>
+            <div class="post-excerpt">I threaded up the projector in the back. A moving picture this time — come watch it, then stay for the note under the screen.</div>
+            <span class="post-open">read + watch →</span>
+          </div>
+        </a>
+
+        <!-- ENTRY: Single song — wired to a real recording -->
+        <a class="post-card type-song" href="/3580/kevin-is-far-away">
+          <div class="post-thumb"><img src="/images/3580/3580-cover.png" alt="Kevin Is Far Away — from the 3580 LP"/></div>
+          <div class="post-body">
+            <div class="post-tag">♪ Single song · from the 2012 LP</div>
+            <div class="post-title">Kevin Is Far Away</div>
+            <div class="post-date">Tallwood · earlier this month <span class="prov">· lineage to 1986</span></div>
+            <div class="post-excerpt">One song, pulled off the shelf on its own. A cousin, a writing partner, and a song that's had two lives — one in 1986, one twenty-six years later.</div>
+            <span class="post-open">read + listen →</span>
+          </div>
+        </a>
+
+        <!-- ENTRY: The first album -->
+        <a class="post-card type-album" href="/3580/3580">
+          <div class="post-thumb"><img src="/images/3580/3580-cover.png" alt="3580 album cover"/></div>
+          <div class="post-body">
+            <div class="post-tag">● Record · Volume 01 · 2012</div>
+            <div class="post-title">3580 — the first album</div>
+            <div class="post-date">Tallwood · opening day, this spring <span class="prov">· recorded 2012</span></div>
+            <div class="post-excerpt">The one that was on the table when we opened the shop. Twelve tracks written on simulations of the 1985 gear. Lo-fi in the classic sense — and my notes are inside.</div>
+            <span class="post-open">read + listen →</span>
+          </div>
+        </a>
+
+      </div>
 
       <div class="crates">
-        <h2>The next crate is being unpacked.</h2>
-        <p>3580 is the shop. Inside it: every recording Matt has made since 1985, slowly being pulled out of boxes, listened to again, and put on the shelf. <em>One album at a time. With a story.</em></p>
-        <p>One record on the shelf so far. More to come, on a slow schedule, so Tallwood can tell each one's story properly.</p>
+        <h2>The lanes keep filling.</h2>
+        <p>3580 is the shop. <em>Tallwood's Lanes</em> is how you walk it — one entry at a time, newest at the front. Records, reels, single songs, and the odd thing off the counter. Each gets its own page, its own story, and the music or picture to go with it.</p>
 
         <div class="from-tallwood">
           <div class="who">From Tallwood</div>
-          <p>I've been here a long time. You should hear what's in the back.</p>
-        </div>
-
-        <div class="from-matt">
-          <div class="who">From Matt — on a Tuesday</div>
-          <p>About 500 songs across decades. Demos, finished things, things that should have stayed demos but didn't. I'm putting them out one album at a time, on a slow schedule, so Tallwood can tell each one's story properly.</p>
+          <p>I post when I've got something worth pulling out. Once a week, maybe once a month. You should hear what's still in the back.</p>
         </div>
 
         <a class="back" href="/">← Back to the house</a>
