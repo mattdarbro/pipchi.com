@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Save My Shorts — a little picture house</title>
+  <meta name="description" content="Save My Shorts — Pipchi's little picture house. Short films and shorts, screened one at a time, each danced in by your host and kept for keeps. Now Reeling, newest on top."/>
+  <meta property="og:title" content="Save My Shorts — a Pipchi production"/>
+  <meta property="og:description" content="A little picture house. Short films and shorts, each with a seat saved for you."/>
+  <meta property="og:image" content="/images/pipchi-design/world-save-my-shorts.png"/>
+  <link rel="icon" type="image/png" href="/images/pipchi-design/logo-circle.png"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@400;600;700&family=Lilita+One&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* Pipchi base (paper) — masthead + signoff contract */
+    :root {
+      --paper:       #fffaf2;
+      --ink:         #1f1b16;
+      --ink-2:       #2d251f;
+      --ink-muted:   #6f6254;
+      --ink-faint:   #b3a48d;
+      --line:        #eadfce;
+      --terra:       #b45b2c;
+      --terra-deep:  #8e4520;
+
+      --font-serif: "Lora", ui-serif, Georgia, serif;
+      --font-sans:  "DM Sans", ui-sans-serif, system-ui, sans-serif;
+      --font-mono:  "JetBrains Mono", ui-monospace, Menlo, monospace;
+      --font-hand:  "Caveat", "Segoe Script", cursive;
+
+      /* Save My Shorts sovereign — velvet auditorium, marquee bulbs, rainbow host */
+      --s-velvet:      #271544;
+      --s-velvet-2:    #1c0f33;
+      --s-velvet-deep: #120920;
+      --s-marquee:     #ffce5c;
+      --s-marquee-2:   #f5a623;
+      --s-rose:        #ff7a9c;
+      --s-teal:        #4fd6c4;
+      --s-violet:      #b98cff;
+      --s-cream:       #f6efff;
+      --s-cream-2:     #ddd1f0;
+      --s-ink:         #0c0716;
+      --s-display:        'Lilita One', 'Cooper Black', ui-serif, Georgia, serif;
+      --s-display-italic: 'DM Serif Display', ui-serif, Georgia, serif;
+      --r-lg: 18px;
+      --ease-soft: cubic-bezier(.2,.7,.2,1);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--paper); }
+    body { font-family: var(--font-serif); color: var(--ink-2); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { color: var(--terra); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+    a:hover { color: var(--terra-deep); }
+    h1, h2, h3 { margin: 0; }
+    p { margin: 0; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+
+    /* ============================================================
+       PIPCHI MASTHEAD — paper doorway
+       ============================================================ */
+    .masthead {
+      max-width: 1100px; margin: 0 auto; padding: 18px 28px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid var(--line); font-family: var(--font-sans);
+    }
+    .masthead .crumb { display: flex; gap: 10px; align-items: center; text-decoration: none; color: var(--ink); }
+    .masthead .crumb img { width: 30px; height: 30px; border-radius: 50%; box-shadow: 0 4px 12px rgba(51,36,21,0.10); }
+    .masthead .crumb-text { font-family: var(--font-serif); font-size: 16px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
+    .masthead .crumb-sep { color: var(--ink-faint); padding: 0 2px; }
+    .masthead .crumb-world { font-family: var(--s-display); font-size: 20px; color: #7a3df0; letter-spacing: 0.01em; }
+    .masthead .pipchi-presents { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--terra); }
+
+    /* ============================================================
+       THE AUDITORIUM — velvet dark, dust in the projector beam
+       ============================================================ */
+    .house {
+      background:
+        radial-gradient(ellipse at 50% -10%, rgba(255,206,92,0.16), transparent 55%),
+        radial-gradient(ellipse at 12% 100%, rgba(185,140,255,0.18), transparent 50%),
+        radial-gradient(ellipse at 90% 90%, rgba(79,214,196,0.14), transparent 50%),
+        linear-gradient(180deg, var(--s-velvet) 0%, var(--s-velvet-2) 55%, var(--s-velvet-deep) 100%);
+      color: var(--s-cream);
+      padding: 60px 0 84px;
+      position: relative; overflow: hidden;
+    }
+    /* projector dust */
+    .house::before {
+      content: ""; position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.10) 1px, transparent 1.4px);
+      background-size: 7px 7px; opacity: 0.35; pointer-events: none;
+    }
+    .house > * { position: relative; }
+
+    /* ---- the marquee ---- */
+    .marquee {
+      max-width: 820px; margin: 0 auto 30px;
+      background: linear-gradient(180deg, #2f1b50 0%, #1b0f30 100%);
+      border: 2px solid var(--s-marquee);
+      border-radius: 14px;
+      padding: 26px 28px 24px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 0 0 6px rgba(255,206,92,0.08), 0 22px 50px rgba(0,0,0,0.5), inset 0 0 40px rgba(255,206,92,0.06);
+    }
+    /* bulb border */
+    .marquee::before, .marquee::after {
+      content: ""; position: absolute; left: 14px; right: 14px; height: 8px;
+      background-image: radial-gradient(circle, var(--s-marquee) 0 3px, transparent 3.4px);
+      background-size: 22px 8px; background-repeat: repeat-x;
+      filter: drop-shadow(0 0 4px rgba(255,206,92,0.8));
+    }
+    .marquee::before { top: 8px; }
+    .marquee::after  { bottom: 8px; }
+
+    .marquee .host {
+      width: 96px; height: 96px; margin: 6px auto 12px;
+      border-radius: 22px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.5), 0 0 0 2px rgba(255,206,92,0.5);
+    }
+    .marquee .presents {
+      font-family: var(--font-sans); font-size: 10px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.30em; color: var(--s-marquee);
+      margin-bottom: 8px;
+    }
+    .marquee .name {
+      font-family: var(--s-display);
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      line-height: 0.92;
+      letter-spacing: 0.01em;
+      color: var(--s-cream);
+      text-shadow: 0 0 18px rgba(255,206,92,0.45), 2px 3px 0 #7a3df0;
+    }
+    .marquee .tagline {
+      font-family: var(--s-display-italic); font-style: italic;
+      font-size: clamp(1.02rem, 1.5vw, 1.28rem);
+      color: var(--s-cream-2); margin-top: 12px;
+    }
+    .marquee .est {
+      margin-top: 16px; padding-top: 14px;
+      border-top: 1px solid rgba(255,206,92,0.3);
+      font-family: var(--font-mono); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 0.18em; color: var(--s-cream-2);
+      display: flex; justify-content: center; gap: 18px; flex-wrap: wrap;
+    }
+    .marquee .est b { color: var(--s-marquee); font-weight: 700; }
+
+    /* ---- the usher's line (host intro) ---- */
+    .usher {
+      max-width: 680px; margin: 0 auto 52px;
+      text-align: center;
+      font-family: var(--s-display-italic); font-style: italic;
+      font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+      color: var(--s-cream-2); line-height: 1.5;
+    }
+    .usher b { color: var(--s-marquee); font-style: normal; font-family: var(--font-sans); font-weight: 800; letter-spacing: 0.02em; }
+
+    /* ============================================================
+       NOW REELING — the feed of one-sheets
+       ============================================================ */
+    .reeling-head {
+      max-width: 1100px; margin: 0 auto 26px; padding: 0 28px;
+      display: flex; align-items: baseline; gap: 16px;
+      border-bottom: 1px solid rgba(255,206,92,0.25); padding-bottom: 12px;
+    }
+    .reeling-head .eyebrow {
+      font-family: var(--font-sans); font-size: 11px; font-weight: 800;
+      letter-spacing: 0.26em; text-transform: uppercase; color: var(--s-marquee);
+    }
+    .reeling-head h2 {
+      font-family: var(--s-display); font-size: clamp(1.5rem, 3vw, 2.1rem);
+      color: var(--s-cream); letter-spacing: 0.01em; flex: 1;
+    }
+    .reeling-head .count {
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--s-cream-2);
+    }
+
+    .reel-grid {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px;
+    }
+    @media (max-width: 720px) { .reel-grid { grid-template-columns: 1fr; } }
+
+    .card {
+      display: block; text-decoration: none; color: inherit;
+      background: linear-gradient(180deg, #34205a 0%, #21123c 100%);
+      border: 1px solid rgba(255,206,92,0.22);
+      border-radius: var(--r-lg); overflow: hidden;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.4);
+      transition: transform 220ms var(--ease-soft), box-shadow 220ms, border-color 220ms;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 26px 54px rgba(0,0,0,0.55);
+      border-color: var(--s-marquee);
+      text-decoration: none;
+    }
+    .still {
+      position: relative; aspect-ratio: 16/9; background: #0a0614; overflow: hidden;
+    }
+    .still img { width: 100%; height: 100%; object-fit: cover; transition: transform 400ms var(--ease-soft); }
+    .card:hover .still img { transform: scale(1.04); }
+    /* vertical shorts: contain on a dark pillarbox so the 9:16 reads as portrait */
+    .still.portrait { background:
+        radial-gradient(ellipse at center, #2a1748, #0a0614); }
+    .still.portrait img { object-fit: contain; }
+    .still .play {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 54px; height: 54px; border-radius: 50%;
+      background: rgba(255,206,92,0.94); color: var(--s-ink);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; padding-left: 4px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5); z-index: 2;
+      transition: transform 220ms var(--ease-soft);
+    }
+    .card:hover .still .play { transform: translate(-50%, -50%) scale(1.1); }
+    .still .badge {
+      position: absolute; top: 12px; left: 12px; z-index: 2;
+      font-family: var(--font-mono); font-size: 9px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      background: rgba(12,7,22,0.78); color: var(--s-marquee);
+      border: 1px solid rgba(255,206,92,0.4);
+      padding: 4px 8px; border-radius: 999px;
+    }
+    .still .soon-veil {
+      position: absolute; inset: 0; z-index: 3;
+      background: rgba(12,7,22,0.55);
+      display: flex; align-items: flex-end; justify-content: center; padding-bottom: 16px;
+      font-family: var(--font-hand); font-size: 20px; color: var(--s-cream);
+    }
+
+    .card-body { padding: 18px 20px 22px; }
+    .card .fmt {
+      font-family: var(--font-mono); font-size: 9.5px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--s-teal);
+      margin-bottom: 8px;
+    }
+    .card .title {
+      font-family: var(--s-display); font-size: 1.5rem; line-height: 1.04;
+      color: var(--s-cream); letter-spacing: 0.01em; margin-bottom: 8px;
+    }
+    .card .by {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--s-violet); margin-bottom: 10px;
+    }
+    .card .blurb {
+      font-family: var(--s-display-italic); font-style: italic;
+      font-size: 1.02rem; color: var(--s-cream-2); line-height: 1.5; margin-bottom: 14px;
+    }
+    .card .watch {
+      font-family: var(--font-sans); font-weight: 700; font-size: 13px;
+      letter-spacing: 0.03em; color: var(--s-marquee);
+      border-bottom: 2px solid var(--s-marquee); padding-bottom: 2px;
+    }
+    .card.is-soon { cursor: default; }
+    .card.is-soon:hover { transform: none; border-color: rgba(255,206,92,0.22); box-shadow: 0 16px 36px rgba(0,0,0,0.4); }
+    .card.is-soon .watch { color: var(--s-cream-2); border-color: rgba(221,209,240,0.4); }
+
+    /* ---- closing host note ---- */
+    .booth {
+      max-width: 720px; margin: 56px auto 0;
+      background: rgba(12,7,22,0.45);
+      border: 1px solid rgba(255,206,92,0.2);
+      border-radius: 12px; padding: 32px 30px;
+      color: var(--s-cream-2);
+    }
+    .booth h3 {
+      font-family: var(--s-display); font-size: clamp(1.5rem, 2.6vw, 1.9rem);
+      color: var(--s-cream); margin-bottom: 14px;
+    }
+    .booth p { font-family: var(--font-serif); font-size: 1.02rem; line-height: 1.65; margin-bottom: 14px; }
+    .booth em { color: var(--s-marquee); font-style: italic; }
+    .booth .from {
+      margin-top: 18px; padding: 16px 18px;
+      border-left: 3px solid var(--s-marquee);
+      background: rgba(255,206,92,0.06); border-radius: 0 8px 8px 0;
+    }
+    .booth .from .who {
+      font-family: var(--font-sans); font-size: 10px; font-weight: 800;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--s-marquee); margin-bottom: 8px;
+    }
+    .booth .from p { font-family: var(--s-display-italic); font-style: italic; font-size: 1.1rem; color: var(--s-cream); margin: 0; line-height: 1.5; }
+    .booth .back {
+      display: inline-block; margin-top: 24px;
+      font-family: var(--font-sans); font-size: 13px; font-weight: 700;
+      color: var(--s-marquee); text-decoration: none;
+      border-bottom: 2px solid var(--s-marquee); padding-bottom: 2px;
+    }
+    .booth .back:hover { color: var(--s-cream); border-color: var(--s-cream); }
+
+    /* ============================================================
+       PIPCHI SIGN-OFF — back to paper
+       ============================================================ */
+    .signoff {
+      margin: 0 auto; max-width: 1100px; padding: 28px;
+      border-top: 1px solid var(--line);
+      display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; align-items: center;
+    }
+    .signoff .left { display: flex; gap: 12px; align-items: center; }
+    .signoff .left img { width: 38px; height: 38px; border-radius: 50%; }
+    .signoff .left div { font-family: var(--font-serif); font-size: 14px; color: var(--ink); }
+    .signoff .left .small { font-family: var(--font-sans); font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
+    .signoff .right { font-family: 'Caveat', cursive; font-size: 26px; color: var(--ink); transform: rotate(-1.5deg); }
+  </style>
+</head>
+<body>
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <a class="crumb" href="/">
+      <img src="/images/pipchi-design/logo-circle.png" alt="Pipchi"/>
+      <span class="crumb-text">Pipchi</span>
+      <span class="crumb-sep">/</span>
+      <span class="crumb-world">Save My Shorts</span>
+    </a>
+    <span class="pipchi-presents">A Pipchi production</span>
+  </div>
+
+  <!-- THE AUDITORIUM -->
+  <section class="house">
+
+    <!-- HOST NAME: "Pirou" is a PLACEHOLDER (Matt's pick, may change). Swap site-wide if renamed. -->
+    <div class="marquee">
+      <img class="host" src="/images/pipchi-design/world-save-my-shorts.png" alt="Pirou, your host"/>
+      <div class="presents">Now showing · Pipchi's little picture house</div>
+      <div class="name">SAVE MY SHORTS</div>
+      <div class="tagline">Short films — danced in, one at a time.</div>
+      <div class="est">
+        <span>Your host: <b>Pirou</b></span>
+        <span>Doors: always open</span>
+        <span>New reels: regularly</span>
+      </div>
+    </div>
+
+    <p class="usher">
+      <b>Pirou</b> can't sit still. He dances the house lights down, points one ribbon at the screen — and then he lets the film speak. Pick a seat. Anything on the bill is yours to watch.
+    </p>
+
+    <!-- NOW REELING -->
+    <div class="reeling-head">
+      <span class="eyebrow">Now Reeling</span>
+      <h2>On the bill</h2>
+      <span class="count">6 on the reel</span>
+    </div>
+
+    <div class="reel-grid">
+
+      <!-- A Door That Remembers — LIVE -->
+      <a class="card" href="/save-my-shorts/a-door-that-remembers">
+        <div class="still">
+          <span class="badge">Short film · 16:9</span>
+          <img src="/images/save-my-shorts/a-door-that-remembers.jpg" alt="A Door That Remembers"/>
+          <span class="play">▶</span>
+        </div>
+        <div class="card-body">
+          <div class="fmt">Animated short film</div>
+          <div class="title">A Door That Remembers</div>
+          <div class="by">Pirou · now showing</div>
+          <div class="blurb">Three doors, three worlds — a rain-slick alley, a steaming stone bath, a warm little pantry. Step through and the house remembers you back.</div>
+          <span class="watch">Take a seat →</span>
+        </div>
+      </a>
+
+      <!-- He Stopped Drawing — LIVE (vertical) -->
+      <a class="card" href="/save-my-shorts/he-stopped-drawing">
+        <div class="still portrait">
+          <span class="badge">Short · 9:16</span>
+          <img src="/images/save-my-shorts/he-stopped-drawing.jpg" alt="He Stopped Drawing. His Sketchbook Didn't"/>
+          <span class="play">▶</span>
+        </div>
+        <div class="card-body">
+          <div class="fmt">Vertical short</div>
+          <div class="title">He Stopped Drawing</div>
+          <div class="by">Pirou · last week</div>
+          <div class="blurb">He put the pencil down. The sketchbook kept going without him — a swirl of light and music lifting off the open page on a park bench.</div>
+          <span class="watch">Take a seat →</span>
+        </div>
+      </a>
+
+      <!-- Table 12 — LIVE -->
+      <a class="card" href="/save-my-shorts/table-12">
+        <div class="still">
+          <span class="badge">Long-form · 16:9</span>
+          <img src="/images/save-my-shorts/table-12.jpg" alt="Table 12"/>
+          <span class="play">▶</span>
+        </div>
+        <div class="card-body">
+          <div class="fmt">Long-form short film</div>
+          <div class="title">Table 12</div>
+          <div class="by">Pirou · two weeks back</div>
+          <div class="blurb">A woman in burgundy walks the length of a grand dining room toward one reserved table. The longest reel on the bill.</div>
+          <span class="watch">Take a seat →</span>
+        </div>
+      </a>
+
+      <!-- Paper Cutouts — LIVE -->
+      <a class="card" href="/save-my-shorts/paper-cutouts">
+        <div class="still">
+          <span class="badge">Short film · 16:9</span>
+          <img src="/images/save-my-shorts/paper-cutouts.jpg" alt="Paper Cutouts Reveal Something Beautiful About Making Music"/>
+          <span class="play">▶</span>
+        </div>
+        <div class="card-body">
+          <div class="fmt">Papercraft short</div>
+          <div class="title">Paper Cutouts</div>
+          <div class="by">Pirou · earlier this month</div>
+          <div class="blurb">A whole paper city under clouds with faces. Two worlds, business as usual — and something beautiful hiding in how the music gets made.</div>
+          <span class="watch">Take a seat →</span>
+        </div>
+      </a>
+
+      <!-- The Universe Speaks In Color — LIVE -->
+      <a class="card" href="/save-my-shorts/universe-speaks-in-color">
+        <div class="still">
+          <span class="badge">Short film · 16:9</span>
+          <img src="/images/save-my-shorts/universe-speaks-in-color.jpg" alt="The Universe Speaks In Color — The Real Problem"/>
+          <span class="play">▶</span>
+        </div>
+        <div class="card-body">
+          <div class="fmt">Essay short</div>
+          <div class="title">The Universe Speaks In Color</div>
+          <div class="by">Pirou · opening week</div>
+          <div class="blurb">A lone radio dish tilts at a flat gray sky, listening. Black and white — until it gets to the real problem.</div>
+          <span class="watch">Take a seat →</span>
+        </div>
+      </a>
+
+      <!-- Intentionally Wrong Machines — LIVE (vertical) -->
+      <a class="card" href="/save-my-shorts/intentionally-wrong-machines">
+        <div class="still portrait">
+          <span class="badge">Short · 9:16</span>
+          <img src="/images/save-my-shorts/intentionally-wrong-machines.jpg" alt="Intentionally Wrong Machines Dance Better"/>
+          <span class="play">▶</span>
+        </div>
+        <div class="card-body">
+          <div class="fmt">Vertical short</div>
+          <div class="title">Intentionally Wrong Machines</div>
+          <div class="by">Pirou · opening week</div>
+          <div class="blurb">A gaslit alley called Mechanical Dreams, gears strapped to dancers, sparks underfoot. The wrong machines, it turns out, dance better.</div>
+          <span class="watch">Take a seat →</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- BOOTH NOTE -->
+    <div class="booth">
+      <h3>Why "Save My Shorts"?</h3>
+      <p>Little films get made and then they get lost — buried in a feed, never screened, never sat with. Pirou doesn't let that happen. Every short that comes through gets a marquee, a seat saved, and a reason to be watched on purpose. <em>That's the whole job: save the shorts.</em></p>
+      <div class="from">
+        <div class="who">From Pirou</div>
+        <p>If it moved, it belongs on a screen. Sit down. I'll get the lights.</p>
+      </div>
+      <a class="back" href="/">← Back to the house</a>
+    </div>
+
+  </section>
+
+  <!-- SIGN-OFF -->
+  <div class="signoff">
+    <div class="left">
+      <img src="/images/pipchi-design/logo-circle.png" alt="Pipchi"/>
+      <div>
+        Save My Shorts is a Pipchi production.
+        <div class="small">More rooms at <a href="/" style="color: var(--terra);">pipchi.com</a> · matt@pipchi.com</div>
+      </div>
+    </div>
+    <div class="right">— with care, Matt</div>
+  </div>
+
+</body>
+</html>
