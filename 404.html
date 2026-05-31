@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>404 — this reel didn't make the cut · Pipchi</title>
+<meta name="robots" content="noindex"/>
+<link rel="icon" type="image/png" href="/images/pipchi-design/logo-circle.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&family=Caveat:wght@400;600;700&family=Lilita+One&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper:#fffaf2; --ink:#1f1b16; --terra:#b45b2c; --terra-deep:#8e4520; --line:#eadfce; --ink-muted:#6f6254;
+  --s-velvet:#271544; --s-velvet-2:#1c0f33; --s-velvet-deep:#120920;
+  --s-marquee:#ffce5c; --s-cream:#f6efff; --s-cream-2:#ddd1f0;
+  --s-display:'Lilita One','Cooper Black',ui-serif,Georgia,serif; --s-italic:'DM Serif Display',ui-serif,Georgia,serif;
+  --font-serif:"Lora",ui-serif,Georgia,serif; --font-sans:"DM Sans",ui-sans-serif,system-ui,sans-serif; --font-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+* { box-sizing:border-box; }
+html,body { margin:0; padding:0; min-height:100vh; }
+body {
+  font-family:var(--font-serif); color:var(--s-cream); -webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(255,206,92,0.18), transparent 55%),
+    radial-gradient(ellipse at 12% 100%, rgba(185,140,255,0.16), transparent 50%),
+    linear-gradient(180deg, var(--s-velvet) 0%, var(--s-velvet-2) 55%, var(--s-velvet-deep) 100%);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:48px 24px; gap:8px;
+}
+img { display:block; max-width:100%; }
+.pirou { width:230px; border-radius:18px; border:2px solid var(--s-marquee);
+  box-shadow:0 0 0 6px rgba(255,206,92,0.08), 0 22px 50px rgba(0,0,0,0.55); margin-bottom:24px; }
+.code { font-family:var(--font-mono); font-size:12px; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:var(--s-marquee); }
+h1 { font-family:var(--s-display); font-size:clamp(2rem,6vw,3.4rem); line-height:1; margin:8px 0 0;
+  text-shadow:0 0 18px rgba(255,206,92,0.4), 2px 3px 0 #7a3df0; }
+p { font-family:var(--s-italic); font-style:italic; font-size:1.16rem; color:var(--s-cream-2); max-width:480px; margin:14px 0 0; line-height:1.5; }
+.links { display:flex; gap:18px; flex-wrap:wrap; justify-content:center; margin-top:28px; }
+.links a { font-family:var(--font-sans); font-weight:700; font-size:13px; letter-spacing:0.03em; color:var(--s-marquee);
+  text-decoration:none; border-bottom:2px solid var(--s-marquee); padding-bottom:2px; }
+.links a:hover { color:var(--s-cream); border-color:var(--s-cream); }
+.sign { font-family:'Caveat',cursive; font-size:22px; color:var(--s-cream-2); margin-top:30px; transform:rotate(-1deg); }
+</style>
+</head>
+<body>
+  <img class="pirou" src="/images/save-my-shorts/pirou-oscar.jpg" alt="Pirou accepting an award for a page that doesn't exist"/>
+  <div class="code">Error 404 · Best Achievement (Page Not Found)</div>
+  <h1>This reel didn't make the cut.</h1>
+  <p>Pirou looked everywhere — backstage, the cutting-room floor, the lost &amp; found. Whatever you came for isn't at this address. But the show's still on.</p>
+  <div class="links">
+    <a href="/">← Back to the house</a>
+    <a href="/save-my-shorts">Save My Shorts</a>
+    <a href="/3580">3580</a>
+  </div>
+  <div class="sign">— Pirou, accepting on behalf of nobody</div>
+</body>
+</html>
