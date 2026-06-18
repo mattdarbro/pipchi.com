@@ -156,6 +156,16 @@ p { margin:0; }
 .universe .state { margin-top:auto; padding-top:6px; font-family:var(--font-sans); font-size:11px; font-weight:800;
   letter-spacing:0.06em; color:var(--fu-cream-2); }
 .universe .state.soon { color:var(--fu-cream-2); }
+.universe { text-decoration:none; transition:transform 220ms var(--ease-soft), box-shadow 220ms, border-color 220ms; }
+.universe:hover { transform:translateY(-5px); box-shadow:0 26px 50px rgba(0,0,0,0.6); border-color:rgba(212,161,74,0.5); text-decoration:none; }
+.universe .frame img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+.universe .frame .vol, .universe .frame .songs { position:relative; z-index:2; }
+.universe .frame .play-fu { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:2;
+  width:46px; height:46px; border-radius:50%; background:rgba(212,161,74,0.95); color:var(--fu-void);
+  display:flex; align-items:center; justify-content:center; font-size:18px; padding-left:3px;
+  box-shadow:0 8px 18px rgba(0,0,0,0.5); transition:transform 220ms var(--ease-soft); }
+.universe:hover .frame .play-fu { transform:translate(-50%,-50%) scale(1.1); }
+.universe .state.watch { color:var(--fu-amber); border-bottom:2px solid var(--fu-amber); padding-bottom:2px; align-self:flex-start; }
 
 /* BOFFIN'S NOTE — paper */
 .fu-note { background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:56px 0; }
@@ -247,46 +257,52 @@ p { margin:0; }
     <div class="fu-sec-head" id="universes">
       <span class="eyebrow">The doors so far</span>
       <h2>Three universes found</h2>
-      <span class="count">More to come</span>
+      <span class="count">3 to watch · more coming</span>
     </div>
 
     <div class="fu-grid">
 
       <!-- Vol I — Italy -->
-      <div class="universe italy">
+      <a class="universe italy" href="/found-universes/italy" aria-label="Vol. I — Italy">
         <div class="frame">
+          <img src="/images/found-universes/italy.jpg" alt="Italy — Vol. I"/>
           <span class="vol">Vol. I</span>
-          <span class="songs">▶ 5 songs</span>
+          <span class="songs">▶ 4 songs</span>
+          <span class="play-fu">▶</span>
         </div>
         <span class="place">Vol. I · Italy</span>
         <h3>Italy</h3>
-        <p>The first door Wally opened. Five songs from a sun-warmed somewhere — color looping the whole way through.</p>
-        <span class="state soon">Coming soon</span>
-      </div>
+        <p>The first door Wally opened. Four songs, four moods — a 1950s somewhere, color looping the whole way through.</p>
+        <span class="state watch">Watch the volume →</span>
+      </a>
 
       <!-- Vol II — Brazil -->
-      <div class="universe brazil">
+      <a class="universe brazil" href="/found-universes/brazil" aria-label="Vol. II — Brazil">
         <div class="frame">
+          <img src="/images/found-universes/brazil.jpg" alt="Brazil — Vol. II"/>
           <span class="vol">Vol. II</span>
           <span class="songs">▶ 4 songs</span>
+          <span class="play-fu">▶</span>
         </div>
         <span class="place">Vol. II · Brazil</span>
         <h3>Brazil</h3>
-        <p>A hotter, brighter universe — rhythm in the floorboards. Four songs, found behind the second door.</p>
-        <span class="state soon">Coming soon</span>
-      </div>
+        <p>Recordings sealed in a trunk; no one knows who made them. Four songs, found behind the second door.</p>
+        <span class="state watch">Watch the volume →</span>
+      </a>
 
       <!-- Vol III — Victorian Lofi -->
-      <div class="universe lofi">
+      <a class="universe lofi" href="/found-universes/victorian-lofi" aria-label="Vol. III — Victorian Lofi">
         <div class="frame">
+          <img src="/images/found-universes/victorian-lofi.jpg" alt="Victorian Lofi — Vol. III"/>
           <span class="vol">Vol. III</span>
-          <span class="songs">▶ 5 songs</span>
+          <span class="songs">▶ 4 songs</span>
+          <span class="play-fu">▶</span>
         </div>
         <span class="place">Vol. III · Victorian Lofi</span>
         <h3>Victorian Lofi</h3>
-        <p>Gaslight and tape hiss. A universe that sounds like a dusty parlor at 2am. Five songs, still settling.</p>
-        <span class="state soon">Coming soon</span>
-      </div>
+        <p>Gaslight and tape hiss. One village, four songs — and not one of them agrees on what happened there.</p>
+        <span class="state watch">Watch the volume →</span>
+      </a>
 
     </div>
 
