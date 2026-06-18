@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>No Agenda — four people arguing about Pipchi (LLM Larry too) · Pipchi</title>
+<meta name="description" content="No Agenda — a series of vertical shorts. Dustin, Annie, Chad, and M@ argue about Pipchi. LLM Larry chimes in. Three episodes up, a fourth in production."/>
+<meta property="og:title" content="No Agenda — a Pipchi production"/>
+<meta property="og:description" content="Four people arguing about Pipchi. (LLM Larry too.) A series of vertical shorts."/>
+<meta property="og:image" content="/images/no-agenda/annie-vs-old-guys-rule.jpg"/>
+<link rel="icon" type="image/png" href="/images/pipchi-design/logo-circle.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@400;600;700&family=Lilita+One&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper:#fffaf2; --paper-2:#faf1e0; --ink:#1f1b16; --ink-2:#2d251f; --ink-muted:#6f6254; --ink-faint:#b3a48d;
+  --line:#eadfce; --line-strong:#d9cbb8; --terra:#b45b2c; --terra-deep:#8e4520;
+
+  /* No Agenda sovereign — broadcast yellow, ink panels, REC red */
+  --na-yellow:   #f4c043;
+  --na-yellow-2: #fff3a8;
+  --na-ink:      #1f1b16;
+  --na-rec:      #a23522;
+  --na-cream:    #fff8e8;
+  --na-display:  'Lilita One', 'Cooper Black', ui-serif, Georgia, serif;
+
+  --font-serif:"Lora",ui-serif,Georgia,serif; --font-sans:"DM Sans",ui-sans-serif,system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,Menlo,monospace; --font-hand:"Caveat","Segoe Script",cursive;
+  --ease-soft:cubic-bezier(.2,.7,.2,1);
+}
+* { box-sizing:border-box; }
+html,body { margin:0; padding:0; background:var(--paper); }
+body { font-family:var(--font-serif); color:var(--ink-2); line-height:1.55; -webkit-font-smoothing:antialiased; min-height:100vh; }
+img { max-width:100%; display:block; }
+a { color:var(--terra); text-decoration:underline; text-decoration-thickness:1.5px; text-underline-offset:3px; }
+a:hover { color:var(--terra-deep); }
+h1,h2,h3 { margin:0; letter-spacing:-0.02em; color:var(--ink); }
+p { margin:0; }
+
+/* UMBRELLA + MASTHEAD */
+.umbrella-strip { max-width:1100px; margin:0 auto; padding:10px 28px; border-bottom:1px solid var(--line);
+  display:flex; justify-content:space-between; align-items:center; font-family:var(--font-sans); font-size:10px;
+  font-weight:800; letter-spacing:0.22em; text-transform:uppercase; color:var(--ink-muted); }
+.umbrella-strip .right { color:var(--terra); }
+.masthead { max-width:1100px; margin:0 auto; padding:18px 28px; display:flex; justify-content:space-between; align-items:center; font-family:var(--font-sans); }
+.masthead .crumb { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink); flex-wrap:wrap; }
+.masthead .crumb img { width:32px; height:32px; border-radius:50%; box-shadow:0 4px 12px rgba(51,36,21,0.10); transition:transform 220ms var(--ease-soft); }
+.masthead .crumb:hover img { transform:rotate(-4deg) scale(1.04); }
+.masthead .crumb-text { font-family:var(--font-serif); font-size:17px; font-weight:700; letter-spacing:-0.02em; color:var(--ink); }
+.masthead .crumb-sep { color:var(--ink-faint); padding:0 4px; }
+.masthead .crumb-room { font-family:var(--na-display); font-size:18px; letter-spacing:0.01em; color:var(--terra); }
+.masthead nav { display:flex; gap:18px; }
+.masthead nav a { font-size:13px; font-weight:600; color:var(--ink); text-decoration:none; }
+.masthead nav a:hover { color:var(--terra); }
+@media (max-width:640px){ .masthead nav { display:none; } }
+
+/* THE STUDIO — broadcast yellow */
+.studio { position:relative; color:var(--na-ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.04) 0, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 8px),
+    radial-gradient(ellipse at center top, var(--na-yellow-2) 0%, var(--na-yellow) 100%);
+  padding:48px 0 60px; overflow:hidden; isolation:isolate; border-bottom:3px solid var(--na-ink); }
+.studio-inner { max-width:1040px; margin:0 auto; padding:0 28px; position:relative; z-index:1; }
+.studio-head { text-align:center; max-width:720px; margin:0 auto; position:relative; }
+.on-air {
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--font-mono); font-size:11px; font-weight:800; letter-spacing:0.16em; text-transform:uppercase;
+  color:var(--na-cream); background:var(--na-rec); padding:5px 12px; border-radius:5px; margin-bottom:18px;
+}
+.on-air .dot { width:9px; height:9px; border-radius:50%; background:var(--na-cream); animation:blink 1.4s steps(1) infinite; }
+@keyframes blink { 50% { opacity:0.25; } }
+.studio-head h1 {
+  font-family:var(--na-display); font-size:clamp(3rem,9vw,6rem); line-height:0.9; color:var(--na-ink);
+  letter-spacing:0.01em; text-shadow:3px 3px 0 rgba(255,255,255,0.5), 6px 6px 0 var(--na-rec);
+}
+.studio-head .tagline {
+  font-family:'DM Serif Display',serif; font-style:italic; font-size:clamp(1.1rem,1.7vw,1.4rem);
+  color:#5b3a1a; margin-top:18px; line-height:1.4;
+}
+
+/* the cast bench */
+.cast-bench { display:flex; justify-content:center; gap:18px; flex-wrap:wrap; margin-top:30px; }
+.cast-member { display:flex; flex-direction:column; align-items:center; gap:8px; width:84px; }
+.cast-chip {
+  width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-family:var(--na-display); font-size:20px; color:var(--na-cream); border:3px solid var(--na-ink);
+  box-shadow:0 5px 10px rgba(0,0,0,0.18), inset 0 -3px 0 rgba(0,0,0,0.15);
+}
+.cast-chip.matt   { background:var(--terra); }
+.cast-chip.annie  { background:#2f6f73; }
+.cast-chip.dustin { background:#7a2a2a; }
+.cast-chip.chad   { background:#4f7a3a; }
+.cast-chip.larry  { background:var(--na-ink); font-size:16px; }
+.cast-name { font-family:var(--font-sans); font-size:12px; font-weight:800; letter-spacing:0.04em; color:var(--na-ink); text-align:center; }
+.cast-role { font-family:var(--font-mono); font-size:8.5px; letter-spacing:0.1em; text-transform:uppercase; color:#6e5a2a; text-align:center; }
+
+/* THE LINEUP — vertical episode cards */
+.lineup { max-width:1040px; margin:0 auto; padding:56px 28px 8px; }
+.lineup-head { display:flex; align-items:baseline; gap:16px; border-bottom:2px solid var(--na-ink); padding-bottom:12px; margin-bottom:26px; }
+.lineup-head .eyebrow { font-family:var(--font-sans); font-size:11px; font-weight:800; letter-spacing:0.24em; text-transform:uppercase; color:var(--terra); }
+.lineup-head h2 { font-family:var(--na-display); font-size:clamp(1.5rem,3vw,2.1rem); color:var(--na-ink); flex:1; }
+.lineup-head .count { font-family:var(--font-mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-muted); }
+
+.ep-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:26px; }
+.ep-card { display:block; text-decoration:none; color:inherit; border-radius:14px; overflow:hidden;
+  background:var(--na-ink); border:2px solid var(--na-ink); box-shadow:0 16px 34px rgba(31,27,22,0.28);
+  transition:transform 220ms var(--ease-soft), box-shadow 220ms; }
+.ep-card:hover { transform:translateY(-5px); box-shadow:0 26px 50px rgba(31,27,22,0.4); text-decoration:none; }
+.ep-still { position:relative; aspect-ratio:9/16; overflow:hidden; background:#0a0805; }
+.ep-still img { width:100%; height:100%; object-fit:cover; transition:transform 400ms var(--ease-soft); }
+.ep-card:hover .ep-still img { transform:scale(1.04); }
+.ep-still .rec { position:absolute; top:12px; left:12px; z-index:2; font-family:var(--font-mono); font-size:9px; font-weight:800;
+  letter-spacing:0.14em; text-transform:uppercase; background:var(--na-rec); color:var(--na-cream); padding:4px 8px; border-radius:4px; }
+.ep-still .num { position:absolute; top:12px; right:12px; z-index:2; font-family:var(--na-display); font-size:14px;
+  background:var(--na-yellow); color:var(--na-ink); width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid var(--na-ink); }
+.ep-still .play { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:52px; height:52px; border-radius:50%;
+  background:rgba(244,192,67,0.95); color:var(--na-ink); display:flex; align-items:center; justify-content:center; font-size:20px; padding-left:4px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.5); z-index:2; border:2px solid var(--na-ink); transition:transform 220ms var(--ease-soft); }
+.ep-card:hover .ep-still .play { transform:translate(-50%,-50%) scale(1.1); }
+.ep-body { padding:16px 18px 20px; background:var(--na-ink); color:var(--na-cream); }
+.ep-body .who { font-family:var(--font-mono); font-size:9.5px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--na-yellow); margin-bottom:7px; }
+.ep-body .title { font-family:var(--na-display); font-size:1.3rem; line-height:1.05; color:var(--na-cream); margin-bottom:9px; }
+.ep-body .watch { font-family:var(--font-sans); font-weight:700; font-size:12.5px; letter-spacing:0.03em; color:var(--na-yellow); border-bottom:2px solid var(--na-yellow); padding-bottom:2px; }
+
+/* in-production card */
+.ep-card.is-soon { cursor:default; }
+.ep-card.is-soon:hover { transform:none; box-shadow:0 16px 34px rgba(31,27,22,0.28); }
+.ep-still.soon { display:flex; align-items:center; justify-content:center; background:repeating-linear-gradient(45deg,#211c12 0 14px,#2a2415 14px 28px); }
+.ep-still.soon .soon-label { font-family:var(--font-hand); font-size:24px; color:var(--na-yellow); text-align:center; padding:0 20px; }
+.ep-card.is-soon .watch { color:var(--ink-faint); border-color:var(--ink-faint); }
+
+/* THE NOTE — paper */
+.na-note { background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:54px 0; margin-top:48px; }
+.na-note-inner { max-width:720px; margin:0 auto; padding:0 28px; }
+.na-tag { display:inline-flex; align-items:center; gap:10px; padding:4px 10px 5px; border:1px solid var(--line-strong);
+  border-radius:999px; background:var(--paper); font-family:var(--font-sans); font-size:10px; font-weight:800;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--terra); margin-bottom:18px; }
+.na-tag::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--na-rec); }
+.na-note h2 { font-family:var(--na-display); font-size:clamp(1.6rem,3vw,2.2rem); color:var(--ink); margin-bottom:18px; line-height:1.06; }
+.na-note p { font-family:'DM Serif Display',serif; font-style:italic; font-size:1.16rem; line-height:1.62; color:var(--ink-2); margin-bottom:16px; }
+.na-note p:last-of-type { margin-bottom:0; }
+.na-note em { color:var(--terra-deep); }
+.na-sign { margin-top:22px; font-family:var(--font-hand); color:var(--terra); font-size:22px; transform:rotate(-1deg); display:inline-block; }
+
+/* SIGN-OFF */
+.signoff { max-width:1100px; margin:24px auto 0; padding:36px 28px 32px; border-top:1px solid var(--line); font-family:var(--font-sans);
+  font-size:13px; color:var(--ink-muted); display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px; align-items:center; }
+.signoff a { color:var(--ink-muted); text-decoration:none; }
+.signoff a:hover { color:var(--terra); text-decoration:underline; }
+.signoff .hand { font-family:var(--font-hand); font-size:20px; color:var(--ink); transform:rotate(-1deg); display:inline-block; }
+.signoff .nav-row { display:flex; gap:14px; flex-wrap:wrap; }
+.signoff-copy { max-width:1100px; margin:0 auto; padding:0 28px 32px; font-family:var(--font-sans); font-size:11px; color:var(--ink-faint); letter-spacing:0.06em; }
+</style>
+</head>
+<body>
+
+<div class="umbrella-strip">
+  <span>Pipchi · the house</span>
+  <span class="right">A Pipchi production</span>
+</div>
+
+<header class="masthead">
+  <a href="/" class="crumb" aria-label="Back to Pipchi">
+    <img src="/images/pipchi-design/logo-circle.png" alt="Pipchi"/>
+    <span class="crumb-text">Pipchi</span>
+    <span class="crumb-sep">·</span>
+    <span class="crumb-room">No Agenda</span>
+  </a>
+  <nav aria-label="primary">
+    <a href="#episodes">Episodes</a>
+    <a href="/">The house</a>
+  </nav>
+</header>
+
+<!-- THE STUDIO -->
+<section class="studio" aria-label="No Agenda">
+  <div class="studio-inner">
+    <div class="studio-head">
+      <span class="on-air"><span class="dot"></span> On air</span>
+      <h1>No Agenda</h1>
+      <p class="tagline">Four people arguing about Pipchi. (LLM Larry too.) A series of vertical shorts, taped in one room with no script and no agenda.</p>
+
+      <div class="cast-bench" aria-label="The cast">
+        <div class="cast-member"><span class="cast-chip matt">M@</span><span class="cast-name">M@</span><span class="cast-role">Founder</span></div>
+        <div class="cast-member"><span class="cast-chip annie">A</span><span class="cast-name">Annie</span><span class="cast-role">No filter</span></div>
+        <div class="cast-member"><span class="cast-chip dustin">D</span><span class="cast-name">Dustin</span><span class="cast-role">Contrarian</span></div>
+        <div class="cast-member"><span class="cast-chip chad">C</span><span class="cast-name">Chad</span><span class="cast-role">Hype man</span></div>
+        <div class="cast-member"><span class="cast-chip larry">LLM</span><span class="cast-name">LLM Larry</span><span class="cast-role">The bot</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE LINEUP -->
+<div class="lineup" id="episodes">
+  <div class="lineup-head">
+    <span class="eyebrow">The lineup</span>
+    <h2>Episodes</h2>
+    <span class="count">3 up · 1 in production</span>
+  </div>
+
+  <div class="ep-grid">
+
+    <!-- Ep 3 — M@ vs. The AI Song Challenge -->
+    <a class="ep-card" href="/no-agenda/matt-vs-the-ai-song-challenge">
+      <div class="ep-still">
+        <span class="rec">● Ep 3</span>
+        <span class="num">3</span>
+        <img src="/images/no-agenda/matt-vs-the-ai-song-challenge.jpg" alt="M@ vs. The AI Song Challenge"/>
+        <span class="play">▶</span>
+      </div>
+      <div class="ep-body">
+        <div class="who">Featuring M@</div>
+        <div class="title">M@ vs. The AI Song Challenge</div>
+        <span class="watch">Roll it →</span>
+      </div>
+    </a>
+
+    <!-- Ep 2 — LLM Larry vs. The Vending Machine -->
+    <a class="ep-card" href="/no-agenda/llm-larry-vs-the-vending-machine">
+      <div class="ep-still">
+        <span class="rec">● Ep 2</span>
+        <span class="num">2</span>
+        <img src="/images/no-agenda/llm-larry-vs-the-vending-machine.jpg" alt="LLM Larry vs. The Vending Machine"/>
+        <span class="play">▶</span>
+      </div>
+      <div class="ep-body">
+        <div class="who">Featuring LLM Larry</div>
+        <div class="title">LLM Larry vs. The Vending Machine</div>
+        <span class="watch">Roll it →</span>
+      </div>
+    </a>
+
+    <!-- Ep 1 — Annie vs. Old Guys Rule -->
+    <a class="ep-card" href="/no-agenda/annie-vs-old-guys-rule">
+      <div class="ep-still">
+        <span class="rec">● Ep 1</span>
+        <span class="num">1</span>
+        <img src="/images/no-agenda/annie-vs-old-guys-rule.jpg" alt="Annie vs. Old Guys Rule"/>
+        <span class="play">▶</span>
+      </div>
+      <div class="ep-body">
+        <div class="who">Featuring Annie</div>
+        <div class="title">Annie vs. Old Guys Rule</div>
+        <span class="watch">Roll it →</span>
+      </div>
+    </a>
+
+    <!-- Ep 4 — in production -->
+    <div class="ep-card is-soon" aria-label="Episode 4 — in production">
+      <div class="ep-still soon">
+        <span class="num">4</span>
+        <span class="soon-label">Episode 4 —<br/>taping now</span>
+      </div>
+      <div class="ep-body">
+        <div class="who">Featuring the whole bench</div>
+        <div class="title">The Pen Pal</div>
+        <span class="watch">In production</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- THE NOTE -->
+<section class="na-note" aria-label="About the show">
+  <div class="na-note-inner">
+    <span class="na-tag">From the control room</span>
+    <h2>No script. No agenda. One room.</h2>
+    <p>Put Dustin, Annie, Chad, and M@ in a room and ask them about Pipchi, and you don't get a press release — you get a <em>fight</em>, the good kind. LLM Larry sits in too, mostly to make things worse. Nobody wins. Everybody's right for about nine seconds.</p>
+    <p>Each one's a vertical short, taped quick and left honest. Three are up. The fourth — <em>The Pen Pal</em> — is on the table now.</p>
+    <!-- Matt: replace this note with the real story of the show whenever you like. -->
+    <div class="na-sign">— rolled tape, the control room</div>
+  </div>
+</section>
+
+<footer class="signoff">
+  <div><div class="hand">— with care, Matt</div></div>
+  <div class="nav-row">
+    <a href="/">Pipchi</a>
+    <a href="/save-my-shorts">Save My Shorts</a>
+    <a href="/found-universes">Found Universes</a>
+    <a href="/3580">3580</a>
+    <a href="/writtenonme">Written On Me</a>
+  </div>
+</footer>
+<div class="signoff-copy">© Pipchi Productions · No Agenda — four people arguing about Pipchi. (LLM Larry too.)</div>
+
+<script>document.documentElement.style.scrollBehavior = 'smooth';</script>
+
+</body>
+</html>

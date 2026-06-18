@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>M@ vs. The AI Song Challenge — No Agenda · Pipchi</title>
+<meta name="description" content="No Agenda, Episode 3: M@ vs. The AI Song Challenge. A vertical short from Pipchi. Watch it, then read the note from the control room."/>
+<meta property="og:title" content="M@ vs. The AI Song Challenge — No Agenda, Ep 3"/>
+<meta property="og:description" content="A vertical short from No Agenda. Four people arguing about Pipchi. (LLM Larry too.)"/>
+<meta property="og:image" content="/images/no-agenda/matt-vs-the-ai-song-challenge.jpg"/>
+<link rel="icon" type="image/png" href="/images/pipchi-design/logo-circle.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@400;600;700&family=Lilita+One&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper:#fffaf2; --paper-2:#faf1e0; --ink:#1f1b16; --ink-2:#2d251f; --ink-muted:#6f6254; --ink-faint:#b3a48d;
+  --line:#eadfce; --line-strong:#d9cbb8; --terra:#b45b2c; --terra-deep:#8e4520;
+  --na-yellow:#f4c043; --na-yellow-2:#fff3a8; --na-ink:#1f1b16; --na-rec:#a23522; --na-cream:#fff8e8;
+  --na-display:'Lilita One','Cooper Black',ui-serif,Georgia,serif;
+  --font-serif:"Lora",ui-serif,Georgia,serif; --font-sans:"DM Sans",ui-sans-serif,system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,Menlo,monospace; --font-hand:"Caveat","Segoe Script",cursive;
+  --ease-soft:cubic-bezier(.2,.7,.2,1);
+}
+* { box-sizing:border-box; }
+html,body { margin:0; padding:0; background:var(--paper); }
+body { font-family:var(--font-serif); color:var(--ink-2); line-height:1.55; -webkit-font-smoothing:antialiased; min-height:100vh; }
+img { max-width:100%; display:block; }
+a { color:var(--terra); text-decoration:underline; text-decoration-thickness:1.5px; text-underline-offset:3px; }
+a:hover { color:var(--terra-deep); }
+h1,h2,h3 { margin:0; letter-spacing:-0.02em; color:var(--ink); }
+p { margin:0; }
+.umbrella-strip { max-width:1100px; margin:0 auto; padding:10px 28px; border-bottom:1px solid var(--line);
+  display:flex; justify-content:space-between; align-items:center; font-family:var(--font-sans); font-size:10px;
+  font-weight:800; letter-spacing:0.22em; text-transform:uppercase; color:var(--ink-muted); }
+.umbrella-strip .right { color:var(--terra); }
+.masthead { max-width:1100px; margin:0 auto; padding:18px 28px; display:flex; justify-content:space-between; align-items:center; font-family:var(--font-sans); }
+.masthead .crumb { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink); flex-wrap:wrap; }
+.masthead .crumb img { width:32px; height:32px; border-radius:50%; box-shadow:0 4px 12px rgba(51,36,21,0.10); transition:transform 220ms var(--ease-soft); }
+.masthead .crumb:hover img { transform:rotate(-4deg) scale(1.04); }
+.masthead .crumb-text { font-family:var(--font-serif); font-size:17px; font-weight:700; letter-spacing:-0.02em; color:var(--ink); }
+.masthead .crumb-sep { color:var(--ink-faint); padding:0 4px; }
+.masthead .crumb-room { font-family:var(--na-display); font-size:17px; color:var(--terra); }
+.masthead .crumb-ep { font-family:'DM Serif Display',serif; font-style:italic; font-size:15px; color:var(--ink-muted); }
+.masthead nav { display:flex; gap:18px; }
+.masthead nav a { font-size:13px; font-weight:600; color:var(--ink); text-decoration:none; }
+.masthead nav a:hover { color:var(--terra); }
+@media (max-width:640px){ .masthead nav { display:none; } }
+.screening { position:relative; color:var(--na-ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.04) 0, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 8px),
+    radial-gradient(ellipse at center top, var(--na-yellow-2) 0%, var(--na-yellow) 100%);
+  padding:40px 0 54px; overflow:hidden; isolation:isolate; border-bottom:3px solid var(--na-ink); }
+.screening-inner { max-width:560px; margin:0 auto; padding:0 28px; position:relative; z-index:1; text-align:center; }
+.on-air { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:11px; font-weight:800;
+  letter-spacing:0.16em; text-transform:uppercase; color:var(--na-cream); background:var(--na-rec); padding:5px 12px; border-radius:5px; margin-bottom:16px; }
+.on-air .dot { width:9px; height:9px; border-radius:50%; background:var(--na-cream); animation:blink 1.4s steps(1) infinite; }
+@keyframes blink { 50% { opacity:0.25; } }
+.screening h1 { font-family:var(--na-display); font-size:clamp(1.9rem,5.5vw,3rem); line-height:1; color:var(--na-ink);
+  text-shadow:2px 2px 0 rgba(255,255,255,0.5), 4px 4px 0 var(--na-rec); }
+.screening .who { font-family:'DM Serif Display',serif; font-style:italic; font-size:1.1rem; color:#5b3a1a; margin-top:14px; }
+.screen-portrait { position:relative; width:100%; max-width:400px; margin:22px auto 0; aspect-ratio:9/16;
+  border-radius:14px; overflow:hidden; background:#05030a;
+  box-shadow:0 30px 70px rgba(0,0,0,0.55), 0 0 0 3px var(--na-ink), 0 0 0 9px rgba(31,27,22,0.15); }
+.screen-portrait video { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#05030a; display:block; }
+.reel-meta { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:18px;
+  font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#5b3a1a; }
+.reel-meta b { color:var(--na-rec); }
+.note { background:var(--paper-2); border-bottom:1px solid var(--line); padding:52px 0; }
+.note-inner { max-width:680px; margin:0 auto; padding:0 28px; }
+.note-tag { display:inline-flex; align-items:center; gap:10px; padding:4px 10px 5px; border:1px solid var(--line-strong);
+  border-radius:999px; background:var(--paper); font-family:var(--font-sans); font-size:10px; font-weight:800;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--terra); margin-bottom:18px; }
+.note-tag::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--na-rec); }
+.note h2 { font-family:var(--na-display); font-size:clamp(1.5rem,3vw,2.1rem); color:var(--ink); margin-bottom:16px; line-height:1.06; }
+.note p { font-family:'DM Serif Display',serif; font-style:italic; font-size:1.14rem; line-height:1.6; color:var(--ink-2); margin-bottom:14px; }
+.note p:last-of-type { margin-bottom:0; }
+.note em { color:var(--terra-deep); }
+.note-sign { margin-top:22px; font-family:var(--font-hand); color:var(--terra); font-size:22px; transform:rotate(-1deg); display:inline-block; }
+.back-strip { background:var(--paper-2); border-top:1px solid var(--line); padding:38px 0 26px; text-align:center; }
+.back-strip .line { font-family:'DM Serif Display',serif; font-style:italic; font-size:1.04rem; color:var(--ink-muted); margin-bottom:14px; }
+.back-strip a { font-family:var(--font-sans); font-weight:700; font-size:14px; letter-spacing:0.04em; color:var(--terra); text-decoration:none; border-bottom:2px solid var(--terra); padding-bottom:2px; }
+.back-strip a:hover { color:var(--terra-deep); border-color:var(--terra-deep); }
+.signoff { max-width:1100px; margin:24px auto 0; padding:36px 28px 32px; border-top:1px solid var(--line); font-family:var(--font-sans);
+  font-size:13px; color:var(--ink-muted); display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px; align-items:center; }
+.signoff a { color:var(--ink-muted); text-decoration:none; }
+.signoff a:hover { color:var(--terra); text-decoration:underline; }
+.signoff .hand { font-family:var(--font-hand); font-size:20px; color:var(--ink); transform:rotate(-1deg); display:inline-block; }
+.signoff .nav-row { display:flex; gap:14px; flex-wrap:wrap; }
+.signoff-copy { max-width:1100px; margin:0 auto; padding:0 28px 32px; font-family:var(--font-sans); font-size:11px; color:var(--ink-faint); letter-spacing:0.06em; }
+</style>
+</head>
+<body>
+
+<div class="umbrella-strip">
+  <span>Pipchi · the house</span>
+  <span class="right">A Pipchi production</span>
+</div>
+
+<header class="masthead">
+  <a href="/" class="crumb" aria-label="Back to Pipchi">
+    <img src="/images/pipchi-design/logo-circle.png" alt="Pipchi"/>
+    <span class="crumb-text">Pipchi</span>
+    <span class="crumb-sep">·</span>
+    <a href="/no-agenda" class="crumb-room" style="text-decoration:none;">No Agenda</a>
+    <span class="crumb-sep">·</span>
+    <span class="crumb-ep">Episode 3</span>
+  </a>
+  <nav aria-label="primary">
+    <a href="/no-agenda">All episodes</a>
+    <a href="/">The house</a>
+  </nav>
+</header>
+
+<section class="screening" aria-label="M@ vs. The AI Song Challenge">
+  <div class="screening-inner">
+    <span class="on-air"><span class="dot"></span> Now rolling · Ep 3</span>
+    <h1>M@ vs.<br/>The AI Song Challenge</h1>
+    <p class="who">Featuring M@</p>
+
+    <div class="screen-portrait">
+      <!-- Plays from R2 once uploaded: music.pipchi.com/NoAgenda/matt-vs-the-ai-song-challenge.mp4 -->
+      <video controls preload="none" playsinline poster="/images/no-agenda/matt-vs-the-ai-song-challenge.jpg">
+        <source src="https://music.pipchi.com/NoAgenda/matt-vs-the-ai-song-challenge.mp4" type="video/mp4">
+        Your browser can't play this video. <a href="https://music.pipchi.com/NoAgenda/matt-vs-the-ai-song-challenge.mp4">Open it directly.</a>
+      </video>
+    </div>
+
+    <div class="reel-meta">
+      <span>Format · <b>9:16</b></span>
+      <span>Series · <b>No Agenda</b></span>
+      <span>Episode · <b>3</b></span>
+    </div>
+  </div>
+</section>
+
+<section class="note" aria-label="From the control room">
+  <div class="note-inner">
+    <span class="note-tag">From the control room</span>
+    <h2>The founder takes on his own machines.</h2>
+    <p>M@ runs a house full of AI tools, so the bench dares him to win a song challenge against one. Pride is on the line. So is the whole thesis of Pipchi. Chad cheers for the machine just to watch M@ squirm, and LLM Larry offers to judge — which helps no one.</p>
+    <p>Vertical, quick, and unedited in the ways that matter. <em>No script. No agenda.</em></p>
+    <!-- Matt: replace this note with the real story behind Episode 3 whenever you like. -->
+    <div class="note-sign">— rolled tape, the control room</div>
+  </div>
+</section>
+
+<div class="back-strip">
+  <div class="line">More on the bench. New episodes when the room gets loud.</div>
+  <a href="/no-agenda">← Back to all episodes</a>
+</div>
+
+<footer class="signoff">
+  <div><div class="hand">— with care, Matt</div></div>
+  <div class="nav-row">
+    <a href="/">Pipchi</a>
+    <a href="/no-agenda">No Agenda</a>
+    <a href="/save-my-shorts">Save My Shorts</a>
+    <a href="/found-universes">Found Universes</a>
+    <a href="/3580">3580</a>
+  </div>
+</footer>
+<div class="signoff-copy">© Pipchi Productions · No Agenda — "M@ vs. The AI Song Challenge."</div>
+
+<script>document.documentElement.style.scrollBehavior = 'smooth';</script>
+
+</body>
+</html>
