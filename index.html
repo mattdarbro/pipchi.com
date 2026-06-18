@@ -889,6 +889,44 @@ p { margin: 0; }
 .poster.noagenda .name { color: #fffaf2; }
 .poster.noagenda .tag  { color: rgba(255,250,242,0.78); }
 
+/* GEORGE WASHINGTON'S FATHER — a novel, parchment + colonial sepia */
+.poster.gwf {
+  background:
+    radial-gradient(rgba(80,50,20,0.10) 1px, transparent 1.2px) 0 0/5px 5px,
+    linear-gradient(180deg, #efe2c4 0%, #d9c397 100%);
+  --world-display: 'DM Serif Display', serif;
+  --world-tracking: -0.01em;
+}
+.poster.gwf .art {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+}
+.poster.gwf .art .crest {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: clamp(2.8rem, 5vw, 3.6rem);
+  line-height: 0.95;
+  color: #5b3a1a;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.45);
+  letter-spacing: 0.04em;
+}
+.poster.gwf .art .rule {
+  width: 64px; height: 2px;
+  background: #7a5630;
+  opacity: 0.6;
+}
+.poster.gwf .art .sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: #7a5630;
+}
+.poster.gwf .strip { background: linear-gradient(180deg, rgba(217,195,151,0) 0%, #d9c397 40%, #c9b07e 100%); }
+.poster.gwf .name { color: #3a2410; font-style: italic; }
+.poster.gwf .tag  { color: #5b3a1a; }
+
 /* mini-poster overrides for the feature row */
 .mini.poster .name { font-size: 1.05rem; }
 .mini.poster .tag  { font-size: 11px; }
@@ -1278,6 +1316,21 @@ p { margin: 0; }
       </div>
     </a>
 
+    <!-- George Washington's Father -->
+    <a class="poster gwf" href="/george-washingtons-father" aria-label="George Washington's Father — a novel in progress">
+      <span class="bug">Pipchi</span>
+      <span class="status draft">Novel</span>
+      <div class="art">
+        <div class="crest">George<br/>Washington's<br/>Father</div>
+        <div class="rule"></div>
+        <div class="sub">A novel in progress</div>
+      </div>
+      <div class="strip">
+        <div class="name">George Washington's Father</div>
+        <div class="tag">A novel being written. The room is set; the pages are coming.</div>
+      </div>
+    </a>
+
     <!-- Eraser Adventures -->
     <a class="poster eraser" href="#" aria-label="Eraser Adventures — home of Goomka">
       <span class="bug">Pipchi</span>
@@ -1337,9 +1390,9 @@ p { margin: 0; }
     </a>
 
     <!-- Found Universes -->
-    <a class="poster found" href="#" aria-label="Found Universes — Dr. Wally Boffin's anthology">
+    <a class="poster found" href="/found-universes" aria-label="Found Universes — Dr. Wally Boffin's anthology">
       <span class="bug">Pipchi</span>
-      <span class="status draft">Anthology</span>
+      <span class="status built">Built</span>
       <div class="art">
         <div class="host-band">Another universe found by</div>
         <div class="univ univ-3"><span class="univ-label">Vol. III · Victorian Lofi</span></div>
