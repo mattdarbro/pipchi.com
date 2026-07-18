@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Fixion — a story, and the talk around it · Pipchi</title>
-<meta name="description" content="Fixion — a podcast. Matt picks one short story, turns it over for a while, then reads it to you. The listening room at Pipchi."/>
-<meta property="og:title" content="Fixion — a Pipchi podcast"/>
+<title>Thirty Minutes Away — a story, and the talk around it · Pipchi</title>
+<meta name="description" content="Thirty Minutes Away — a podcast. One short story, read out loud, and the talk that goes around it. The listening room at Pipchi."/>
+<meta property="og:title" content="Thirty Minutes Away — a Pipchi podcast"/>
 <meta property="og:description" content="One story. Some talk about why it works. Then the story itself, read aloud."/>
 <meta property="og:image" content="/images/pipchi-design/logo-circle.png"/>
 <link rel="icon" type="image/png" href="/images/pipchi-design/logo-circle.png"/>
-<link rel="alternate" type="application/rss+xml" title="Fixion" href="https://podcasts.pipchi.com/fixion/feed.xml"/>
+<link rel="alternate" type="application/rss+xml" title="Thirty Minutes Away" href="https://podcasts.pipchi.com/thirty-minutes-away/feed.xml"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@400;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
@@ -19,14 +19,14 @@
   --paper:#fffaf2; --paper-2:#faf1e0; --ink:#1f1b16; --ink-2:#2d251f; --ink-muted:#6f6254; --ink-faint:#b3a48d;
   --line:#eadfce; --line-strong:#d9cbb8; --terra:#b45b2c; --terra-deep:#8e4520;
 
-  /* Fixion sovereign — a lamp on in a dark room, late */
-  --fx-night:    #16182b;
-  --fx-night-2:  #232743;
-  --fx-lamp:     #e8b04b;
-  --fx-lamp-2:   #ffd88a;
-  --fx-cream:    #fdf6e7;
-  --fx-dust:     #8d8aa6;
-  --fx-display:  'DM Serif Display', ui-serif, Georgia, serif;
+  /* Thirty Minutes Away sovereign — a lamp on in a dark room, late */
+  --tma-night:    #16182b;
+  --tma-night-2:  #232743;
+  --tma-lamp:     #e8b04b;
+  --tma-lamp-2:   #ffd88a;
+  --tma-cream:    #fdf6e7;
+  --tma-dust:     #8d8aa6;
+  --tma-display:  'DM Serif Display', ui-serif, Georgia, serif;
 
   --font-serif:"Lora",ui-serif,Georgia,serif; --font-sans:"DM Sans",ui-sans-serif,system-ui,sans-serif;
   --font-mono:"JetBrains Mono",ui-monospace,Menlo,monospace; --font-hand:"Caveat","Segoe Script",cursive;
@@ -52,18 +52,18 @@ p { margin:0; }
 .masthead .crumb:hover img { transform:rotate(-4deg) scale(1.04); }
 .masthead .crumb-text { font-family:var(--font-serif); font-size:17px; font-weight:700; letter-spacing:-0.02em; color:var(--ink); }
 .masthead .crumb-sep { color:var(--ink-faint); padding:0 4px; }
-.masthead .crumb-room { font-family:var(--fx-display); font-style:italic; font-size:18px; letter-spacing:0.01em; color:var(--terra); }
+.masthead .crumb-room { font-family:var(--tma-display); font-style:italic; font-size:18px; letter-spacing:0.01em; color:var(--terra); }
 .masthead nav { display:flex; gap:18px; }
 .masthead nav a { font-size:13px; font-weight:600; color:var(--ink); text-decoration:none; }
 .masthead nav a:hover { color:var(--terra); }
 @media (max-width:640px){ .masthead nav { display:none; } }
 
 /* THE ROOM — night, with one warm light */
-.room { position:relative; color:var(--fx-cream);
+.room { position:relative; color:var(--tma-cream);
   background:
     radial-gradient(ellipse 60% 50% at 50% 8%, rgba(232,176,75,0.22) 0%, rgba(232,176,75,0) 70%),
-    linear-gradient(170deg, var(--fx-night-2) 0%, var(--fx-night) 62%);
-  padding:56px 0 64px; overflow:hidden; isolation:isolate; border-bottom:3px solid var(--fx-night); }
+    linear-gradient(170deg, var(--tma-night-2) 0%, var(--tma-night) 62%);
+  padding:56px 0 64px; overflow:hidden; isolation:isolate; border-bottom:3px solid var(--tma-night); }
 /* faint dust in the lamplight */
 .room::after { content:""; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:0.5;
   background-image:
@@ -77,27 +77,29 @@ p { margin:0; }
 .now-playing {
   display:inline-flex; align-items:center; gap:9px;
   font-family:var(--font-mono); font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase;
-  color:var(--fx-night); background:var(--fx-lamp); padding:5px 13px; border-radius:5px; margin-bottom:20px;
+  color:var(--tma-night); background:var(--tma-lamp); padding:5px 13px; border-radius:5px; margin-bottom:20px;
 }
 /* three little bars, like a level meter */
 .now-playing .bars { display:inline-flex; align-items:flex-end; gap:2px; height:11px; }
-.now-playing .bars i { width:2.5px; background:var(--fx-night); border-radius:1px; animation:vu 1.1s ease-in-out infinite; }
+.now-playing .bars i { width:2.5px; background:var(--tma-night); border-radius:1px; animation:vu 1.1s ease-in-out infinite; }
 .now-playing .bars i:nth-child(1){ height:5px;  animation-delay:0s; }
 .now-playing .bars i:nth-child(2){ height:11px; animation-delay:.18s; }
 .now-playing .bars i:nth-child(3){ height:7px;  animation-delay:.36s; }
 @keyframes vu { 0%,100% { transform:scaleY(0.45); } 50% { transform:scaleY(1); } }
 @media (prefers-reduced-motion:reduce){ .now-playing .bars i { animation:none; } }
 
+/* Three words over two lines, not one short word — so this runs smaller and
+   tighter than a single-word room title would. */
 .room-head h1 {
-  font-family:var(--fx-display); font-size:clamp(3.2rem,9.5vw,6.4rem); line-height:0.94; color:var(--fx-cream);
-  letter-spacing:-0.01em; text-shadow:0 2px 30px rgba(232,176,75,0.35);
+  font-family:var(--tma-display); font-size:clamp(2.5rem,7vw,4.8rem); line-height:0.98; color:var(--tma-cream);
+  letter-spacing:-0.015em; text-shadow:0 2px 30px rgba(232,176,75,0.35);
 }
 .room-head .tagline {
-  font-family:var(--fx-display); font-style:italic; font-size:clamp(1.15rem,1.8vw,1.45rem);
-  color:var(--fx-lamp-2); margin-top:20px; line-height:1.45;
+  font-family:var(--tma-display); font-style:italic; font-size:clamp(1.15rem,1.8vw,1.45rem);
+  color:var(--tma-lamp-2); margin-top:20px; line-height:1.45;
 }
 .room-head .sub {
-  font-family:var(--font-sans); font-size:14.5px; color:var(--fx-dust); margin-top:16px; line-height:1.6;
+  font-family:var(--font-sans); font-size:14.5px; color:var(--tma-dust); margin-top:16px; line-height:1.6;
 }
 
 /* the running order of a single episode */
@@ -105,7 +107,7 @@ p { margin:0; }
 .order-step { display:flex; align-items:center; gap:12px; }
 .order-step .bead {
   font-family:var(--font-mono); font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
-  color:var(--fx-cream); border:1px solid rgba(253,246,231,0.28); border-radius:999px; padding:7px 15px;
+  color:var(--tma-cream); border:1px solid rgba(253,246,231,0.28); border-radius:999px; padding:7px 15px;
   background:rgba(253,246,231,0.05);
 }
 .order-step .thread { width:26px; height:1px; background:rgba(253,246,231,0.25); }
@@ -116,7 +118,7 @@ p { margin:0; }
 .sub-card { border:1px solid var(--line-strong); border-radius:16px; background:var(--paper-2);
   padding:30px 30px 28px; display:flex; flex-wrap:wrap; gap:26px; align-items:center; justify-content:space-between; }
 .sub-copy { flex:1 1 320px; }
-.sub-copy h2 { font-family:var(--fx-display); font-size:clamp(1.4rem,2.6vw,1.9rem); color:var(--ink); margin-bottom:8px; }
+.sub-copy h2 { font-family:var(--tma-display); font-size:clamp(1.4rem,2.6vw,1.9rem); color:var(--ink); margin-bottom:8px; }
 .sub-copy p { font-family:var(--font-sans); font-size:14px; color:var(--ink-muted); line-height:1.6; }
 .sub-actions { display:flex; flex-wrap:wrap; gap:10px; }
 .chip {
@@ -124,9 +126,9 @@ p { margin:0; }
   padding:10px 16px; border-radius:999px; text-decoration:none; border:1.5px solid var(--ink); color:var(--ink);
   background:var(--paper); transition:transform 200ms var(--ease-soft), background 200ms;
 }
-.chip:hover { transform:translateY(-2px); background:var(--fx-lamp-2); text-decoration:none; color:var(--ink); }
-.chip.rss { background:var(--fx-night); border-color:var(--fx-night); color:var(--fx-cream); }
-.chip.rss:hover { background:var(--fx-night-2); color:var(--fx-cream); }
+.chip:hover { transform:translateY(-2px); background:var(--tma-lamp-2); text-decoration:none; color:var(--ink); }
+.chip.rss { background:var(--tma-night); border-color:var(--tma-night); color:var(--tma-cream); }
+.chip.rss:hover { background:var(--tma-night-2); color:var(--tma-cream); }
 .chip.pending { border-color:var(--line-strong); color:var(--ink-faint); cursor:default; background:transparent; }
 .chip.pending:hover { transform:none; background:transparent; }
 .feed-hint { font-family:var(--font-mono); font-size:11px; color:var(--ink-faint); margin-top:14px; word-break:break-all; }
@@ -135,7 +137,7 @@ p { margin:0; }
 .lineup { max-width:1040px; margin:0 auto; padding:52px 28px 8px; }
 .lineup-head { display:flex; align-items:baseline; gap:16px; border-bottom:2px solid var(--ink); padding-bottom:12px; margin-bottom:26px; }
 .lineup-head .eyebrow { font-family:var(--font-sans); font-size:11px; font-weight:800; letter-spacing:0.24em; text-transform:uppercase; color:var(--terra); }
-.lineup-head h2 { font-family:var(--fx-display); font-size:clamp(1.5rem,3vw,2.1rem); color:var(--ink); flex:1; }
+.lineup-head h2 { font-family:var(--tma-display); font-size:clamp(1.5rem,3vw,2.1rem); color:var(--ink); flex:1; }
 .lineup-head .count { font-family:var(--font-mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-muted); }
 /* Three columns of small caps crush each other on a phone; stack them instead. */
 @media (max-width:560px){
@@ -152,17 +154,17 @@ p { margin:0; }
 .pending-card p { font-family:var(--font-sans); font-size:14.5px; color:var(--ink-muted); margin-top:12px; line-height:1.65; max-width:520px; margin-left:auto; margin-right:auto; }
 
 /* THE NOTE */
-.fx-note { background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:54px 0; margin-top:48px; }
-.fx-note-inner { max-width:720px; margin:0 auto; padding:0 28px; }
-.fx-tag { display:inline-flex; align-items:center; gap:10px; padding:4px 10px 5px; border:1px solid var(--line-strong);
+.tma-note { background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:54px 0; margin-top:48px; }
+.tma-note-inner { max-width:720px; margin:0 auto; padding:0 28px; }
+.tma-tag { display:inline-flex; align-items:center; gap:10px; padding:4px 10px 5px; border:1px solid var(--line-strong);
   border-radius:999px; background:var(--paper); font-family:var(--font-sans); font-size:10px; font-weight:800;
   letter-spacing:0.2em; text-transform:uppercase; color:var(--terra); margin-bottom:18px; }
-.fx-tag::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--fx-lamp); }
-.fx-note h2 { font-family:var(--fx-display); font-size:clamp(1.6rem,3vw,2.2rem); color:var(--ink); margin-bottom:18px; line-height:1.06; }
-.fx-note p { font-family:'DM Serif Display',serif; font-style:italic; font-size:1.16rem; line-height:1.62; color:var(--ink-2); margin-bottom:16px; }
-.fx-note p:last-of-type { margin-bottom:0; }
-.fx-note em { color:var(--terra-deep); }
-.fx-sign { margin-top:22px; font-family:var(--font-hand); color:var(--terra); font-size:22px; transform:rotate(-1deg); display:inline-block; }
+.tma-tag::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--tma-lamp); }
+.tma-note h2 { font-family:var(--tma-display); font-size:clamp(1.6rem,3vw,2.2rem); color:var(--ink); margin-bottom:18px; line-height:1.06; }
+.tma-note p { font-family:'DM Serif Display',serif; font-style:italic; font-size:1.16rem; line-height:1.62; color:var(--ink-2); margin-bottom:16px; }
+.tma-note p:last-of-type { margin-bottom:0; }
+.tma-note em { color:var(--terra-deep); }
+.tma-sign { margin-top:22px; font-family:var(--font-hand); color:var(--terra); font-size:22px; transform:rotate(-1deg); display:inline-block; }
 
 /* SIGN-OFF */
 .signoff { max-width:1100px; margin:24px auto 0; padding:36px 28px 32px; border-top:1px solid var(--line); font-family:var(--font-sans);
@@ -186,7 +188,7 @@ p { margin:0; }
     <img src="/images/pipchi-design/logo-circle.png" alt="Pipchi"/>
     <span class="crumb-text">Pipchi</span>
     <span class="crumb-sep">·</span>
-    <span class="crumb-room">Fixion</span>
+    <span class="crumb-room">Thirty Minutes Away</span>
   </a>
   <nav aria-label="primary">
     <a href="#listen">Listen</a>
@@ -196,14 +198,14 @@ p { margin:0; }
 </header>
 
 <!-- THE LISTENING ROOM -->
-<section class="room" aria-label="Fixion">
+<section class="room" aria-label="Thirty Minutes Away">
   <div class="room-inner">
     <div class="room-head">
       <span class="now-playing">
         <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
         The listening room
       </span>
-      <h1>Fixion</h1>
+      <h1>Thirty&nbsp;Minutes<br/>Away</h1>
       <p class="tagline">One story. A while spent turning it over. Then the story itself, read out loud.</p>
       <p class="sub">Written On Me is the watching room. This is the listening one — short fiction, and the talk around it.</p>
 
@@ -222,10 +224,10 @@ p { margin:0; }
     <div class="sub-copy">
       <h2>Follow along</h2>
       <p>The feed is live and ready. Paste it into any podcast app — Apple Podcasts, Pocket Casts, Overcast, whatever you already use — and new episodes turn up on their own.</p>
-      <div class="feed-hint">podcasts.pipchi.com/fixion/feed.xml</div>
+      <div class="feed-hint">podcasts.pipchi.com/thirty-minutes-away/feed.xml</div>
     </div>
     <div class="sub-actions">
-      <a class="chip rss" href="https://podcasts.pipchi.com/fixion/feed.xml">RSS feed →</a>
+      <a class="chip rss" href="https://podcasts.pipchi.com/thirty-minutes-away/feed.xml">RSS feed →</a>
       <span class="chip pending" title="Not submitted to the directories yet">Apple &amp; Spotify — soon</span>
     </div>
   </div>
@@ -247,10 +249,10 @@ p { margin:0; }
 
 <!-- THE NOTE -->
 <section class="fx-note" aria-label="About the show">
-  <div class="fx-note-inner">
+  <div class="tma-note-inner">
     <span class="fx-tag">From the listening room</span>
     <h2>A story is better with someone in the room.</h2>
-    <p>Short fiction is a strange thing to hand somebody. It's over quickly, and the good ones leave a mark you can't quite point at. So Fixion does it the long way — pick one story, sit with it a while, say what's actually happening underneath it, and <em>then</em> read the thing start to finish.</p>
+    <p>Short fiction is a strange thing to hand somebody. It's over quickly, and the good ones leave a mark you can't quite point at. So this show does it the long way — pick one story, sit with it a while, say what's actually happening underneath it, and <em>then</em> read the thing start to finish.</p>
     <p>You can skip the talking. The story's always there at the end. But the talking is the point.</p>
     <!-- Matt: replace this note with the real story of the show whenever you like. -->
     <div class="fx-sign">— the lamp's on, come in</div>
@@ -268,7 +270,7 @@ p { margin:0; }
     <a href="/3580">3580</a>
   </div>
 </footer>
-<div class="signoff-copy">© Pipchi Productions · Fixion — one story, and the talk around it.</div>
+<div class="signoff-copy">© Pipchi Productions · Thirty Minutes Away — one story, and the talk around it.</div>
 
 <script>document.documentElement.style.scrollBehavior = 'smooth';</script>
 
