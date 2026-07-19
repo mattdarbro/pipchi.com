@@ -889,6 +889,27 @@ p { margin: 0; }
 .poster.noagenda .name { color: #fffaf2; }
 .poster.noagenda .tag  { color: rgba(255,250,242,0.78); }
 
+/* THIRTY MINUTES AWAY — the podcast. Unlike the other rooms this one has real
+   cover art already, so the poster shows the actual cover rather than bespoke
+   art: it is what people will recognize in a podcast app. */
+.poster.tma {
+  background: #16182b;
+  --world-display: 'DM Serif Display', serif;
+}
+.poster.tma .art { inset: 0 0 36% 0; }
+.poster.tma .art img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+.poster.tma .strip {
+  background: #16182b;
+  color: var(--paper);
+  border-top: 3px solid #0e1020;
+}
+.poster.tma .name { color: #fdf6e7; }
+.poster.tma .tag  { color: rgba(253,246,231,0.76); }
+
 /* GEORGE WASHINGTON'S FATHER — a novel, parchment + colonial sepia */
 .poster.gwf {
   background:
@@ -1440,6 +1461,19 @@ p { margin: 0; }
       <div class="strip">
         <div class="name">No Agenda</div>
         <div class="tag">Four people arguing about Pipchi. (LLM Larry too.)</div>
+      </div>
+    </a>
+
+    <!-- Thirty Minutes Away -->
+    <a class="poster tma" href="/thirty-minutes-away" aria-label="Thirty Minutes Away — a podcast: one short story, read out loud">
+      <span class="bug">Pipchi</span>
+      <span class="status built">Built</span>
+      <div class="art">
+        <img src="/images/thirty-minutes-away/cover.jpg" alt="Thirty Minutes Away — a road at dusk"/>
+      </div>
+      <div class="strip">
+        <div class="name">Thirty Minutes Away</div>
+        <div class="tag">A podcast. One short story, read out loud — and the talk around it.</div>
       </div>
     </a>
 
