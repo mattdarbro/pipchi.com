@@ -1007,7 +1007,7 @@ p { margin: 0; }
 }
 
 /* ============================================================
-   CAMPFIRE — dark ink panel, gold accent. No form, just an invite.
+   CAMPFIRE — dark ink panel, gold accent, working signup form.
    ============================================================ */
 .campfire-wrap {
   max-width: var(--page-max);
@@ -1048,26 +1048,55 @@ p { margin: 0; }
   color: #faf1e0;
   margin: 0 0 22px;
 }
-.campfire .invite {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 16px 20px;
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+.campfire-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 6px;
   border-radius: var(--r-md);
   background: rgba(224,167,46,0.10);
   border: 1px solid rgba(224,167,46,0.30);
 }
-.campfire .invite .top {
+.campfire-form input[type="email"] {
+  flex: 1 1 240px;
+  min-width: 0;
+  padding: 12px 14px;
+  border-radius: calc(var(--r-md) - 4px);
+  border: 1px solid rgba(255,250,242,0.25);
+  background: rgba(255,250,242,0.06);
+  color: #fffaf2;
+  font-family: var(--font-sans);
+  font-size: 15px;
+}
+.campfire-form input[type="email"]::placeholder { color: #b3a48d; }
+.campfire-form button {
+  padding: 12px 22px;
+  border-radius: calc(var(--r-md) - 4px);
+  border: none;
+  background: var(--gold);
+  color: var(--ink);
   font-family: var(--font-sans);
   font-weight: 700;
   font-size: 14.5px;
-  color: var(--gold);
-  letter-spacing: 0.02em;
+  cursor: pointer;
+  white-space: nowrap;
 }
-.campfire .invite .bottom {
-  font-family: var(--font-serif);
-  font-size: 15px;
+.campfire-form button:disabled { opacity: 0.6; cursor: default; }
+.campfire-note {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
   color: #faf1e0;
+  min-height: 1.2em;
+  margin: 10px 0 0;
 }
 .campfire .small-note {
   font-family: var(--font-sans);
@@ -1499,7 +1528,7 @@ p { margin: 0; }
 </section>
 
 <!-- ============================================================
-     CAMPFIRE — invite block, no form (lightest v0)
+     CAMPFIRE — signup form, backed by /api/subscribe + Resend audience
      ============================================================ -->
 <div class="campfire-wrap">
   <section id="campfire" class="campfire">
@@ -1509,10 +1538,15 @@ p { margin: 0; }
       <p class="lede">
         A bi-weekly letter from somewhere inside the worlds. Sometimes a zine to print and fold. Sometimes a found object. Sometimes the voicemail extension changes. Always worth opening.
       </p>
-      <div class="invite">
-        <div class="top">The kettle is on — the lantern isn't lit yet.</div>
-        <div class="bottom">The Campfire opens soon. When the first letter goes out, it'll go to a small list of people who asked to be there.</div>
-      </div>
+      <form class="campfire-form" id="campfireForm" method="post" action="/api/subscribe">
+        <label class="visually-hidden" for="campfire-email">Email address</label>
+        <input id="campfire-email" name="email" type="email" required
+               placeholder="you@example.com" autocomplete="email" inputmode="email">
+        <input class="visually-hidden" type="text" name="stagedoor" tabindex="-1"
+               autocomplete="off" aria-hidden="true">
+        <button type="submit">Pull up a chair</button>
+      </form>
+      <p class="campfire-note" id="campfireNote" role="status"></p>
       <div class="small-note">No tracking, no funnels, no upsells. The dispatch is bi-weekly when it begins.</div>
       <div class="hand-sig">— with care, Matt</div>
     </div>
@@ -1548,6 +1582,38 @@ p { margin: 0; }
   // Light interaction only — no client-side framework.
   // Smooth scroll is handled by the browser via CSS scroll-margin if needed.
   document.documentElement.style.scrollBehavior = 'smooth';
+</script>
+
+<script>
+  const campfireForm = document.getElementById("campfireForm");
+  const campfireNote = document.getElementById("campfireNote");
+  campfireForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const button = campfireForm.querySelector("button");
+    button.disabled = true;
+    campfireNote.textContent = "Pulling up a chair…";
+    try {
+      const resp = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: campfireForm.email.value.trim(),
+          stagedoor: campfireForm.stagedoor.value,
+        }),
+      });
+      const data = await resp.json().catch(() => ({}));
+      if (resp.ok) {
+        campfireNote.textContent = "You're on the list. We'll write when there's something worth saying.";
+        campfireForm.reset();
+      } else {
+        campfireNote.textContent = data.message || "That didn't go through — try again in a moment.";
+      }
+    } catch {
+      campfireNote.textContent = "That didn't go through — try again in a moment.";
+    } finally {
+      button.disabled = false;
+    }
+  });
 </script>
 
 </body>
