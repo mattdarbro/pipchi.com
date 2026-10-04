@@ -166,6 +166,28 @@ p { margin:0; }
 .tma-note em { color:var(--terra-deep); }
 .tma-sign { margin-top:22px; font-family:var(--font-hand); color:var(--terra); font-size:22px; transform:rotate(-1deg); display:inline-block; }
 
+/* EPISODES — rendered from the live feed, newest first */
+.episodes { display:flex; flex-direction:column; gap:18px; }
+.ep { border:1px solid var(--line-strong); border-radius:16px; background:var(--paper); padding:24px 26px; }
+.ep.latest { background:var(--tma-night); border-color:var(--tma-night); color:var(--tma-cream); }
+.ep-meta { display:flex; flex-wrap:wrap; gap:6px 14px; font-family:var(--font-mono); font-size:10.5px; font-weight:700;
+  letter-spacing:0.14em; text-transform:uppercase; color:var(--terra); margin-bottom:8px; }
+.ep.latest .ep-meta { color:var(--tma-lamp); }
+.ep-meta .dim { color:var(--ink-faint); }
+.ep.latest .ep-meta .dim { color:var(--tma-dust); }
+.ep h3 { font-family:var(--tma-display); font-weight:400; font-size:clamp(1.35rem,2.6vw,1.75rem); line-height:1.12; margin-bottom:12px; }
+.ep.latest h3 { color:var(--tma-cream); }
+.ep-desc p { font-family:var(--font-sans); font-size:14.5px; line-height:1.65; color:var(--ink-muted); margin-bottom:10px; }
+.ep.latest .ep-desc p { color:rgba(253,246,231,0.82); }
+.ep-desc p.credit { font-size:12.5px; color:var(--ink-faint); }
+.ep.latest .ep-desc p.credit { color:var(--tma-dust); }
+.ep audio { width:100%; margin-top:8px; }
+.ep:not(.latest) .ep-desc p:not(:first-child) { display:none; }
+.ep:not(.latest) .ep-desc.open p { display:block; }
+.ep-more { font-family:var(--font-sans); font-size:12.5px; font-weight:700; background:none; border:0; padding:0;
+  color:var(--terra); cursor:pointer; margin-bottom:6px; }
+.ep-more:hover { color:var(--terra-deep); text-decoration:underline; }
+
 /* SIGN-OFF */
 .signoff { max-width:1100px; margin:24px auto 0; padding:36px 28px 32px; border-top:1px solid var(--line); font-family:var(--font-sans);
   font-size:13px; color:var(--ink-muted); display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px; align-items:center; }
@@ -238,24 +260,29 @@ p { margin:0; }
   <div class="lineup-head">
     <span class="eyebrow">The lineup</span>
     <h2>Episodes</h2>
-    <span class="count">First one in the works</span>
+    <span class="count" id="ep-count">A new one every Saturday</span>
   </div>
 
-  <div class="pending-card">
-    <div class="mark">— cutting the first one now</div>
-    <p>Nothing to play yet. The room's set up, the feed's live, and the first episode is being put together. Follow the feed and it'll arrive on its own.</p>
+  <!-- Filled from the podcast feed on load, so a new episode shows up here the
+       moment webmaster publishes it — no site deploy. vercel.json proxies
+       /thirty-minutes-away/feed.xml to podcasts.pipchi.com (same origin, no CORS).
+       If the feed can't be read, the hidden card below is shown and points at the feed. -->
+  <div class="episodes" id="ep-list"></div>
+  <div class="pending-card" id="ep-fallback" hidden>
+    <div class="mark">— the episodes live in the feed</div>
+    <p>The episode list couldn't load just now. Every episode is in the <a href="https://podcasts.pipchi.com/thirty-minutes-away/feed.xml">RSS feed</a> — paste it into any podcast app.</p>
   </div>
 </div>
 
 <!-- THE NOTE -->
-<section class="fx-note" aria-label="About the show">
+<section class="tma-note" aria-label="About the show">
   <div class="tma-note-inner">
-    <span class="fx-tag">From the listening room</span>
+    <span class="tma-tag">From the listening room</span>
     <h2>A story is better with someone in the room.</h2>
     <p>Short fiction is a strange thing to hand somebody. It's over quickly, and the good ones leave a mark you can't quite point at. So this show does it the long way — pick one story, sit with it a while, say what's actually happening underneath it, and <em>then</em> read the thing start to finish.</p>
     <p>You can skip the talking. The story's always there at the end. But the talking is the point.</p>
     <!-- Matt: replace this note with the real story of the show whenever you like. -->
-    <div class="fx-sign">— the lamp's on, come in</div>
+    <div class="tma-sign">— the lamp's on, come in</div>
   </div>
 </section>
 
@@ -273,6 +300,72 @@ p { margin:0; }
 <div class="signoff-copy">© Pipchi Productions · Thirty Minutes Away — one story, and the talk around it.</div>
 
 <script>document.documentElement.style.scrollBehavior = 'smooth';</script>
+<script>
+(async function () {
+  const list = document.getElementById('ep-list');
+  const ITUNES = 'http://www.itunes.com/dtds/podcast-1.0.dtd';
+  const el = (tag, cls, text) => {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  };
+  const minutes = d => {
+    const p = (d || '').split(':').map(Number);
+    const s = p.reduce((a, x) => a * 60 + x, 0);
+    return s ? Math.round(s / 60) + ' min' : '';
+  };
+  try {
+    const res = await fetch('/thirty-minutes-away/feed.xml', { cache: 'no-cache' });
+    if (!res.ok) throw new Error(res.status);
+    const xml = new DOMParser().parseFromString(await res.text(), 'application/xml');
+    const items = [...xml.querySelectorAll('item')].map(it => ({
+      title: it.querySelector('title')?.textContent || '',
+      desc: it.querySelector('description')?.textContent || '',
+      audio: it.querySelector('enclosure')?.getAttribute('url'),
+      date: new Date(it.querySelector('pubDate')?.textContent),
+      num: it.getElementsByTagNameNS(ITUNES, 'episode')[0]?.textContent,
+      dur: it.getElementsByTagNameNS(ITUNES, 'duration')[0]?.textContent,
+    })).filter(e => e.title && e.audio).sort((a, b) => b.date - a.date);
+    if (!items.length) throw new Error('empty feed');
+
+    items.forEach((e, i) => {
+      const card = el('article', i === 0 ? 'ep latest' : 'ep');
+      const meta = el('div', 'ep-meta');
+      meta.append(el('span', null, i === 0 ? 'Latest' : (e.num ? 'Episode ' + e.num : 'Episode')));
+      if (i === 0 && e.num) meta.append(el('span', 'dim', 'Episode ' + e.num));
+      if (!isNaN(e.date)) meta.append(el('span', 'dim',
+        e.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })));
+      if (minutes(e.dur)) meta.append(el('span', 'dim', minutes(e.dur)));
+      card.append(meta, el('h3', null, e.title));
+
+      const desc = el('div', 'ep-desc');
+      const paras = e.desc.split(/\n\s*\n/).map(s => s.trim()).filter(Boolean);
+      paras.forEach((t, j) => desc.append(
+        el('p', j > 0 && j === paras.length - 1 && t.startsWith('A story by') ? 'credit' : null, t)));
+      card.append(desc);
+      if (i > 0 && paras.length > 1) {
+        const more = el('button', 'ep-more', 'More about this one');
+        more.type = 'button';
+        more.onclick = () => { desc.classList.add('open'); more.remove(); };
+        card.append(more);
+      }
+      const audio = el('audio');
+      audio.controls = true;
+      audio.preload = 'none';
+      audio.src = e.audio;
+      card.append(audio);
+      list.append(card);
+    });
+    document.getElementById('ep-count').textContent =
+      items.length + (items.length === 1 ? ' episode' : ' episodes');
+    document.getElementById('ep-fallback').remove();
+  } catch (err) {
+    console.warn('episode list unavailable:', err);
+    document.getElementById('ep-fallback').hidden = false;
+  }
+})();
+</script>
 
 </body>
 </html>
