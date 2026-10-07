@@ -1,0 +1,81 @@
+/* Mixtape Pachinko's room: the game's own Saul Bass palette (MP/Palette.swift). */
+:root {
+  --cream: #F5E3BD;
+  --orange: #DE7338;
+  --poster: #E0854A;
+  --gold: #FFC733;
+  --teal: #388585;
+  --rust: #8A3B24;
+  --black: #1A140F;
+  --surface: #241B14;
+  --muted: rgba(245, 227, 189, 0.72);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { overflow-x: hidden; }
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--black);
+  color: var(--cream);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--gold); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.1rem 1.25rem;
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+}
+nav a { color: var(--muted); }
+
+/* The title, cut from paper */
+.hero { position: relative; height: 340px; max-width: 900px; margin: 0 auto; overflow: hidden; }  /* the bars run past the edges on purpose; clip them here or they widen the page */
+.disc {
+  position: absolute; right: 6%; top: 18px; width: 240px; height: 240px; border-radius: 50%;
+  background: conic-gradient(from 20deg, transparent 0 40deg, var(--orange) 40deg 360deg);
+}
+.disc::after {
+  content: ""; position: absolute; inset: 104px; border-radius: 50%; background: var(--black);
+}
+.bar { position: absolute; left: -5%; width: 110%; transform-origin: center; }
+.bar.teal { top: 40px; height: 22px; background: var(--teal); transform: rotate(-4deg);
+  clip-path: polygon(0 8%, 22% 0, 48% 12%, 73% 2%, 100% 10%, 100% 92%, 76% 100%, 51% 88%, 24% 98%, 0 90%); }
+.bar.rust { top: 270px; height: 30px; background: var(--rust); transform: rotate(-2.5deg);
+  clip-path: polygon(0 6%, 30% 0, 62% 10%, 100% 3%, 100% 95%, 66% 100%, 33% 90%, 0 98%); }
+.title {
+  position: absolute; left: 1.25rem; top: 92px; transform: rotate(-4deg); transform-origin: left;
+  font-family: 'Oswald', sans-serif; font-weight: 700; text-transform: uppercase; line-height: 0.92;
+}
+.title .a { font-size: clamp(2.6rem, 9vw, 4.2rem); color: var(--cream); display: block; }
+.title .b { font-size: clamp(3rem, 11vw, 5rem); color: var(--gold); display: block; }
+.title .label { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; letter-spacing: 0.14em; color: var(--muted); display: block; margin-bottom: 0.4rem; }
+
+.content { max-width: 720px; margin: 0 auto; padding: 1rem 1.25rem 5rem; }
+h1 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 2.2rem; text-transform: uppercase; color: var(--cream); margin: 1rem 0 0.25rem; }
+.lede { color: var(--muted); margin-bottom: 2.5rem; }
+h2 {
+  font-family: 'Oswald', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 1.35rem; color: var(--orange);
+  display: flex; align-items: center; gap: 0.75rem; margin: 2.5rem 0 1rem;
+}
+h2::after { content: ""; flex: 1; height: 3px; background: var(--orange); opacity: 0.6; }
+p { color: var(--muted); margin-bottom: 1rem; }
+.controls { list-style: none; display: grid; gap: 0.6rem; }
+.controls li { background: var(--surface); border-left: 4px solid var(--teal); padding: 0.8rem 1rem; }
+.controls b { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.06em; color: var(--gold); display: block; }
+.faq { background: var(--surface); padding: 1.1rem 1.25rem; margin-bottom: 0.8rem; border-left: 4px solid var(--rust); }
+.faq h3 { font-family: 'Jost', sans-serif; font-weight: 600; font-size: 1.02rem; color: var(--cream); margin-bottom: 0.3rem; }
+.faq p { margin: 0; font-size: 0.95rem; }
+.mono { font-family: 'IBM Plex Mono', monospace; font-size: 0.88em; color: var(--cream); }
+.contact { background: var(--orange); color: var(--black); padding: 1.5rem 1.4rem; margin-top: 2.5rem; transform: rotate(-1deg); }
+.contact h2 { color: var(--black); margin-top: 0; }
+.contact h2::after { background: var(--black); }
+.contact p { color: var(--black); }
+.contact a { color: var(--black); font-weight: 600; border-bottom: 2px solid var(--black); }
+footer { text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; color: var(--muted); padding: 2rem 1rem 3rem; text-transform: uppercase; }
+@media (max-width: 560px) {
+  .hero { height: 300px; }
+  .disc { width: 180px; height: 180px; right: -20px; }
+  .disc::after { inset: 78px; }
+  .bar.rust { top: 236px; }
+}
