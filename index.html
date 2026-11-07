@@ -4,9 +4,9 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Pipchi — strange and beautiful worlds</title>
-<meta name="description" content="Pipchi is a small, real place you can enter, recognize, and choose to come back to. A house with rooms — 3580, Written On Me, Prompt Script, Blame It On The Ink, Eraser Adventures, Local Poet, The Narrows — and a campfire out back.">
+<meta name="description" content="Pipchi is a small, real place you can enter, recognize, and choose to come back to. Books first: Admit It (Blame It On The Ink) and the Mr. Chester Mysteries. Around them, short films on Pipchi Stories, radio dramas, and a record shop of Matt's music.">
 <meta property="og:title" content="Pipchi — strange and beautiful worlds"/>
-<meta property="og:description" content="A house with rooms. A campfire out back. Take really good care of these people, whoever they are."/>
+<meta property="og:description" content="A house with rooms. Books by the door. Take really good care of these people, whoever they are."/>
 <meta property="og:image" content="/images/pipchi-design/banner-skyline-clean.png"/>
 <link rel="icon" type="image/png" href="/images/pipchi-design/logo-circle.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -1188,6 +1188,62 @@ p { margin: 0; }
 @media (max-width: 520px) {
   .signoff-meta { align-items: flex-start; }
 }
+
+/* ============================================================
+   BOOKS / WATCH / APPS (Nov 2026 refresh)
+   ============================================================ */
+.books-row { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.buy-row { display:flex; flex-wrap:wrap; gap:14px 18px; }
+.feature a.visit.quiet { border-bottom-color: var(--line-strong); color: var(--ink-muted); }
+
+.feature .book-cover {
+  display: block;
+  aspect-ratio: 5/8;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform 220ms var(--ease-pop), box-shadow 220ms;
+}
+.feature .book-cover:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.feature .book-cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.watch-row {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.watch-card {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 20px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.94);
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+  color: var(--ink);
+  border-top: 5px solid var(--terra);
+  transition: transform 220ms var(--ease-pop), box-shadow 220ms;
+}
+.watch-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.watch-card.chester { border-top-color: var(--teal); }
+.watch-card.tma     { border-top-color: var(--gold); }
+.watch-card.music   { border-top-color: var(--positive); }
+.watch-card h3 { font-family: var(--font-serif); font-weight: 700; font-size: 20px; letter-spacing: -0.03em; margin: 0; }
+.watch-card p  { font-family: var(--font-serif); font-size: 14.5px; line-height: 1.5; color: var(--ink-2, #372d23); margin: 0 0 6px; flex: 1; }
+.watch-eyebrow { font-family: var(--font-sans); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; color: var(--terra); }
+.watch-card .visit { font-family: var(--font-sans); font-weight: 700; font-size: 13px; border-bottom: 2px solid var(--terra); align-self: flex-start; padding-bottom: 2px; }
+
+.apps-section { padding-top: 32px; }
+.apps-strip {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px;
+  padding: 18px 22px;
+  border: 1px dashed var(--line-strong);
+  border-radius: 14px;
+}
+.apps-strip .eyebrow { color: var(--ink-muted); }
+.apps-strip p { font-family: var(--font-serif); font-size: 15px; color: var(--ink-muted); margin: 6px 0 0; }
+.apps-strip p a { color: var(--ink); }
+.apps-strip .visit { font-family: var(--font-sans); font-weight: 700; font-size: 13px; color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--line-strong); padding-bottom: 2px; }
 </style>
 </head>
 <body>
@@ -1212,9 +1268,9 @@ p { margin: 0; }
     </span>
   </a>
   <nav class="masthead-nav" aria-label="primary">
+    <a href="#books" class="accent">Books</a>
+    <a href="#watch">Watch &amp; listen</a>
     <a href="#rooms">Rooms</a>
-    <a href="#wall">The Wall</a>
-    <a href="#campfire" class="accent">Campfire</a>
   </nav>
 </header>
 
@@ -1228,11 +1284,11 @@ p { margin: 0; }
       <div class="hero-eyebrow">Pipchi Productions</div>
       <h1 class="hero-title">Strange and<br/>beautiful worlds.</h1>
       <p class="hero-lede">
-        Pipchi is a small, real place you can enter, recognize, and choose to come back to. There are a few rooms so far. The kettle is on.
+        Pipchi is a small, real place you can enter, recognize, and choose to come back to. The books are the front door. The films and the radio dramas are the rooms around them. The kettle is on.
       </p>
       <div class="hero-cta">
-        <a href="#rooms" class="btn terra">Step inside →</a>
-        <a href="#campfire" class="btn ghost-light">Sit at the Campfire</a>
+        <a href="#books" class="btn terra">Read the books →</a>
+        <a href="#watch" class="btn ghost-light">Watch &amp; listen</a>
       </div>
     </div>
   </section>
@@ -1245,7 +1301,7 @@ p { margin: 0; }
   <div class="thesis">
     <div class="eyebrow">What this is</div>
     <p>
-      <strong>Pipchi is a place, not a brand to follow.</strong> I make worlds — some have apps, some have characters, some are just rooms you can sit in. Some are made to be folded, mailed, taped to a wall. The work shows up here, one room at a time.
+      <strong>Pipchi is a place, not a brand to follow.</strong> I make worlds. Most of them start as a book, then spill out into short films, radio dramas and songs. The work shows up here, one room at a time.
     </p>
     <p>
       The thing underneath all of it is simple: <em>take really good care of these people, whoever they are.</em>
@@ -1255,59 +1311,133 @@ p { margin: 0; }
 </div>
 
 <!-- ============================================================
+     BOOKS — the front door
+     ============================================================ -->
+<section id="books" class="section">
+  <div class="section-head">
+    <div class="eyebrow">The books</div>
+    <h2>Start with a book.</h2>
+    <p>Every world here has a book at its heart. These are on the shelf now.</p>
+  </div>
+
+  <div class="feature-row books-row">
+    <div class="feature">
+      <a class="book-cover" aria-hidden="true" tabindex="-1" href="https://www.amazon.com/dp/B0HDWQ7JL1">
+        <img src="/images/books/admit-it.jpg" alt="" width="500" height="800" loading="lazy"/>
+      </a>
+      <div>
+        <div class="feature-eyebrow">Blame It On The Ink · novel</div>
+        <h3>Admit It: The Strange Tale of Depsey the Rabbit</h3>
+        <p>A cartoon world with a rift in it, and a rabbit who has a lot to answer for. With Margaux, Gus, Stork, and Chuck.</p>
+        <div class="buy-row">
+          <a class="visit" href="https://www.amazon.com/dp/B0HDWQ7JL1">Kindle →</a>
+          <a class="visit" href="https://www.amazon.com/dp/B0HF822DQ3">Paperback →</a>
+          <a class="visit quiet" href="https://blameitontheink.com">The world →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <a class="book-cover" aria-hidden="true" tabindex="-1" href="https://www.amazon.com/dp/B0HMSDWM18">
+        <img src="/images/books/table-seven.jpg" alt="" width="500" height="800" loading="lazy"/>
+      </a>
+      <div>
+        <div class="feature-eyebrow">The Mr. Chester Mysteries · book one</div>
+        <h3>Table Seven</h3>
+        <p>Mr. Chester counts the things nobody else bothers to count. His first case starts at the Golden Lotus, 1313 Race Street, Cincinnati.</p>
+        <div class="buy-row">
+          <a class="visit" href="https://www.amazon.com/dp/B0HMSDWM18">On Amazon →</a>
+          <a class="visit quiet" href="#watch">Hear the radio dramas →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <a class="book-cover" aria-hidden="true" tabindex="-1" href="https://www.amazon.com/dp/B0HMSDWM18">
+        <img src="/images/books/solve-for-x.jpg" alt="" width="500" height="800" loading="lazy"/>
+      </a>
+      <div>
+        <div class="feature-eyebrow">The Mr. Chester Mysteries · book two</div>
+        <h3>Solve For X</h3>
+        <p>Mr. Chester's second case, and another night at the Golden Lotus.</p>
+        <div class="buy-row">
+          <a class="visit" href="https://www.amazon.com/dp/B0HMSDWM18">On Amazon →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <a class="poster gwf mini" aria-hidden="true" tabindex="-1" href="/george-washingtons-father">
+        <span class="bug">Pipchi</span>
+        <span class="status draft">In rewrite</span>
+        <div class="art">
+          <div class="crest">George<br/>Washington's<br/>Father</div>
+          <div class="rule"></div>
+          <div class="sub">A novel in progress</div>
+        </div>
+        <div class="strip">
+          <div class="name">Father</div>
+          <div class="tag">On the desk.</div>
+        </div>
+      </a>
+      <div>
+        <div class="feature-eyebrow">On the desk · in rewrite</div>
+        <h3>George Washington's Father</h3>
+        <p>The next novel, still being written. The room is set.</p>
+        <div class="buy-row">
+          <a class="visit" href="/george-washingtons-father">Step inside →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WATCH & LISTEN — what points back to the books
+     ============================================================ -->
+<section id="watch" class="section">
+  <div class="section-head">
+    <div class="eyebrow">Watch &amp; listen</div>
+    <h2>The worlds, out loud.</h2>
+    <p>Short films, radio dramas, and stories read aloud. New ones most weeks.</p>
+  </div>
+
+  <div class="watch-row">
+    <a class="watch-card stories" href="https://www.youtube.com/@pipchistories">
+      <div class="watch-eyebrow">YouTube · Pipchi Stories</div>
+      <h3>Pipchi Stories</h3>
+      <p>Short films and a few long ones. Newest: The Muster Bell, and a sci-fi Western about a sin-eater.</p>
+      <span class="visit">Watch on YouTube →</span>
+    </a>
+    <a class="watch-card chester" href="https://podcasts.pipchi.com/mr-chester/feed.xml">
+      <div class="watch-eyebrow">Podcast · audio drama</div>
+      <h3>The Mr. Chester Mysteries</h3>
+      <p>Mr. Chester's cases as radio dramas, a new episode most Wednesdays.</p>
+      <span class="visit">Podcast feed (RSS) →</span>
+    </a>
+    <a class="watch-card tma" href="/thirty-minutes-away">
+      <div class="watch-eyebrow">Podcast · Saturdays</div>
+      <h3>Thirty Minutes Away</h3>
+      <p>One short story, out loud, and the talk around it.</p>
+      <span class="visit">Listen →</span>
+    </a>
+    <a class="watch-card music" href="https://www.youtube.com/@mattdarbro">
+      <div class="watch-eyebrow">Music</div>
+      <h3>Matt's music</h3>
+      <p>Songs and music videos. The older records live in <span class="u">3580</span>, the record shop below.</p>
+      <span class="visit">Listen on YouTube →</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============================================================
      WORLD CHOOSER — the rooms in the house
      ============================================================ -->
 <section id="rooms" class="section">
   <div class="section-head">
     <div class="eyebrow">The house</div>
-    <h2>A few rooms so far — and more in the workshop.</h2>
+    <h2>More rooms in the house.</h2>
     <p>Each room is a small world. They're allowed to look like nothing else in the house, and like nothing else like each other.</p>
-  </div>
-
-  <!-- This month / featured -->
-  <div class="feature-row">
-    <div class="feature">
-      <!-- mini 3580 poster -->
-      <a class="poster shop mini" aria-hidden="true" tabindex="-1" href="/3580">
-        <span class="bug">Pipchi</span>
-        <span class="status built">Built</span>
-        <div class="art">
-          <div class="big-num">3580</div>
-          <div class="small-line">recordings from the original address</div>
-        </div>
-        <div class="strip">
-          <div class="name">3580</div>
-          <div class="tag">Tallwood's shop.</div>
-        </div>
-      </a>
-      <div>
-        <div class="feature-eyebrow">This month · open</div>
-        <h3>3580 — the record shop</h3>
-        <p>A 70s record-shop archive of Matt's music, 1985 to now. Tallwood tells the story behind every record.</p>
-        <a class="visit" href="/3580">Step inside →</a>
-      </div>
-    </div>
-
-    <div class="feature">
-      <!-- mini Prompt Script poster -->
-      <a class="poster promptscript mini" aria-hidden="true" tabindex="-1" href="/promptscript">
-        <span class="bug">Pipchi</span>
-        <span class="status built">Built</span>
-        <div class="art">
-          <img src="/images/pipchi-design/world-promptscript.png" alt=""/>
-        </div>
-        <div class="strip">
-          <div class="name">Prompt Script</div>
-          <div class="tag">A director's lens for AI film.</div>
-        </div>
-      </a>
-      <div>
-        <div class="feature-eyebrow">This month · in build</div>
-        <h3>Prompt Script v1.2</h3>
-        <p>The director's notebook gets an updated cast — twenty consultants, each a different filmmaker living in your head.</p>
-        <a class="visit" href="/promptscript">Open the door →</a>
-      </div>
-    </div>
   </div>
 
   <!-- The poster wall -->
@@ -1327,19 +1457,6 @@ p { margin: 0; }
       </div>
     </a>
 
-    <!-- Prompt Script -->
-    <a class="poster promptscript" href="/promptscript" aria-label="Prompt Script — a director's lens for AI film">
-      <span class="bug">Pipchi</span>
-      <span class="status built">Built</span>
-      <div class="art">
-        <img src="/images/pipchi-design/world-promptscript.png" alt=""/>
-      </div>
-      <div class="strip">
-        <div class="name">Prompt Script</div>
-        <div class="tag">A director's lens for AI film.</div>
-      </div>
-    </a>
-
     <!-- Written On Me -->
     <a class="poster wom" href="/writtenonme" aria-label="Written On Me — a short film, watched by itself">
       <span class="bug">Pipchi</span>
@@ -1350,79 +1467,6 @@ p { margin: 0; }
       <div class="strip">
         <div class="name">Written On Me</div>
         <div class="tag">A short film. Watched by itself, in the dark.</div>
-      </div>
-    </a>
-
-    <!-- Blame It On The Ink -->
-    <a class="poster ink" href="#" aria-label="Blame It On The Ink — Admit It">
-      <span class="bug">Pipchi</span>
-      <span class="status draft">Novel</span>
-      <div class="art">
-        <img src="/images/pipchi-design/world-ink.png" alt=""/>
-      </div>
-      <div class="strip">
-        <div class="name">Blame It On The Ink</div>
-        <div class="tag">Admit It — with Margaux, Gus, Stork, and Chuck.</div>
-      </div>
-    </a>
-
-    <!-- George Washington's Father -->
-    <a class="poster gwf" href="/george-washingtons-father" aria-label="George Washington's Father — a novel in progress">
-      <span class="bug">Pipchi</span>
-      <span class="status draft">Novel</span>
-      <div class="art">
-        <div class="crest">George<br/>Washington's<br/>Father</div>
-        <div class="rule"></div>
-        <div class="sub">A novel in progress</div>
-      </div>
-      <div class="strip">
-        <div class="name">George Washington's Father</div>
-        <div class="tag">A novel being written. The room is set; the pages are coming.</div>
-      </div>
-    </a>
-
-    <!-- Eraser Adventures -->
-    <a class="poster eraser" href="#" aria-label="Eraser Adventures — home of Goomka">
-      <span class="bug">Pipchi</span>
-      <span class="status draft">Cartoon</span>
-      <div class="art">
-        <img src="/images/pipchi-design/world-eraser.png" alt=""/>
-      </div>
-      <div class="strip">
-        <div class="name">Eraser Adventures</div>
-        <div class="tag">A game, a world — home of Goomka.</div>
-      </div>
-    </a>
-
-    <!-- Local Poet -->
-    <a class="poster poet" href="#" aria-label="Local Poet — a lyric-writing app with a sage">
-      <span class="bug">Pipchi</span>
-      <span class="status draft">App</span>
-      <div class="art">
-        <div class="line">a quiet line —</div>
-        <div class="line">then a louder one</div>
-        <div class="line">and a softer turn</div>
-        <div class="line">that doesn't apologize</div>
-        <div class="line">for what it knows</div>
-      </div>
-      <div class="strip">
-        <div class="name">Local Poet</div>
-        <div class="tag">A lyric-writing app, with a sage.</div>
-      </div>
-    </a>
-
-    <!-- The Narrows -->
-    <a class="poster narrows" href="#" aria-label="The Narrows — three on-device voices">
-      <span class="bug">Pipchi</span>
-      <span class="status draft">App</span>
-      <div class="art">
-        <div class="voice">Don't trust the second one.</div>
-        <div class="voice v2">Don't trust the first one.</div>
-        <div class="voice v3">They're both right, sometimes.</div>
-      </div>
-      <div class="strip">
-        <div class="name">The Narrows</div>
-        <div class="tag">Three voices, one device — and they don't agree.</div>
       </div>
     </a>
 
@@ -1456,20 +1500,6 @@ p { margin: 0; }
       <div class="strip">
         <div class="name">Found Universes</div>
         <div class="tag">Dr. Wally Boffin opens a door. Four or five songs each. Looping color.</div>
-      </div>
-    </a>
-
-    <!-- Robot & Cat -->
-    <a class="poster robot" href="#" aria-label="Robot & Cat — the Buster Keaton robot's logs">
-      <span class="bug">Pipchi</span>
-      <span class="status graduated">Graduated · 1.8K</span>
-      <div class="art">
-        <div class="glyph">▮▮▮</div>
-        <div class="label">&gt; LOG 014_</div>
-      </div>
-      <div class="strip">
-        <div class="name">Robot &amp; Cat</div>
-        <div class="tag">The Buster Keaton robot. Earned his own room.</div>
       </div>
     </a>
 
@@ -1510,48 +1540,17 @@ p { margin: 0; }
 </section>
 
 <!-- ============================================================
-     THE WALL — honest empty state
+     APPS — a small row, not the front door
      ============================================================ -->
-<section id="wall" class="wall-section">
-  <div class="wall-inner">
-    <div class="section-head" style="text-align:left;">
-      <div class="eyebrow" style="text-align:left;">The wall</div>
-      <h2 style="text-align:left;">Where the artifacts end up.</h2>
-      <p style="text-align:left; margin:0;">People print the zines and fold them at their kitchen tables. They tape the postcards to walls. They call the number. They send the photos back. The wall grows over time.</p>
+<section id="apps" class="section apps-section">
+  <div class="apps-strip">
+    <div>
+      <div class="eyebrow">Also from the workshop</div>
+      <p>A few small iPhone apps: <a href="/promptscript">Prompt Script</a>, Local Poet, The Narrows, Eraser Adventures, Mixtape Pinball, and more.</p>
     </div>
-    <div class="wall-empty">
-      <div class="hand">the wall is quiet for now —</div>
-      <p>The first dispatch hasn't gone out yet. When it does — and when the first photo of a folded zine comes back, or the first voicemail leaves a fingerprint — this is where they go.</p>
-      <p style="color: var(--ink-muted); font-size: 14px;">Want to be one of the first people on the wall? Light a lantern at <a href="#campfire">the Campfire</a>.</p>
-    </div>
+    <a class="visit" href="/support">All the apps →</a>
   </div>
 </section>
-
-<!-- ============================================================
-     CAMPFIRE — signup form, backed by /api/subscribe + Resend audience
-     ============================================================ -->
-<div class="campfire-wrap">
-  <section id="campfire" class="campfire">
-    <div class="campfire-inner">
-      <div class="eyebrow">The Campfire</div>
-      <h2>Pull up a chair.</h2>
-      <p class="lede">
-        A monthly letter from somewhere inside the worlds. Sometimes a zine to print and fold. Sometimes a found object. Sometimes the voicemail extension changes. Always worth opening.
-      </p>
-      <form class="campfire-form" id="campfireForm" method="post" action="/api/subscribe">
-        <label class="visually-hidden" for="campfire-email">Email address</label>
-        <input id="campfire-email" name="email" type="email" required
-               placeholder="you@example.com" autocomplete="email" inputmode="email">
-        <input class="visually-hidden" type="text" name="stagedoor" tabindex="-1"
-               autocomplete="off" aria-hidden="true">
-        <button type="submit">Pull up a chair</button>
-      </form>
-      <p class="campfire-note" id="campfireNote" role="status"></p>
-      <div class="small-note">No tracking, no funnels, no upsells. The dispatch is monthly when it begins.</div>
-      <div class="hand-sig">— with care, Matt</div>
-    </div>
-  </section>
-</div>
 
 <!-- ============================================================
      SIGN-OFF — the umbrella contract closes the page
@@ -1562,7 +1561,7 @@ p { margin: 0; }
       <img src="/images/pipchi-design/logo-circle.png" alt="Pipchi"/>
       <div class="lines">
         <div class="first">Pipchi makes strange and beautiful things.</div>
-        <div class="second">A house, with rooms. A campfire out back.</div>
+        <div class="second">A house, with rooms. Books by the door.</div>
       </div>
     </div>
     <div class="signoff-meta">
@@ -1584,37 +1583,7 @@ p { margin: 0; }
   document.documentElement.style.scrollBehavior = 'smooth';
 </script>
 
-<script>
-  const campfireForm = document.getElementById("campfireForm");
-  const campfireNote = document.getElementById("campfireNote");
-  campfireForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const button = campfireForm.querySelector("button");
-    button.disabled = true;
-    campfireNote.textContent = "Pulling up a chair…";
-    try {
-      const resp = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: campfireForm.email.value.trim(),
-          stagedoor: campfireForm.stagedoor.value,
-        }),
-      });
-      const data = await resp.json().catch(() => ({}));
-      if (resp.ok) {
-        campfireNote.textContent = "You're on the list. We'll write when there's something worth saying.";
-        campfireForm.reset();
-      } else {
-        campfireNote.textContent = data.message || "That didn't go through — try again in a moment.";
-      }
-    } catch {
-      campfireNote.textContent = "That didn't go through — try again in a moment.";
-    } finally {
-      button.disabled = false;
-    }
-  });
-</script>
+
 
 </body>
 </html>
