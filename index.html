@@ -1196,18 +1196,16 @@ p { margin: 0; }
 .buy-row { display:flex; flex-wrap:wrap; gap:14px 18px; }
 .feature a.visit.quiet { border-bottom-color: var(--line-strong); color: var(--ink-muted); }
 
-.poster.chester {
-  background: radial-gradient(ellipse at center top, #1f4f53 0%, #163a3d 60%, #0e2426 100%);
-  --world-display: 'DM Serif Display', serif;
-  --world-tracking: -0.01em;
+.feature .book-cover {
+  display: block;
+  aspect-ratio: 5/8;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform 220ms var(--ease-pop), box-shadow 220ms;
 }
-.poster.chester .art { flex-direction: column; color: #f0e3c8; padding: 26px 16px 6px; text-align: center; }
-.poster.chester .lotus { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1; color: var(--gold); }
-.poster.chester .rule { width: 40%; height: 1px; background: rgba(224,167,46,0.6); margin: 10px auto; }
-.poster.chester .sub { font-family: var(--font-serif); font-style: italic; font-size: 12px; color: #f0e3c8; }
-.poster.chester .strip { background: linear-gradient(180deg, transparent 0%, rgba(14,36,38,0.7) 30%, #0e2426 100%); }
-.poster.chester .name { color: var(--gold); }
-.poster.chester .tag  { color: rgba(240,227,200,0.85); }
+.feature .book-cover:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.feature .book-cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 .watch-row {
   display: grid;
@@ -1324,16 +1322,8 @@ p { margin: 0; }
 
   <div class="feature-row books-row">
     <div class="feature">
-      <a class="poster ink mini" aria-hidden="true" tabindex="-1" href="https://blameitontheink.com">
-        <span class="bug">Pipchi</span>
-        <span class="status built">Novel</span>
-        <div class="art">
-          <img src="/images/pipchi-design/world-ink.png" alt=""/>
-        </div>
-        <div class="strip">
-          <div class="name">Admit It</div>
-          <div class="tag">Blame It On The Ink</div>
-        </div>
+      <a class="book-cover" aria-hidden="true" tabindex="-1" href="https://www.amazon.com/dp/B0HDWQ7JL1">
+        <img src="/images/books/admit-it.jpg" alt="" width="500" height="800" loading="lazy"/>
       </a>
       <div>
         <div class="feature-eyebrow">Blame It On The Ink · novel</div>
@@ -1348,26 +1338,30 @@ p { margin: 0; }
     </div>
 
     <div class="feature">
-      <a class="poster chester mini" aria-hidden="true" tabindex="-1" href="https://www.amazon.com/dp/B0HMSDWM18">
-        <span class="bug">Pipchi</span>
-        <span class="status built">Books 1–2</span>
-        <div class="art">
-          <div class="lotus">Mr.<br/>Chester</div>
-          <div class="rule"></div>
-          <div class="sub">Mysteries</div>
-        </div>
-        <div class="strip">
-          <div class="name">Mr. Chester</div>
-          <div class="tag">Table Seven · Solve For X</div>
-        </div>
+      <a class="book-cover" aria-hidden="true" tabindex="-1" href="https://www.amazon.com/dp/B0HMSDWM18">
+        <img src="/images/books/table-seven.jpg" alt="" width="500" height="800" loading="lazy"/>
       </a>
       <div>
-        <div class="feature-eyebrow">The Mr. Chester Mysteries · books 1 and 2</div>
-        <h3>Table Seven &amp; Solve For X</h3>
-        <p>Mr. Chester counts the things nobody else bothers to count. His cases start at the Golden Lotus, and they rarely stay there.</p>
+        <div class="feature-eyebrow">The Mr. Chester Mysteries · book one</div>
+        <h3>Table Seven</h3>
+        <p>Mr. Chester counts the things nobody else bothers to count. His first case starts at the Golden Lotus, 1313 Race Street, Cincinnati.</p>
         <div class="buy-row">
-          <a class="visit" href="https://www.amazon.com/dp/B0HMSDWM18">The series on Amazon →</a>
+          <a class="visit" href="https://www.amazon.com/dp/B0HMSDWM18">On Amazon →</a>
           <a class="visit quiet" href="#watch">Hear the radio dramas →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <a class="book-cover" aria-hidden="true" tabindex="-1" href="https://www.amazon.com/dp/B0HMSDWM18">
+        <img src="/images/books/solve-for-x.jpg" alt="" width="500" height="800" loading="lazy"/>
+      </a>
+      <div>
+        <div class="feature-eyebrow">The Mr. Chester Mysteries · book two</div>
+        <h3>Solve For X</h3>
+        <p>Mr. Chester's second case, and another night at the Golden Lotus.</p>
+        <div class="buy-row">
+          <a class="visit" href="https://www.amazon.com/dp/B0HMSDWM18">On Amazon →</a>
         </div>
       </div>
     </div>
