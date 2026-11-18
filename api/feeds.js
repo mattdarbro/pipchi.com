@@ -121,12 +121,16 @@ export async function buildFeeds() {
 
   // A featured playlist keeps the order Matt gives it on YouTube.
   const featuredIds = new Set(featured.map((v) => v.id));
+  const allEpisodes = podcasts.flat().sort(newestFirst);
+  // Podcast episodes also go up on YouTube; show those once, under Latest episodes.
+  const norm = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  const episodeTitles = new Set(allEpisodes.map((e) => norm(e.title)));
   const videos = channels
     .flat()
-    .filter((v) => !v.short && !featuredIds.has(v.id))
+    .filter((v) => !v.short && !featuredIds.has(v.id) && !episodeTitles.has(norm(v.title)))
     .sort(newestFirst)
     .slice(0, LATEST_VIDEOS);
-  const episodes = podcasts.flat().sort(newestFirst).slice(0, LATEST_EPISODES);
+  const episodes = allEpisodes.slice(0, LATEST_EPISODES);
 
   return { featured, videos, episodes, updated: new Date().toISOString() };
 }
