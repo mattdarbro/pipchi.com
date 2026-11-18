@@ -1197,6 +1197,27 @@ p { margin: 0; }
 .feature a.visit.quiet { border-bottom-color: var(--line-strong); color: var(--ink-muted); }
 
 .poster.gwf .crest small { font-size: 0.55em; letter-spacing: 0.04em; }
+
+/* THE KEEPER AT BELLWEATHER — autumn folklore, a crooked little town */
+.poster.bw {
+  background:
+    radial-gradient(rgba(40,20,5,0.12) 1px, transparent 1.2px) 0 0/5px 5px,
+    linear-gradient(180deg, #c9732e 0%, #8a3f17 100%);
+}
+.poster.bw .art { flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 24px; }
+.poster.bw .art .crest {
+  font-family: 'DM Serif Display', serif; font-style: italic;
+  font-size: clamp(2.4rem, 4.4vw, 3.1rem); line-height: 0.95;
+  color: #fff3dc; text-shadow: 1px 2px 0 rgba(60,25,5,0.35);
+  transform: rotate(-3deg);
+}
+.poster.bw .art .crest small { font-size: 0.55em; letter-spacing: 0.04em; }
+.poster.bw .art .rule { width: 64px; height: 2px; background: #fff3dc; opacity: 0.55; transform: rotate(4deg); }
+.poster.bw .art .sub { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #ffe2b8; }
+.poster.bw .strip { background: linear-gradient(180deg, rgba(138,63,23,0) 0%, #7a3412 40%, #5e270c 100%); }
+.poster.bw .name { color: #fff3dc; font-style: italic; }
+.poster.bw .tag  { color: #ffd9a8; }
+.watch-card.bellweather { border-top-color: #b8642a; }
 .feature .book-cover {
   display: block;
   aspect-ratio: 5/8;
@@ -1323,6 +1344,31 @@ p { margin: 0; }
 
   <div class="feature-row books-row">
     <div class="feature">
+      <a class="poster bw mini" aria-hidden="true" tabindex="-1" href="https://www.youtube.com/watch?v=IZgmxBtOVfc">
+        <span class="bug">Pipchi</span>
+        <span class="status built">New</span>
+        <div class="art">
+          <div class="crest"><small>The Keeper at</small><br/>Bellweather</div>
+          <div class="rule"></div>
+          <div class="sub">An autumn folklore story</div>
+        </div>
+        <div class="strip">
+          <div class="name">Bellweather</div>
+          <div class="tag">A crooked little town.</div>
+        </div>
+      </a>
+      <div>
+        <div class="feature-eyebrow">New on Kindle · and a full film</div>
+        <h3>The Keeper at Bellweather</h3>
+        <p>A surveyor who can't leave a crooked thing alone comes to a village built wrong on purpose, and moves the one stone everyone warned him never to touch. It keeps coming back.</p>
+        <div class="buy-row">
+          <!-- KINDLE: add the Amazon link here once Matt sends it -->
+          <a class="visit" href="https://www.youtube.com/watch?v=IZgmxBtOVfc">Watch the film →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
       <a class="book-cover" aria-hidden="true" tabindex="-1" href="https://www.amazon.com/dp/B0HDWQ7JL1">
         <img src="/images/books/admit-it.jpg" alt="" width="500" height="800" loading="lazy"/>
       </a>
@@ -1404,6 +1450,12 @@ p { margin: 0; }
   </div>
 
   <div class="watch-row">
+    <a class="watch-card bellweather" href="https://www.youtube.com/watch?v=IZgmxBtOVfc">
+      <div class="watch-eyebrow">Film · 58 minutes</div>
+      <h3>The Keeper at Bellweather</h3>
+      <p>The full-length animated film of the book, closing with the song Little Crooked Town.</p>
+      <span class="visit">Watch on YouTube →</span>
+    </a>
     <a class="watch-card stories" href="https://www.youtube.com/@pipchistories">
       <div class="watch-eyebrow">YouTube · Pipchi Stories</div>
       <h3>Pipchi Stories</h3>
