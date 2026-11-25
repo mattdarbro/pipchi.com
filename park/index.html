@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pipchi Park · Pipchi</title>
+<meta name="description" content="Pipchi Park: a little dark ride through the Pipchi worlds. Painted boards rocking back and forth, and the music. Coming soon."/>
+<meta property="og:title" content="Pipchi Park, a Pipchi production"/>
+<meta property="og:description" content="A little dark ride through the Pipchi worlds. Painted boards, rocking back and forth, and the music. Coming soon."/>
+<meta property="og:image" content="/images/pipchi-design/wally-portrait.png"/>
+<link rel="icon" type="image/png" href="/images/pipchi-design/logo-circle.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@400;600;700&family=Lilita+One&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper:#fffaf2; --paper-2:#faf1e0; --ink:#1f1b16; --ink-2:#2d251f; --ink-muted:#6f6254; --ink-faint:#b3a48d;
+  --line:#eadfce; --line-strong:#d9cbb8; --terra:#b45b2c; --terra-deep:#8e4520;
+
+  /* Pipchi Park: an old painted dark ride */
+  --pk-night:  #120a14;
+  --pk-night-2:#1e1020;
+  --pk-red:    #b3322a;
+  --pk-gold:   #e8b64a;
+  --pk-cream:  #f4e6c6;
+  --pk-cream-2:#e2cfa6;
+  --pk-display:'Lilita One', ui-serif, Georgia, serif;
+
+  --font-serif:"Lora",ui-serif,Georgia,serif; --font-sans:"DM Sans",ui-sans-serif,system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,Menlo,monospace; --font-hand:"Caveat","Segoe Script",cursive;
+  --ease-soft:cubic-bezier(.2,.7,.2,1);
+}
+* { box-sizing:border-box; }
+html,body { margin:0; padding:0; background:var(--paper); }
+body { font-family:var(--font-serif); color:var(--ink-2); line-height:1.55; -webkit-font-smoothing:antialiased; min-height:100vh; }
+img { max-width:100%; display:block; }
+a { color:var(--terra); text-decoration:underline; text-decoration-thickness:1.5px; text-underline-offset:3px; }
+a:hover { color:var(--terra-deep); }
+h1,h2,h3 { margin:0; letter-spacing:-0.02em; color:var(--ink); }
+p { margin:0; }
+
+/* UMBRELLA + MASTHEAD */
+.umbrella-strip { max-width:1100px; margin:0 auto; padding:10px 28px; border-bottom:1px solid var(--line);
+  display:flex; justify-content:space-between; align-items:center; font-family:var(--font-sans); font-size:10px;
+  font-weight:800; letter-spacing:0.22em; text-transform:uppercase; color:var(--ink-muted); }
+.umbrella-strip .right { color:var(--terra); }
+.masthead { max-width:1100px; margin:0 auto; padding:18px 28px; display:flex; justify-content:space-between; align-items:center; font-family:var(--font-sans); }
+.masthead .crumb { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink); flex-wrap:wrap; }
+.masthead .crumb img { width:32px; height:32px; border-radius:50%; box-shadow:0 4px 12px rgba(51,36,21,0.10); transition:transform 220ms var(--ease-soft); }
+.masthead .crumb:hover img { transform:rotate(-4deg) scale(1.04); }
+.masthead .crumb-text { font-family:var(--font-serif); font-size:17px; font-weight:700; letter-spacing:-0.02em; color:var(--ink); }
+.masthead .crumb-sep { color:var(--ink-faint); padding:0 4px; }
+.masthead .crumb-room { font-family:var(--pk-display); font-style:italic; font-size:18px; letter-spacing:0.01em; color:var(--pk-red); }
+.masthead nav { display:flex; gap:18px; }
+.masthead nav a { font-size:13px; font-weight:600; color:var(--ink); text-decoration:none; }
+.masthead nav a:hover { color:var(--terra); }
+@media (max-width:640px){ .masthead nav { display:none; } }
+
+/* THE RIDE */
+.ride { position:relative; color:var(--pk-cream); overflow:hidden; isolation:isolate;
+  background:
+    radial-gradient(ellipse at 50% -20%, rgba(232,182,74,0.20), transparent 55%),
+    radial-gradient(ellipse at center, var(--pk-night-2) 0%, var(--pk-night) 100%);
+  padding:48px 0 72px; }
+.ride-inner { max-width:1040px; margin:0 auto; padding:0 28px; }
+
+/* Marquee */
+.marquee { text-align:center; margin:0 auto 34px; max-width:640px; }
+.bulbs { display:flex; justify-content:center; gap:14px; margin-bottom:14px; }
+.bulbs span { width:9px; height:9px; border-radius:50%; background:var(--pk-gold);
+  box-shadow:0 0 10px rgba(232,182,74,0.8); animation:blink 1.6s steps(2) infinite; }
+.bulbs span:nth-child(even) { animation-delay:0.8s; }
+@keyframes blink { 50% { opacity:0.25; box-shadow:none; } }
+.marquee .kicker { font-family:var(--font-mono); font-size:11px; font-weight:700; letter-spacing:0.24em;
+  text-transform:uppercase; color:var(--pk-gold); }
+.marquee h1 { font-family:var(--pk-display); font-weight:400; font-size:clamp(2.8rem,8vw,5rem); line-height:0.95;
+  color:var(--pk-cream); letter-spacing:0.01em; margin:10px 0 12px; text-shadow:3px 3px 0 var(--pk-red); }
+.marquee .lede { font-family:var(--font-serif); font-style:italic; font-size:clamp(1.05rem,1.6vw,1.25rem);
+  color:var(--pk-cream-2); }
+.marquee .soon { display:inline-block; margin-top:18px; font-family:var(--font-sans); font-size:11px; font-weight:800;
+  letter-spacing:0.2em; text-transform:uppercase; padding:6px 12px; border-radius:999px;
+  background:var(--pk-red); color:var(--pk-cream); }
+
+/* The track: four painted boards on a rail */
+.track { position:relative; display:grid; grid-template-columns:repeat(4, 1fr); gap:18px; padding:10px 0 40px; }
+.track::after { content:""; position:absolute; left:0; right:0; bottom:18px; height:6px; border-radius:3px;
+  background:repeating-linear-gradient(90deg, #3a2a20 0 18px, #5a4030 18px 22px); opacity:0.9; }
+.board { position:relative; aspect-ratio:3/4; border-radius:10px 10px 4px 4px; transform-origin:50% 100%;
+  border:4px solid #2a1a10; box-shadow:0 14px 28px rgba(0,0,0,0.5), inset 0 0 0 3px rgba(244,230,198,0.25);
+  display:flex; flex-direction:column; justify-content:flex-end; padding:12px; overflow:hidden;
+  animation:rock 3.6s ease-in-out infinite; }
+.board:nth-child(2) { animation-delay:-0.9s; }
+.board:nth-child(3) { animation-delay:-1.8s; }
+.board:nth-child(4) { animation-delay:-2.7s; }
+@keyframes rock { 0%,100% { transform:rotate(-2.5deg); } 50% { transform:rotate(2.5deg); } }
+.board::before { content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px); background-size:4px 4px; }
+.board .num { position:absolute; top:10px; left:10px; font-family:var(--font-mono); font-size:10px; font-weight:700;
+  letter-spacing:0.14em; background:rgba(0,0,0,0.45); color:var(--pk-cream); padding:2px 6px; border-radius:2px; }
+.board .label { position:relative; font-family:var(--pk-display); font-size:clamp(1rem,1.8vw,1.3rem); line-height:1.05;
+  color:var(--pk-cream); text-shadow:2px 2px 0 rgba(0,0,0,0.55); }
+.board .sub { position:relative; font-family:var(--font-serif); font-style:italic; font-size:13px; color:rgba(244,230,198,0.85); margin-top:4px; }
+.board.gallery  { background:radial-gradient(ellipse at 50% 30%, rgba(232,182,74,0.45), transparent 60%), linear-gradient(160deg, #3a2414 0%, #1a0f08 100%); }
+.board.gallery img { position:absolute; top:22%; left:50%; width:46%; transform:translateX(-50%); border-radius:50%;
+  border:4px solid var(--pk-gold); box-shadow:0 6px 14px rgba(0,0,0,0.5); }
+.board.victorian{ background:radial-gradient(ellipse at 70% 20%, rgba(212,161,74,0.55), transparent 60%), linear-gradient(135deg, #3a2a3a 0%, #1f4f43 60%, #6e3a4a 100%); }
+.board.italy    { background:radial-gradient(ellipse at 50% 40%, rgba(244,192,67,0.35), transparent 60%), linear-gradient(160deg, #7a2a2a 0%, #b07e15 60%, #4a5e2a 100%); }
+.board.brazil   { background:radial-gradient(circle at 30% 70%, rgba(255,200,100,0.45), transparent 50%), linear-gradient(140deg, #0a5a6a 0%, #2a8a7a 50%, #ee7f2c 100%); }
+@media (prefers-reduced-motion: reduce) { .board, .bulbs span { animation:none; } }
+@media (max-width:760px){ .track { grid-template-columns:repeat(2, 1fr); } }
+
+/* Notes under the track */
+.ride-notes { display:grid; grid-template-columns:1.3fr 1fr; gap:28px; margin-top:8px; }
+.ride-notes p { color:var(--pk-cream-2); font-size:1.02rem; }
+.ride-notes p + p { margin-top:12px; }
+.ticket { border:2px dashed rgba(232,182,74,0.6); border-radius:8px; padding:18px 20px; background:rgba(0,0,0,0.25); }
+.ticket .t-kicker { font-family:var(--font-mono); font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--pk-gold); }
+.ticket .t-title { font-family:var(--pk-display); font-size:1.5rem; color:var(--pk-cream); margin:6px 0 8px; }
+.ticket p { font-size:0.95rem; }
+.ticket .ride-btn { display:inline-block; margin-top:12px; font-family:var(--font-sans); font-weight:800; font-size:13px;
+  letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; padding:10px 16px; border-radius:6px;
+  background:var(--pk-gold); color:var(--ink); }
+.ticket .ride-btn:hover { background:var(--pk-cream); color:var(--ink); }
+@media (max-width:760px){ .ride-notes { grid-template-columns:1fr; } }
+
+/* The game, once it is ready */
+.stage { display:none; margin-top:32px; aspect-ratio:16/9; width:100%; border:4px solid #2a1a10; border-radius:8px;
+  background:#000; box-shadow:0 18px 40px rgba(0,0,0,0.55); }
+.stage.on { display:block; }
+
+.signoff { max-width:1100px; margin:24px auto 0; padding:36px 28px 32px; border-top:1px solid var(--line); font-family:var(--font-sans);
+  font-size:13px; color:var(--ink-muted); display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px; align-items:center; }
+.signoff a { color:var(--ink-muted); text-decoration:none; }
+.signoff a:hover { color:var(--terra); text-decoration:underline; }
+.signoff .hand { font-family:var(--font-hand); font-size:20px; color:var(--ink); transform:rotate(-1deg); display:inline-block; }
+.signoff .nav-row { display:flex; gap:14px; flex-wrap:wrap; }
+.signoff-copy { max-width:1100px; margin:0 auto; padding:0 28px 32px; font-family:var(--font-sans); font-size:11px; color:var(--ink-faint); letter-spacing:0.06em; }
+</style>
+</head>
+<body>
+
+<div class="umbrella-strip">
+  <span>Pipchi · the house</span>
+  <span class="right">A Pipchi production</span>
+</div>
+
+<header class="masthead">
+  <a href="/" class="crumb" aria-label="Back to Pipchi">
+    <img src="/images/pipchi-design/logo-circle.png" alt="Pipchi"/>
+    <span class="crumb-text">Pipchi</span>
+    <span class="crumb-sep">·</span>
+    <span class="crumb-room">Pipchi Park</span>
+  </a>
+  <nav aria-label="primary">
+    <a href="#ride">The ride</a>
+    <a href="/">The house</a>
+  </nav>
+</header>
+
+<section class="ride" id="ride">
+  <div class="ride-inner">
+
+    <div class="marquee">
+      <div class="bulbs" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="kicker">Now boarding · soon</div>
+      <h1>Pipchi Park</h1>
+      <p class="lede">A little dark ride through the Pipchi worlds. Painted boards, rocking back and forth, and the music.</p>
+      <span class="soon" id="park-status">Coming soon</span>
+    </div>
+
+    <div class="track" aria-label="The worlds on the ride">
+      <div class="board gallery">
+        <span class="num">Stop 1</span>
+        <img src="/images/pipchi-design/wally-portrait.png" alt=""/>
+        <div class="label">Dr. Boffin's Gallery</div>
+        <div class="sub">Dioramas in the dark.</div>
+      </div>
+      <div class="board victorian">
+        <span class="num">Stop 2</span>
+        <div class="label">Victorian Lofi</div>
+        <div class="sub">Gaslight and slow beats.</div>
+      </div>
+      <div class="board italy">
+        <span class="num">Stop 3</span>
+        <div class="label">Italian Postcard</div>
+        <div class="sub">A summer you can walk into.</div>
+      </div>
+      <div class="board brazil">
+        <span class="num">Stop 4</span>
+        <div class="label">Brazilian Diorama</div>
+        <div class="sub">Color, all the way down.</div>
+      </div>
+    </div>
+
+    <div class="ride-notes">
+      <div>
+        <p>Pipchi Park is a walk-around game in the spirit of the old painted dark rides. Nothing slick. Flat, hand-painted boards that rock on their hinges as you roll past, and a song for every world.</p>
+        <p>The worlds are the ones you may already know from <a href="/found-universes" style="color:var(--pk-gold)">Found Universes</a>. This time you get to ride through them.</p>
+      </div>
+      <div class="ticket">
+        <div class="t-kicker">Your ticket</div>
+        <div class="t-title" id="ticket-title">Still painting the boards</div>
+        <p id="ticket-text">The ride is being built right now. Check back here; this is where it will open.</p>
+        <a class="ride-btn" id="ride-btn" href="#" hidden>Ride it</a>
+      </div>
+    </div>
+
+    <iframe class="stage" id="park-stage" title="Pipchi Park" allow="autoplay; fullscreen" loading="lazy"></iframe>
+
+  </div>
+</section>
+
+<footer class="signoff">
+  <div><div class="hand">— with care, Matt</div></div>
+  <div class="nav-row">
+    <a href="/">Pipchi</a>
+    <a href="/found-universes">Found Universes</a>
+    <a href="/save-my-shorts">Save My Shorts</a>
+    <a href="/3580">3580</a>
+    <a href="/writtenonme">Written On Me</a>
+  </div>
+</footer>
+<div class="signoff-copy">© Pipchi Productions · Pipchi Park.</div>
+
+<script>
+/* ---------------------------------------------------------------
+   PIPCHI PARK: drop the game in here when it is ready.
+   PARK_SRC  = the address of the playable game (for example a page on
+               R2 or on pipchi.com). Leave '' to keep "Coming soon".
+   PARK_MODE = 'embed' plays it right on this page;
+               'link'  opens it on its own page with the Ride it button.
+   --------------------------------------------------------------- */
+var PARK_SRC  = '';
+var PARK_MODE = 'embed';
+
+(function () {
+  document.documentElement.style.scrollBehavior = 'smooth';
+  if (!PARK_SRC) return;
+  document.getElementById('park-status').textContent = 'Now open';
+  document.getElementById('ticket-title').textContent = 'The ride is open';
+  document.getElementById('ticket-text').textContent = 'Climb in. Sound on.';
+  var btn = document.getElementById('ride-btn');
+  btn.hidden = false;
+  if (PARK_MODE === 'embed') {
+    var stage = document.getElementById('park-stage');
+    stage.src = PARK_SRC;
+    stage.classList.add('on');
+    btn.href = '#park-stage';
+  } else {
+    btn.href = PARK_SRC;
+  }
+})();
+</script>
+
+</body>
+</html>
