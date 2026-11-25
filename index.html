@@ -811,6 +811,38 @@ p { margin: 0; }
 .poster.found .name { color: #f0e3c8; font-size: clamp(1.4rem, 1.9vw, 1.55rem); font-style: italic; }
 .poster.found .tag  { color: rgba(240,227,200,0.78); font-style: italic; }
 
+/* PIPCHI PARK — painted dark ride, coming soon */
+.poster.park {
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(232,182,74,0.28), transparent 55%),
+    radial-gradient(ellipse at center, #1e1020 0%, #120a14 100%);
+  --world-display: 'Lilita One', serif;
+  --world-tracking: 0.01em;
+}
+.poster.park .bulbs { position:absolute; top:40px; left:0; right:0; display:flex; justify-content:center; gap:10px; z-index:3; }
+.poster.park .bulbs i { width:6px; height:6px; border-radius:50%; background:#e8b64a; box-shadow:0 0 8px rgba(232,182,74,0.8); }
+.poster.park .bulbs i:nth-child(even) { opacity:0.4; box-shadow:none; }
+.poster.park .pboard {
+  position:absolute; bottom:12%; width:30%; aspect-ratio:3/4;
+  border:3px solid #2a1a10; border-radius:6px 6px 2px 2px;
+  box-shadow:0 8px 16px rgba(0,0,0,0.5), inset 0 0 0 2px rgba(244,230,198,0.22);
+  transform-origin:50% 100%;
+  display:flex; align-items:flex-end; padding:5px;
+  font-family:'JetBrains Mono', monospace; font-size:8px; font-weight:700; letter-spacing:0.08em;
+  color:rgba(244,230,198,0.95); text-shadow:1px 1px 0 rgba(0,0,0,0.6);
+}
+.poster.park .pboard.b1 { left:6%;  transform:rotate(-6deg); background:linear-gradient(135deg, #3a2a3a 0%, #1f4f43 60%, #6e3a4a 100%); }
+.poster.park .pboard.b2 { left:35%; bottom:16%; transform:rotate(2deg); background:linear-gradient(160deg, #7a2a2a 0%, #b07e15 60%, #4a5e2a 100%); z-index:2; }
+.poster.park .pboard.b3 { right:6%; transform:rotate(7deg); background:linear-gradient(140deg, #0a5a6a 0%, #2a8a7a 50%, #ee7f2c 100%); }
+.poster.park .rail { position:absolute; left:4%; right:4%; bottom:9%; height:4px; border-radius:2px;
+  background:repeating-linear-gradient(90deg, #3a2a20 0 12px, #5a4030 12px 15px); }
+.poster.park:hover .pboard.b1 { transform:rotate(-1deg); }
+.poster.park:hover .pboard.b3 { transform:rotate(2deg); }
+.poster.park .pboard { transition:transform 400ms var(--ease-pop); }
+.poster.park .strip { background: linear-gradient(180deg, transparent, rgba(18,10,20,0.92) 30%, #120a14); color:#fffaf2; }
+.poster.park .name { color:#f4e6c6; text-shadow:2px 2px 0 #b3322a; }
+.poster.park .tag  { color:rgba(244,230,198,0.8); font-style:italic; }
+
 /* ROBOT & CAT — CRT terminal */
 .poster.robot {
   background: radial-gradient(ellipse at center, #0a3a3f 0%, #06181c 70%, #030a0c 100%);
@@ -1588,6 +1620,23 @@ p { margin: 0; }
       <div class="strip">
         <div class="name">Found Universes</div>
         <div class="tag">Dr. Wally Boffin opens a door. Four or five songs each. Looping color.</div>
+      </div>
+    </a>
+
+    <!-- Pipchi Park -->
+    <a class="poster park" href="/park" aria-label="Pipchi Park — a little dark ride through the Pipchi worlds, coming soon">
+      <span class="bug">Pipchi</span>
+      <span class="status draft">Coming soon</span>
+      <div class="art">
+        <div class="bulbs" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="pboard b1">LOFI</div>
+        <div class="pboard b2">ITALIA</div>
+        <div class="pboard b3">BRASIL</div>
+        <div class="rail" aria-hidden="true"></div>
+      </div>
+      <div class="strip">
+        <div class="name">Pipchi Park</div>
+        <div class="tag">A little dark ride through the worlds. Painted boards, rocking, and the music.</div>
       </div>
     </a>
 
